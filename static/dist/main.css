@@ -131,6 +131,10 @@ small {
     color: var(--black);
     background: var(--white); }
 
+img {
+  width: 100%;
+  display: block; }
+
 header {
   width: 100%;
   display: flex;
@@ -161,11 +165,13 @@ section {
     flex-direction: column;
     gap: 64px; }
     section .content .box {
-      max-width: 800;
+      max-width: 800px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 24px; }
+      gap: 12px; }
+      section .content .box .button {
+        margin-top: 24px; }
     section .content .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -202,6 +208,8 @@ section {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr; }
     .technologies .content .grid li {
       align-items: center; }
+      .technologies .content .grid li svg {
+        width: 112px; }
   .technologies .content p {
     max-width: 800px; }
 
@@ -221,3 +229,77 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-between; }
+
+@media only screen and (max-width: 1024px) {
+  h1 {
+    font-size: 56px;
+    letter-spacing: -1px; }
+  h3 {
+    font-size: 28px;
+    letter-spacing: 0; }
+  section .content {
+    gap: 48px; }
+    section .content .grid {
+      gap: 64px; }
+  .technologies .content .grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr; } }
+
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 48px;
+    letter-spacing: 0; }
+  h2 {
+    font-size: 14px;
+    letter-spacing: 3px; }
+  h3 {
+    font-size: 24px; }
+  p {
+    font-size: 18px; }
+  small {
+    font-size: 14px; }
+  .button {
+    padding: 12px 16px; }
+  header {
+    height: 64px; }
+  section {
+    padding: 96px 0; }
+    section .content {
+      gap: 32px; }
+      section .content .box {
+        gap: 6px; }
+      section .content .grid {
+        grid-template-columns: 1fr;
+        gap: 48px; }
+        section .content .grid li {
+          gap: 6px; }
+  .start {
+    padding: 48px 0 64px; }
+    .start .content .arrow {
+      display: none; }
+  .technologies .content .grid li svg {
+    width: 80px; }
+  .cta .content {
+    padding: 64px; }
+  footer {
+    height: 64px; } }
+
+@media only screen and (max-width: 512px) {
+  h1 {
+    font-size: 32px;
+    letter-spacing: 0; }
+  h3 {
+    font-size: 22px; }
+  p {
+    font-size: 16px; }
+  section {
+    padding: 64px 0; }
+    section .content {
+      gap: 24px; }
+      section .content .grid {
+        gap: 32px; }
+  .technologies .content .grid {
+    grid-template-columns: 1fr 1fr 1fr; }
+    .technologies .content .grid li svg {
+      width: 64px; }
+  .cta .content {
+    padding: 32px; } }

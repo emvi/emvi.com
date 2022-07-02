@@ -55,6 +55,12 @@ textarea:focus, input:focus, button:focus {
 
 @font-face {
   font-family: "Inter";
+  src: url("../../static/fonts/Inter-Medium.woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
   src: url("../../static/fonts/Inter-Regular.woff2");
   font-weight: 400;
   font-display: swap;
@@ -205,7 +211,7 @@ header .content .menu .lang {
   gap: 12px;
 }
 header .content .menu .lang a {
-  font-weight: 500;
+  font-weight: 400;
   color: var(--black);
   transition: opacity 0.1s ease;
 }
@@ -337,22 +343,27 @@ footer {
 footer .content {
   height: 96px;
   width: 1200px;
-  max-width: calc(100% - 32px);
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
+  padding: 0 16px;
+  overflow-x: auto;
+}
+footer .content small,
+footer .content a {
+  white-space: nowrap;
 }
 footer .content a {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
+  line-height: 1.5;
   color: var(--black);
   transition: opacity 0.1s ease;
 }
 footer .content a:hover, footer .content a:focus {
   opacity: 0.8;
-}
-footer .content a.active {
-  font-weight: 600;
 }
 
 @media only screen and (max-width: 1024px) {

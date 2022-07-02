@@ -487,6 +487,9 @@ footer .content a:hover, footer .content a:focus {
     width: 80px;
   }
 
+  .cta {
+    padding: 64px 0;
+  }
   .cta .content {
     display: flex;
   }

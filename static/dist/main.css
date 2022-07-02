@@ -126,9 +126,18 @@ h2 {
   color: var(--dark-grey);
 }
 
-h3 {
+h3,
+.h3 {
   font-family: "Inter Display", "Inter", "Roboto", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 32px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+h4,
+.h4 {
+  font-family: "Inter Display", "Inter", "Roboto", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 24px;
   font-weight: 500;
   line-height: 1.4;
 }
@@ -140,10 +149,11 @@ p {
 }
 p a {
   color: var(--blue);
+  transition: opacity 0.1s ease;
   cursor: pointer;
 }
 p a:hover, p a:focus {
-  text-decoration: underline;
+  opacity: 0.8;
 }
 
 small {
@@ -213,13 +223,18 @@ header .content .menu .lang {
 header .content .menu .lang a {
   font-weight: 400;
   color: var(--black);
+  opacity: 0.8;
   transition: opacity 0.1s ease;
 }
 header .content .menu .lang a:hover, header .content .menu .lang a:focus {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 header .content .menu .lang a.active {
-  font-weight: 600;
+  font-weight: 500;
+  opacity: 1;
+}
+header .content .menu .lang a.active:hover, header .content .menu .lang a.active:focus {
+  opacity: 0.8;
 }
 
 section {
@@ -235,6 +250,9 @@ section .content {
   display: flex;
   flex-direction: column;
   gap: 48px;
+}
+section .content.text {
+  gap: 12px;
 }
 section .content .box {
   max-width: 800px;
@@ -283,6 +301,10 @@ section .content .grid li .button {
 
 .projects {
   background: var(--black);
+}
+.projects .content h2 {
+  color: var(--light-grey);
+  opacity: 0.5;
 }
 .projects .content h3,
 .projects .content p {
@@ -333,6 +355,25 @@ section .content .grid li .button {
   min-width: 100%;
 }
 
+.legal {
+  padding: 32px 0;
+}
+.legal .content {
+  gap: 12px;
+}
+.legal .content h2 {
+  margin-top: 16px;
+}
+.legal .content h3 {
+  margin-top: 16px;
+}
+.legal .content p {
+  font-size: 16px;
+}
+.legal .content a {
+  color: var(--dark-grey);
+}
+
 footer {
   width: 100%;
   display: flex;
@@ -343,13 +384,11 @@ footer {
 footer .content {
   height: 96px;
   width: 1200px;
-  max-width: 100%;
+  max-width: calc(100% - 32px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 0 16px;
-  overflow-x: auto;
 }
 footer .content small,
 footer .content a {
@@ -457,6 +496,11 @@ footer .content a:hover, footer .content a:focus {
 
   footer {
     height: 64px;
+  }
+  footer .content {
+    max-width: 100%;
+    padding: 0 16px;
+    overflow-x: auto;
   }
 }
 @media only screen and (max-width: 512px) {

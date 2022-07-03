@@ -293,10 +293,11 @@ section .content .grid li .button {
   width: 36px;
   align-self: flex-end;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease 0.2s;
 }
 .start .content .arrow:hover {
   transform: translateY(12px);
+  transition: transform 0.2s ease;
 }
 
 .projects {
@@ -534,6 +535,10 @@ footer .content a:hover, footer .content a:focus {
   }
   .technologies .content .grid li svg {
     width: 64px;
+  }
+
+  .cta .content .box {
+    padding: 24px;
   }
 }
 

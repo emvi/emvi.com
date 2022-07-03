@@ -248,10 +248,11 @@ section {
             width: 36px;
             align-self: flex-end;
             cursor: pointer;
-            transition: transform .2s ease;
+            transition: transform .2s ease .2s;
 
             &:hover {
                 transform: translateY(12px);
+                transition: transform .2s ease;
             }
         }
     }
@@ -555,6 +556,14 @@ footer {
                         width: 64px;
                     }
                 }
+            }
+        }
+    }
+
+    .cta {
+        .content {
+            .box {
+                padding: 24px;
             }
         }
     }

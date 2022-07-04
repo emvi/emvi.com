@@ -1,0 +1,16 @@
+[server]
+host = "localhost"
+port = 8080
+shutdown_time = 30
+write_timeout = 5
+read_timeout = 5
+
+[content]
+not_found = "/not-found"
+
+[sass]
+dir = "assets/style"
+entrypoint = "main.scss"
+out = "assets/css/style.css"
+out_source_map = "assets/css/style.css.map"
+watch = true

@@ -1,1 +1,0 @@
-sass --watch static/style/main.scss static/dist/main.css

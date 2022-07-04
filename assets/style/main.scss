@@ -89,6 +89,16 @@ p {
     }
 }
 
+a {
+    color: var(--black);
+    transition: opacity .1s ease;
+
+    &:hover,
+    &:focus {
+        opacity: .8;
+    }
+}
+
 small {
     font-size: 14px;
     font-weight: 400;
@@ -352,6 +362,27 @@ section {
     }
 }
 
+.not-found {
+    min-height: calc(100vh - 192px);
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            font-size: 256px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 24px;
+            text-align: center;
+        }
+    }
+}
+
 footer {
     width: 100%;
     display: flex;
@@ -509,6 +540,20 @@ footer {
             }
         }
     }
+
+    .not-found {
+        min-height: calc(100vh - 128px);
+
+        .content {
+            h1 {
+                font-size: 128px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+        }
+    }
     
     footer {
         height: 64px;
@@ -568,3 +613,5 @@ footer {
         }
     }
 }
+
+@import "blog";

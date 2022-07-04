@@ -33,14 +33,16 @@
     {{partial "pirsch" .}}
 </head>
 <body>
-    {{partial "header_en" false}}
+    {{partial "header_en" true}}
 
-    <section>
+    <section id="blog" class="blog">
         <div class="content">
-            {{markdown "content/blog/how-to-create-a-custom-icon-font-KzaEeGxaJp/icon-font.md" .}}
+            <article>
+                {{markdown "content/blog/how-to-create-a-custom-icon-font-KzaEeGxaJp/icon-font.md" .}}
+            </article>
         </div>
     </section>
 
-    {{partial "footer_en" false}}
+    {{partial "footer_en" true}}
 </body>
 </html>

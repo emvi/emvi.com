@@ -18,7 +18,7 @@ When it comes to managing the growing number of icons inside the project, differ
 
 In this article I will walk you through the process of drawing, exporting and bundling your icons to a font in the same way we do it at Emvi. After importing it to any project, you will be able to use them by adding a single line of HTML.
 
-## Drawing your icons
+## Drawing Your Icons
 
 We will create our icons using Figma. Figma is great because it's free to use, its vector capabilities are powerful enough to create any kind of icon and it exports clean SVG files we can continue with.
 
@@ -30,7 +30,7 @@ There are many great tutorials on how to get started with Figma and what to look
 
 Once you are happy with what you created, export them to SVG in the bottom right corner.
 
-## Creating an icon font
+## Creating an Icon Font
 
 To bundle our icons to a font, we use Nucleo's desktop app. In case you don't want to start your collection from scratch, Nucleo offers over 28.000 high-quality icons for a one-time payment with lifetime updates. Using their organizer for external icons is free.
 
@@ -58,7 +58,7 @@ Click "Export Icons" and select an empty folder. Once finished, you will find nu
 
 ![Balázs Kétyi/Unsplash](/assets/blog/icon-font/step5.png)
 
-Import and usage
+## Import and Usage
 
 To get started with development, copy the files in /fonts and /css to your project and import the style sheet in the HTML <head>. The font-size is set to 32px by default, so I changed it to my 24px.
 

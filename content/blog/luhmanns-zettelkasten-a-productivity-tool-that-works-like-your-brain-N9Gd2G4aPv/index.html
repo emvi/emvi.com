@@ -33,14 +33,16 @@
     {{partial "pirsch" .}}
 </head>
 <body>
-    {{partial "header_en" false}}
+    {{partial "header_en" true}}
 
-    <section>
+    <section id="blog" class="blog">
         <div class="content">
-            {{markdown "content/blog/luhmanns-zettelkasten-a-productivity-tool-that-works-like-your-brain-N9Gd2G4aPv/luhmann.md" .}}
+            <article>
+                {{markdown "content/blog/luhmanns-zettelkasten-a-productivity-tool-that-works-like-your-brain-N9Gd2G4aPv/luhmann.md" .}}
+            </article>
         </div>
     </section>
 
-    {{partial "footer_en" false}}
+    {{partial "footer_en" true}}
 </body>
 </html>

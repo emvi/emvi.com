@@ -206,7 +206,6 @@ section {
         display: flex;
         flex-direction: column;
         gap: 48px;
-        overflow: hidden;
 
         &.text {
             gap: 12px;
@@ -316,6 +315,7 @@ section {
         grid-template-columns: 40% 60%;
         gap: 0;
         background: var(--white);
+        overflow: hidden;
 
         .box {
             padding: 64px;

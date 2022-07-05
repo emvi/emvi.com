@@ -14,3 +14,6 @@ entrypoint = "main.scss"
 out = "assets/css/style.css"
 out_source_map = "assets/css/style.css.map"
 watch = true
+
+[pirsch]
+client_secret = ""

@@ -147,7 +147,7 @@ header {
     .content {
         height: 96px;
         width: 1200px;
-        max-width: calc(100% - 32px);
+        max-width: calc(100% - 96px);
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -202,10 +202,11 @@ section {
     
     .content {
         width: 1200px;
-        max-width: calc(100% - 32px);
+        max-width: calc(100% - 96px);
         display: flex;
         flex-direction: column;
         gap: 48px;
+        overflow: hidden;
 
         &.text {
             gap: 12px;
@@ -393,7 +394,7 @@ footer {
     .content {
         height: 96px;
         width: 1200px;
-        max-width: calc(100% - 32px);
+        max-width: calc(100% - 96px);
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -484,12 +485,17 @@ footer {
 
     header {
         height: 64px;
+
+        .content {
+            max-width: calc(100% - 32px);
+        }
     }
 
     section {
         padding: 96px 0;
 
         .content {
+            max-width: calc(100% - 32px);
             gap: 32px;
 
             .box {
@@ -557,7 +563,7 @@ footer {
     
     footer {
         height: 64px;
-
+        
         .content {
             max-width: 100%;
             padding: 0 16px;

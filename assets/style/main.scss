@@ -1,7 +1,9 @@
 @import "reset";
 @import "fonts";
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     font-family: inherit;
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;

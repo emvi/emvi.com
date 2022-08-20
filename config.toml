@@ -17,3 +17,4 @@ watch = true
 
 [pirsch]
 client_secret = ""
+header = ["X-Forwarded-For"]

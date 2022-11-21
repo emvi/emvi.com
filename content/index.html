@@ -32,6 +32,10 @@
     <link rel="alternate" hreflang="x-default" href="https://emvi.com/" />
 
     <title>Emvi - High-quality Software for the Modern Web</title>
+
+    <script defer type="text/javascript" src="https://api.pirsch.io/pirsch-events.js"
+        id="pirscheventsjs"
+        data-code="8I5r2w3OWuoGOOt0saaLH3vWGfcTvCOL"></script>
 </head>
 <body>
     {{partial "header_en" false}}
@@ -91,7 +95,7 @@
                 <li>
                     <h3>Your next project?</h3>
                     <p>Whether it's an internal tool for your company or a highly available Software-as-a-Service — we help you to get your ideas off the ground!</p>
-                    <a href="mailto:contact@emvi.com" class="button white">Let's chat</a>
+                    <a href="mailto:contact@emvi.com" class="button white" pirsch-link="Let's chat">Let's chat</a>
                 </li>
             </ul>
         </div>
@@ -153,13 +157,29 @@
         <div class="content">
             <div class="box">
                 <h3>Do you have a project in mind? Let's talk!</h3>
-                <a href="mailto:contact@emvi.com" class="button">Contact us</a>
+                <a href="mailto:contact@emvi.com" class="button" pirsch-link="Contact">Contact us</a>
             </div>
             <div class="img">
                 <img src="assets/img/team.jpg" alt="Marvin Blum & Daniel Schramm - Emvi Software GmbH" loading="lazy">
             </div>
         </div>
     </section>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", () => {
+            const links = document.querySelectorAll("[pirsch-link]");
+            links.forEach(link => link.addEventListener("click", e => {
+                let target = e.target;
+
+                while(!target.hasAttribute("pirsch-link")) {
+                    target = target.parentNode;
+                }
+
+                const eventName = target.getAttribute("pirsch-link");
+                pirsch(eventName);
+                console.log("Event sent", eventName);
+            }));
+        });
+    </script>
 
     {{partial "footer_en" false}}
 </body>

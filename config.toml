@@ -1,6 +1,6 @@
 [server]
 host = "localhost"
-port = 8080
+port = 4444
 shutdown_time = 30
 write_timeout = 5
 read_timeout = 5
@@ -16,5 +16,5 @@ out_source_map = "assets/css/style.css.map"
 watch = true
 
 [pirsch]
-client_secret = ""
+client_secret = "pa_z8Ljxr7UcGBAIdUfghLVkBZ6LkGobH3OcjeVJ332ogDMh"
 header = ["X-Forwarded-For"]

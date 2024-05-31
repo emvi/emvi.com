@@ -1,3 +1,6 @@
+{{$title := copy .Page .Content "title"}}
+{{$metaDescription := copy .Page .Content "meta_description"}}
+
 <!DOCTYPE html>
 <html lang="{{.Page.Language}}" class="theme-light">
 <head>
@@ -6,17 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="copyright" content="Emvi Software GmbH" />
     <meta name="author" content="Emvi Software GmbH" />
-    <meta name="title" content="Emvi - High-quality Software for the Modern Web" />
-    <meta name="description" content="We design and develop custom software solutions for your business with a strong focus on usability, quality, and aesthetics." />
+    <meta name="title" content="{{$title}}" />
+    <meta name="description" content="{{$metaDescription}}" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@emvi" />
-    <meta name="twitter:title" content="Emvi - High-quality Software for the Modern Web" />
-    <meta name="twitter:description" content="We design and develop custom software solutions for your business with a strong focus on usability, quality, and aesthetics." />
+    <meta name="twitter:title" content="{{$title}}" />
+    <meta name="twitter:description" content="{{$metaDescription}}" />
     <meta name="twitter:image" content="/static/img/twitter-card.png" />
     <meta property="og:url" content="https://emvi.com/" />
-    <meta property="og:title" content="Emvi - High-quality Software for the Modern Web" />
+    <meta property="og:title" content="{{$title}}" />
     <meta property="og:site_name" content="Emvi Software" />
-    <meta property="og:description" content="We design and develop custom software solutions for your business with a strong focus on usability, quality, and aesthetics." />
+    <meta property="og:description" content="{{$metaDescription}}" />
     <meta property="og:image" content="/static/img/twitter-card.png">
     <meta name="theme-color" content="#b3cce6">
     <meta name="msapplication-TileColor" content="#b3cce6">
@@ -27,10 +30,12 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/static/img/favicon-16x16.png">
     <link rel="manifest" href="/static/img/site.webmanifest">
     <link rel="mask-icon" href="/static/img/safari-pinned-tab.svg" color="#b3cce6">
-    <link rel="alternate" hreflang="en" href="https://emvi.com/" />
-    <link rel="alternate" hreflang="de" href="https://emvi.com/de" />
-    <link rel="alternate" hreflang="x-default" href="https://emvi.com/" />
+    <link rel="canonical" href="{{.Page.CanonicalLink}}" />
 
-    <title>Emvi - High-quality Software for the Modern Web</title>
+    {{range $language, $path := .Page.Path}}
+        <link rel="alternate" hreflang="{{if eq $language "en"}}x-default{{else}}{{$language}}{{end}}" href="{{fmt "%s%s" hostname $path}}" />
+    {{end}}
+
+    <title>{{$title}}</title>
 </head>
 <body>

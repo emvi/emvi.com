@@ -5,10 +5,10 @@
         </a>
         <div class="menu">
             <div class="lang">
-                <a href="/" class="active">EN</a>
-                <a href="/de">DE</a>
+                <a href="/" {{if eq .Page.Language "en"}}class="active"{{end}}>EN</a>
+                <a href="/de" {{if eq .Page.Language "de"}}class="active"{{end}}>DE</a>
             </div>
-            <a href="mailto:contact@emvi.com" class="button">Contact us</a>
+            <a href="mailto:contact@emvi.com" class="button">{{copy .Page .Content "contact"}}</a>
         </div>
     </div>
 </header>

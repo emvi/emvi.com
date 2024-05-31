@@ -9,7 +9,112 @@
     "content": {
         "content": [
             {"ref": "head"},
-            {"ref": "header"},
+            {
+                "ref": "header",
+                "data": {
+                    "bg": true
+                }
+            },
+            {
+                "tpl": "start"
+            },
+            {
+                "tpl": "services"
+            },
+            {
+                "tpl": "projects",
+                "copy": {
+                    "en": {
+                        "h2": "Projects"
+                    },
+                    "de": {
+                        "h2": "Projekte"
+                    }
+                },
+                "content": {
+                    "content": [
+                        {
+                            "tpl": "project",
+                            "data": {
+                                "img": "/static/img/pirsch.png"
+                            },
+                            "copy": {
+                                "en": {
+                                    "h3": "Pirsch Analytics",
+                                    "text": "Our fully-featured and cookie-free web analytics solution with privacy is mind. Leave Google Analytics behind and visit <a href='https://pirsch.io/' target='_blank'>pirsch.io</a> to learn more."
+                                },
+                                "de": {
+                                    "h3": "Pirsch Analytics",
+                                    "text": ""
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "project",
+                            "data": {
+                                "img": "/static/img/emvi.png"
+                            },
+                            "copy": {
+                                "en": {
+                                    "h3": "Emvi Knowledge Base",
+                                    "text": "Our lightweight wiki software with real-time collaboration and a powerful editor. This project has since been discontinued in favor of Pirsch Analytics."
+                                },
+                                "de": {
+                                    "h3": "",
+                                    "text": ""
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "project",
+                            "data": {
+                                "link": "mailto:contact@emvi.com"
+                            },
+                            "copy": {
+                                "en": {
+                                    "h3": "Your next project?",
+                                    "text": "Whether it's an internal tool for your company or a highly available Software-as-a-Service — we help you to get your ideas off the ground!",
+                                    "contact": "Let's chat"
+                                },
+                                "de": {
+                                    "h3": "",
+                                    "text": "",
+                                    "contact": ""
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "tpl": "techstack",
+                "copy": {
+                    "en": {
+                        "h2": "Technologies",
+                        "h3": "A Modern Techstack",
+                        "text": "We utilize the latest and greatest tools for fast and reliable results. Our preferred stack includes Go, VueJS, and PostgreSQL on HashiCorp infrastructure and Hetzner servers. In case you have an existing setup, we are happy to work with your programming languages and technologies."
+                    },
+                    "de": {
+                        "h2": "Technologien",
+                        "h3": "Ein moderner Techstack",
+                        "text": "Wir verwenden die neuesten und besten Tools für schnelle und zuverlässige Ergebnisse. Unser bevorzugter Stack umfasst Go, VueJS und PostgreSQL auf der Infrastruktur von HashiCorp und Hetzner Servern. Falls Du ein bestehendes Setup hast, arbeiten wir gerne mit Deinen Programmiersprachen und Technologien."
+                    }
+                }
+            },
+            {
+                "tpl": "cta",
+                "copy": {
+                    "en": {
+                        "text": "Do you have a project in mind? Let's talk!",
+                        "contact": "Contact us"
+                    },
+                    "de": {
+                        "text": "Hast Du ein Projekt im Sinn? Lass uns reden!",
+                        "contact": "Kontakt aufnehmen"
+                    }
+                }
+            },
+            {"ref": "footer"},
             {"ref": "end"}
         ]
     }

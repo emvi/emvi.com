@@ -4,7 +4,7 @@
 
 Niklas Luhmann was a german sociologist and system theorist. Born in Lüneburg, Germany in 1927, he spent most of his life studying the socio-ecological structure of societies, being one of the most important scientists of the 20th century in this field. Furthermore, he is considered to be one of the most productive scientists yet. In his career, he wrote about 60 books and other documents without the help of assistants. An impressive amount of publications.
 
-![Niklas Luhmann](/assets/blog/luhmann/luhmann.jpg)
+![Niklas Luhmann](/static/blog/luhmann/luhmann.jpg)
 
 *Niklas Luhmann (born on December, 8th 1927, died on November, 6th 1998)*
 
@@ -18,7 +18,7 @@ A Zettelkasten (die Zettelkästen in plural) is a methodology for thinking in wr
 
 As a tool, the Zettelkasten is a box (or a box of boxes) to hold index cards or slips of paper ("Zettel"). Each card holds a piece of information, an index and the source of the information. The index can be an ongoing number, the date and time or anything else you can use as a unique identifier. The information is a short note in most cases and should be limited to a few words or sentences. The size of the card helps to keep it brief. Drawings and other forms of information can be used too.
 
-![Zettel](/assets/blog/luhmann/zettel.png)
+![Zettel](/static/blog/luhmann/zettel.png)
 
 *An example of a Zettel about Gleichheit ("equality") taken from Luhmann's Zettelkasten.*
 
@@ -26,7 +26,7 @@ The cards are then arranged inboxes. Each box contains a set of cards that are r
 
 Inside a box, cards can be organized further by placing tabs with keywords in between, so that you can look up cards more easily inside large boxes. Luhmann did not use tabs.
 
-![Zettelkasten](/assets/blog/luhmann/kasten.jpg)
+![Zettelkasten](/static/blog/luhmann/kasten.jpg)
 
 *Luhmann's Zettelkasten at the University of Bielefeld.*
 
@@ -48,19 +48,19 @@ Luhmann once said that if you would use some sort of structure (like the table o
 
 So, what is a good indexing system? Luhmann used hierarchical indices, which allowed him to add new cards everywhere in his structure and keep them in order at the same time. We start with a very basic Zettel structure, containing just three cards.
 
-![Step 1](/assets/blog/luhmann/step1.jpg)
+![Step 1](/static/blog/luhmann/step1.jpg)
 
 *A simple Zettelkasten structure.*
 
 As you can see, the cards are provided with a consecutive number. If we would like to go into more detail on card number 2. We could do that by adding card number 2a and continue the row with card numbers 2b, 2c and so on.
 
-![Step 2](/assets/blog/luhmann/step2.jpg)
+![Step 2](/static/blog/luhmann/step2.jpg)
 
 *Adding more detail to the Zettelkasten.*
 
 In case we now would like to go into more detail on one of the deeper cards, we just start over with a new sequence beginning at 1. This could go on forever if you so desire. In the end, we have a structure that provides a quick and relatively small overview of our knowledge base but goes into detail if you follow a path. The structure can also be flattened to create a flow of information that can be written down in a book, for example.
 
-![Step 3](/assets/blog/luhmann/step3.jpg)
+![Step 3](/static/blog/luhmann/step3.jpg)
 
 *Flattening the Zettelkasten structure.*
 

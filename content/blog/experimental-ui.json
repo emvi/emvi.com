@@ -1,1 +1,22 @@
-{}
+{
+    "path": {
+        "en": "/blog/a-new-experimental-user-interface-QMZgmZG1L5"
+    },
+    "sitemap": {
+        "priority": "0.5"
+    },
+    "content": {
+        "content": [
+            {"ref": "head"},
+            {"ref": "header"},
+            {
+                "tpl": "blog_article",
+                "data": {
+                    "md": "static/blog/ui.md"
+                }
+            },
+            {"ref": "footer"},
+            {"ref": "end"}
+        ]
+    }
+}

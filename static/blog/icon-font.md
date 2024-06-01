@@ -4,7 +4,7 @@
 
 At some point in creating a web application, you might find yourself in need of some sort of iconography. Icons help to convey certain actions faster, because they are easier to process, need no translation and resemble established patterns users are already familiar with.
 
-![Balázs Kétyi/Unsplash](/assets/blog/icon-font/title.jpg)
+![Balázs Kétyi/Unsplash](/static/blog/icon-font/title.jpg)
 
 *Balázs Kétyi/Unsplash*
 
@@ -24,7 +24,7 @@ We will create our icons using Figma. Figma is great because it's free to use, i
 
 There are many great tutorials on how to get started with Figma and what to look out for when creating icons, so I won't get into much detail. When you draw your icons, make sure to stick to the same dimensions — common sizes are 16x16, 20x20, 24x24 or 32x32. They cannot contain any pixel-based graphics, like PNGs or JPEGs, and have to be in a single color.
 
-![Balázs Kétyi/Unsplash](/assets/blog/icon-font/step1.png)
+![Balázs Kétyi/Unsplash](/static/blog/icon-font/step1.png)
 
 *Select all icons you would like to export as separate files.*
 
@@ -38,25 +38,25 @@ Note: While they are currently not offering a Linux client, I had no trouble ins
 
 After installing and starting the desktop app, click on the "+" in the top left corner, to create a new set. You can drag and drop a folder with your icons into the application and give it a name.
 
-![Balázs Kétyi/Unsplash](/assets/blog/icon-font/step2.png)
+![Balázs Kétyi/Unsplash](/static/blog/icon-font/step2.png)
 
 *Leave the Style on "Auto"*
 
 Make sure that the grid size at the bottom left only shows a single option. It should reflect the dimensions you chose in Figma. 
 
-![Balázs Kétyi/Unsplash](/assets/blog/icon-font/step3.png)
+![Balázs Kétyi/Unsplash](/static/blog/icon-font/step3.png)
 
 *The frames in Figma were 24x24px*
 
 To create the icon font, right-click on the set name and select "Export". Click on "Icon Font" and you will be asked to choose a name for the font.
 
-![Balázs Kétyi/Unsplash](/assets/blog/icon-font/step4.png)
+![Balázs Kétyi/Unsplash](/static/blog/icon-font/step4.png)
 
 *You can also change the metadata if you so desire*
 
 Click "Export Icons" and select an empty folder. Once finished, you will find numerous files in there, including a demo.html to see all icons and their names.
 
-![Balázs Kétyi/Unsplash](/assets/blog/icon-font/step5.png)
+![Balázs Kétyi/Unsplash](/static/blog/icon-font/step5.png)
 
 ## Import and Usage
 

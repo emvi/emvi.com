@@ -1,0 +1,15 @@
+{{$img := get .Content "img"}}
+{{$link := get .Content "link"}}
+
+<li>
+    <h3>{{copy .Page .Content "h3"}}</h3>
+    <p>{{html (copy .Page .Content "text")}}</p>
+    
+    {{if $img}}
+        <img src="{{$img}}" alt="Pirsch Analytics" loading="lazy">
+    {{end}}
+
+    {{if $link}}
+        <a href="mailto:contact@emvi.com" class="button white" pirsch-link="Let's chat">{{copy .Page .Content "contact"}}</a>
+    {{end}}
+</li>

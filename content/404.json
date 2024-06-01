@@ -1,0 +1,28 @@
+{
+    "path": {
+        "en": "/404",
+        "de": "/de/404"
+    },
+    "sitemap": {
+        "priority": "0.01"
+    },
+    "content": {
+        "content": [
+            {"ref": "head"},
+            {"ref": "header"},
+            {
+                "tpl": "404",
+                "copy": {
+                    "en": {
+                        "h2": "Whoops — this page does not exist."
+                    },
+                    "de": {
+                        "h2": "Ups — diese Seite existiert nicht."
+                    }
+                }
+            },
+            {"ref": "footer"},
+            {"ref": "end"}
+        ]
+    }
+}

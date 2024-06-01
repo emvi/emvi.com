@@ -1,0 +1,61 @@
+{
+    "path": {
+        "en": "/blog"
+    },
+    "sitemap": {
+        "priority": "0.9"
+    },
+    "content": {
+        "content": [
+            {"ref": "head"},
+            {"ref": "header"},
+            {
+                "tpl": "blog_overview",
+                "copy": {
+                    "en": {
+                        "h1": "Blog"
+                    }
+                },
+                "content": {
+                    "content": [
+                        {
+                            "tpl": "blog_entry",
+                            "data": {
+                                "link": "/blog/luhmanns-zettelkasten-a-productivity-tool-that-works-like-your-brain-N9Gd2G4aPv"
+                            },
+                            "copy": {
+                                "en": {
+                                    "title": "Luhmann’s Zettelkasten — A Productivity Tool That Works Like Your Brain"
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "blog_entry",
+                            "data": {
+                                "link": "/blog/how-to-create-a-custom-icon-font-KzaEeGxaJp"
+                            },
+                            "copy": {
+                                "en": {
+                                    "title": "How to Create a Custom Icon Font"
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "blog_entry",
+                            "data": {
+                                "link": "/blog/a-new-experimental-user-interface-QMZgmZG1L5"
+                            },
+                            "copy": {
+                                "en": {
+                                    "title": "A New, Experimental User Interface"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {"ref": "footer"},
+            {"ref": "end"}
+        ]
+    }
+}

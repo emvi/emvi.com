@@ -1,0 +1,18 @@
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", () => {
+            const links = document.querySelectorAll("[pirsch-link]");
+            links.forEach(link => link.addEventListener("click", e => {
+                let target = e.target;
+
+                while(!target.hasAttribute("pirsch-link")) {
+                    target = target.parentNode;
+                }
+
+                const eventName = target.getAttribute("pirsch-link");
+                pirsch(eventName);
+                console.log("Event sent", eventName);
+            }));
+        });
+    </script>
+</body>
+</html>

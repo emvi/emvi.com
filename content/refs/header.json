@@ -1,0 +1,14 @@
+{
+    "tpl": "header",
+    "data": {
+        "bg": false
+    },
+    "copy": {
+        "en": {
+            "contact": "Contact us"
+        },
+        "de": {
+            "contact": "Kontakt aufnehmen"
+        }
+    }
+}

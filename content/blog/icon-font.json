@@ -1,0 +1,22 @@
+{
+    "path": {
+        "en": "/blog/how-to-create-a-custom-icon-font-KzaEeGxaJp"
+    },
+    "sitemap": {
+        "priority": "0.5"
+    },
+    "content": {
+        "content": [
+            {"ref": "head"},
+            {"ref": "header"},
+            {
+                "tpl": "blog_article",
+                "data": {
+                    "md": "static/blog/icon-font.md"
+                }
+            },
+            {"ref": "footer"},
+            {"ref": "end"}
+        ]
+    }
+}

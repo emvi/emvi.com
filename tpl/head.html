@@ -1,0 +1,49 @@
+{{$title := copy .Page .Content "title"}}
+{{$metaDescription := copy .Page .Content "meta_description"}}
+
+<!DOCTYPE html>
+<html lang="{{.Page.Language}}" class="theme-light">
+<head>
+    <base href="/" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="copyright" content="Emvi Software GmbH" />
+    <meta name="author" content="Emvi Software GmbH" />
+    <meta name="title" content="{{$title}}" />
+    <meta name="description" content="{{$metaDescription}}" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@emvi" />
+    <meta name="twitter:title" content="{{$title}}" />
+    <meta name="twitter:description" content="{{$metaDescription}}" />
+    <meta name="twitter:image" content="/static/img/twitter-card.png" />
+    <meta property="og:url" content="https://emvi.com/" />
+    <meta property="og:title" content="{{$title}}" />
+    <meta property="og:site_name" content="Emvi Software" />
+    <meta property="og:description" content="{{$metaDescription}}" />
+    <meta property="og:image" content="/static/img/twitter-card.png">
+    <meta name="theme-color" content="#b3cce6">
+    <meta name="msapplication-TileColor" content="#b3cce6">
+
+    <link rel="stylesheet" type="text/css" href="/static/web/main.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/img/favicon-16x16.png">
+    <link rel="manifest" href="/static/img/site.webmanifest">
+    <link rel="mask-icon" href="/static/img/safari-pinned-tab.svg" color="#b3cce6">
+    <link rel="canonical" href="{{.Page.CanonicalLink}}" />
+
+    {{range $language, $path := .Page.Path}}
+        <link rel="alternate" hreflang="{{if eq $language "en"}}x-default{{else}}{{$language}}{{end}}" href="{{fmt "%s%s" hostname $path}}" />
+    {{end}}
+
+    <title>{{$title}}</title>
+
+    <script defer src="https://analytics.emvi.com/pa.js"
+        id="pianjs"
+        data-code="8I5r2w3OWuoGOOt0saaLH3vWGfcTvCOL"
+        data-hit-endpoint="https://analytics.emvi.com/hit"
+        data-event-endpoint="https://analytics.emvi.com/event"
+        data-session-endpoint="https://analytics.emvi.com/session"
+        data-disable-page-views></script>
+</head>
+<body>

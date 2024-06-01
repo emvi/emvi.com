@@ -1,19 +1,8 @@
 <section id="services" class="services">
     <div class="content">
-        <h2>Services</h2>
+        <h2>{{copy .Page .Content "h2"}}</h2>
         <ul class="grid">
-            <li>
-                <h3>Individual Software</h3>
-                <p>Automate your processes with individually developed software that solves real-world problems. Prevent errors from manual work and get a seamless end-to-end customer journey.</p>
-            </li>
-            <li>
-                <h3>Cloud Infrastructure</h3>
-                <p>Stability and availability are key to your success. Our experience in distributed systems build on top of the latest cloud technologies ensures uninterrupted service for your team or customers while keeping costs low.</p>
-            </li>
-            <li>
-                <h3>UI/UX-Design</h3>
-                <p>Enterprise software does not have to be clunky and look like it's from the 90s. We take the user experience seriously and provide a modern and intuitive way to interact with any application.</p>
-            </li>
+            {{.CMS.Render .Page (index .Content.Content "content")}}
         </ul>
     </div>
 </section>

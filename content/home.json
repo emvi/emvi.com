@@ -19,12 +19,12 @@
                 "tpl": "start",
                 "copy": {
                     "en": {
-                        "h1": "We design and develop high-quality software for the modern web.",
-                        "text": "We design and develop custom software solutions for your business with a strong focus on usability, quality, and aesthetics. Our modern stack and agile team enable fast iterations with a tight feedback loop."
+                        "h1": "Development of high-quality software solutions, websites and system support.",
+                        "text": "We design, develop and maintain customized software solutions and websites for your business with usability, quality and aesthetics in mind. Our modern stack and agile team enable fast iterations with a tight feedback loop."
                     },
                     "de": {
-                        "h1": "Wir entwerfen und entwickeln hochwertige Softwarelösungen.",
-                        "text": "Wir entwerfen und entwickeln maßgeschneiderte Softwarelösungen für Dein Unternehmen mit Blick auf Benutzerfreundlichkeit, Qualität und Ästhetik. Unser moderner Stack und agiles Team ermöglichen schnelle Iterationen mit einer engen Feedbackschleife."
+                        "h1": "Entwicklung hochwertiger Softwarelösungen, Websites und Systembetreuung.",
+                        "text": "Wir entwerfen, entwickeln und betreuen maßgeschneiderte Softwarelösungen und Websites für Dein Unternehmen mit Blick auf Benutzerfreundlichkeit, Qualität und Ästhetik. Unser moderner Stack und agiles Team ermöglichen schnelle Iterationen mit einer engen Feedbackschleife."
                     }
                 }
             },
@@ -75,7 +75,20 @@
                                 },
                                 "de": {
                                     "h3": "UI/UX-Design",
-                                    "text": "Unternehmenssoftware muss nicht klobig sein und aussehen wie aus den 90ern. Wir nehmen das Benutzererlebnis ernst und bieten eine modernes und intuitives Benutzererlebnis."
+                                    "text": "Unternehmenssoftware muss nicht klobig sein und aussehen wie aus den 90ern. Wir nehmen das Benutzererlebnis ernst und bieten ein modernes und intuitives Design."
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "service",
+                            "copy": {
+                                "en": {
+                                    "h3": "Websites",
+                                    "text": "A successful corporate image requires the right website. We design and develop search engine optimized and technically flawless websites that not only look good, but also attract customers."
+                                },
+                                "de": {
+                                    "h3": "Websites",
+                                    "text": "Zu einem gelungenen Unternehmensauftritt gehört die richtige Website. Wir konzipieren und entwickeln suchmaschinenoptimierte und technisch einwandfreie Websites, die nicht nur gut aussehen, sondern auch Kunden anziehen."
                                 }
                             }
                         }

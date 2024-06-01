@@ -2,11 +2,11 @@
     "tpl": "head",
     "copy": {
         "en": {
-            "title": "Emvi - High-quality Software for the Modern Web",
+            "title": "Emvi - High-quality Software and Websites for the Modern Web",
             "meta_description": "We design and develop custom software solutions and websites for your business with a strong focus on usability, quality, and aesthetics."
         },
         "de": {
-            "title": "Emvi - Hochwertige Software für das moderne Web",
+            "title": "Emvi - Hochwertige Software und Websites für das moderne Web",
             "meta_description": "Wir entwerfen und entwickeln maßgeschneiderte Softwarelösungen und Websites für Ihr Unternehmen mit Fokus auf Benutzerfreundlichkeit, Qualität und Ästhetik."
         }
     }

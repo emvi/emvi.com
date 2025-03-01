@@ -250,7 +250,10 @@ section {
     padding: 96px 0 64px;
 
     .content {
-        h1,
+        h1 {
+            max-width: 900px;
+        }
+
         p {
             max-width: 800px;
         }

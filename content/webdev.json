@@ -1,0 +1,48 @@
+{
+    "path": {
+        "en": "/website-development",
+        "de": "/de/website-entwicklung"
+    },
+    "sitemap": {
+        "priority": "0.9"
+    },
+    "content": {
+        "content": [
+            {"ref": "head"},
+            {
+                "ref": "header",
+                "data": {
+                    "bg": true
+                }
+            },
+            {
+                "tpl": "start",
+                "copy": {
+                    "en": {
+                        "h1": "Reliable, high quality and fast website development as a fixed price package.",
+                        "text": "TODO"
+                    },
+                    "de": {
+                        "h1": "Zuverlässige, hochwertige und schnelle Websiteentwicklung mit Festpreis aus Westfalen.",
+                        "text": "TODO"
+                    }
+                }
+            },
+            {
+                "tpl": "cta",
+                "copy": {
+                    "en": {
+                        "text": "Reach out to grab your website package now including free and non-binding conselling!",
+                        "contact": "Request package"
+                    },
+                    "de": {
+                        "text": "Hol dir jetzt dein Website-Paket mit kostenloser und unverbindlicher Beratung!",
+                        "contact": "Paket anfragen"
+                    }
+                }
+            },
+            {"ref": "footer"},
+            {"ref": "end"}
+        ]
+    }
+}

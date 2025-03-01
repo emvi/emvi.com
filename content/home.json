@@ -19,7 +19,7 @@
                 "tpl": "start",
                 "copy": {
                     "en": {
-                        "h1": "Development of high-quality software solutions, websites and system support.",
+                        "h1": "Development of high quality software solutions, websites and system support.",
                         "text": "We design, develop and maintain customized software solutions and websites for your business with usability, quality and aesthetics in mind. Our modern stack and agile team enable fast iterations with a tight feedback loop."
                     },
                     "de": {
@@ -84,11 +84,15 @@
                             "copy": {
                                 "en": {
                                     "h3": "Websites",
-                                    "text": "A successful corporate image requires the right website. We design and develop search engine optimized and technically flawless websites that not only look good, but also attract customers."
+                                    "text": "A successful corporate image requires the right website. We design and develop search engine optimized and technically flawless websites that not only look good, but also attract customers.",
+                                    "button": "Learn more",
+                                    "button_link": "/website-development"
                                 },
                                 "de": {
                                     "h3": "Websites",
-                                    "text": "Zu einem gelungenen Unternehmensauftritt gehört die richtige Website. Wir konzipieren und entwickeln suchmaschinenoptimierte und technisch einwandfreie Websites, die nicht nur gut aussehen, sondern auch Kunden anziehen."
+                                    "text": "Zu einem gelungenen Unternehmensauftritt gehört die richtige Website. Wir konzipieren und entwickeln suchmaschinenoptimierte und technisch einwandfreie Websites, die nicht nur gut aussehen, sondern auch Kunden anziehen.",
+                                    "button": "Mehr erfahren",
+                                    "button_link": "/de/website-entwicklung"
                                 }
                             }
                         }

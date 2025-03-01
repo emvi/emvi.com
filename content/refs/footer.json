@@ -2,12 +2,12 @@
     "tpl": "footer",
     "copy": {
         "en": {
-            "copyright": "© 2024 Emvi Software GmbH. All rights reserved.",
+            "copyright": "© 2025 Emvi Software GmbH. All rights reserved.",
             "legal_link": "/legal",
             "legal": "Legal Notice"
         },
         "de": {
-            "copyright": "© 2024 Emvi Software GmbH. Alle Rechte vorbehalten.",
+            "copyright": "© 2025 Emvi Software GmbH. Alle Rechte vorbehalten.",
             "legal_link": "/de/legal",
             "legal": "Impressum"
         }

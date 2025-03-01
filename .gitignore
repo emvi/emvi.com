@@ -1,1 +1,3 @@
 config.json
+.secrets.env
+shifu.db

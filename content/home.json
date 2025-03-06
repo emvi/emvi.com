@@ -45,11 +45,11 @@
                             "copy": {
                                 "en": {
                                     "h3": "Individual Software",
-                                    "text": "Automate your processes with individually developed software that solves real-world problems. Prevent errors from manual work and get a seamless end-to-end customer journey."
+                                    "text": "<p>Automate your processes with individually developed software that solves real-world problems. Prevent errors from manual work and get a seamless end-to-end customer journey.</p>"
                                 },
                                 "de": {
                                     "h3": "Individuelle Software",
-                                    "text": "Automatisiere Deine Prozesse mit individuell entwickelter Software und löse echte Probleme. Vermeide Fehler durch manuelle Arbeit und schaffe eine nahtlose Customer Journey von Anfang bis Ende."
+                                    "text": "<p>Automatisiere Deine Prozesse mit individuell entwickelter Software und löse echte Probleme. Vermeide Fehler durch manuelle Arbeit und schaffe eine nahtlose Customer Journey von Anfang bis Ende.</p>"
                                 }
                             }
                         },
@@ -58,11 +58,11 @@
                             "copy": {
                                 "en": {
                                     "h3": "Cloud Infrastructure",
-                                    "text": "Stability and availability are key to your success. Our experience in distributed systems build on top of the latest cloud technologies ensures uninterrupted service for your team or customers while keeping costs low."
+                                    "text": "<p>Stability and availability are key to your success. Our experience in distributed systems build on top of the latest cloud technologies ensures uninterrupted service for your team or customers while keeping costs low.</p>"
                                 },
                                 "de": {
                                     "h3": "Cloud Infrastruktur",
-                                    "text": "Stabilität und Verfügbarkeit sind der Schlüssel zum Erfolg. Unsere Erfahrung mit den neuesten Cloud-Technologien gewährleisten einen unterbrechungsfreien Service für das Team oder Kunden und hält die Kosten niedrig."
+                                    "text": "<p>Stabilität und Verfügbarkeit sind der Schlüssel zum Erfolg. Unsere Erfahrung mit den neuesten Cloud-Technologien gewährleisten einen unterbrechungsfreien Service für das Team oder Kunden und hält die Kosten niedrig.</p>"
                                 }
                             }
                         },
@@ -71,11 +71,11 @@
                             "copy": {
                                 "en": {
                                     "h3": "UI/UX-Design",
-                                    "text": "Enterprise software does not have to be clunky and look like it's from the 90s. We take the user experience seriously and provide a modern and intuitive way to interact with any application."
+                                    "text": "<p>Enterprise software does not have to be clunky and look like it's from the 90s. We take the user experience seriously and provide a modern and intuitive way to interact with any application.</p>"
                                 },
                                 "de": {
                                     "h3": "UI/UX-Design",
-                                    "text": "Unternehmenssoftware muss nicht klobig sein und aussehen wie aus den 90ern. Wir nehmen das Benutzererlebnis ernst und bieten ein modernes und intuitives Design."
+                                    "text": "<p>Unternehmenssoftware muss nicht klobig sein und aussehen wie aus den 90ern. Wir nehmen das Benutzererlebnis ernst und bieten ein modernes und intuitives Design.</p>"
                                 }
                             }
                         },
@@ -84,13 +84,13 @@
                             "copy": {
                                 "en": {
                                     "h3": "Websites",
-                                    "text": "A successful corporate image requires the right website. We design and develop search engine optimized and technically flawless websites that not only look good, but also attract customers.",
+                                    "text": "<p>A successful corporate image requires the right website. We design and develop search engine optimized and technically flawless websites that not only look good, but also attract customers.</p>",
                                     "button": "Learn more",
                                     "button_link": "/website-development"
                                 },
                                 "de": {
                                     "h3": "Websites",
-                                    "text": "Zu einem gelungenen Unternehmensauftritt gehört die richtige Website. Wir konzipieren und entwickeln suchmaschinenoptimierte und technisch einwandfreie Websites, die nicht nur gut aussehen, sondern auch Kunden anziehen.",
+                                    "text": "<p>Zu einem gelungenen Unternehmensauftritt gehört die richtige Website. Wir konzipieren und entwickeln suchmaschinenoptimierte und technisch einwandfreie Websites, die nicht nur gut aussehen, sondern auch Kunden anziehen.</p>",
                                     "button": "Mehr erfahren",
                                     "button_link": "/de/website-entwicklung"
                                 }

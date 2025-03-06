@@ -41,6 +41,16 @@
                 }
             },
             {
+                "tpl": "text",
+                "copy": {
+                    "de": {
+                        "h2": "Kurz zu uns",
+                        "h3": "Ein kompetentes Gespann",
+                        "text": "<p>TODO</p>"
+                    }
+                }
+            },
+            {
                 "tpl": "services",
                 "copy": {
                     "de": {
@@ -165,21 +175,84 @@
                 "copy": {
                     "de": {
                         "h2": "Komplettpaket zum unschlagbaren Festpreis",
-                        "h3": "Unser Website Komplettpaket:<br /><span class='large'>3.300 €* einmalig<br />19 €* monatlich</span>",
-                        "text": "<p>Unser Angebot ist einfach: einmalig 3.300 €* für die Entwicklung bezahlen und danach 19 €* monatlich für Hosting, Wartung und Support. Damit hast du die volle Transparenz — ohne versteckte Kosten!</p><p>Im Komplettpaket sind die folgenden Leistungen enthalten:</p><ul><li>individuelles einfaches Design</li><li>Entwicklung der Website</li><li>bis zu 10 Unterseiten**</li><li>Impressum und Datenschutz inklusive</li><li>bis zu 15 Seitenelemente***</li><li>SEO optimierte Texte</li><li>Mobile Optimierung</li><li>inkl. Beartung und Schulung</li><li>eine Stunde Email und Telefonsupport pro Monat</li></ul><p class='small'>* zzgl. Umsatzsteuer<br />** +100 € netto für jede weitere<br />*** +50 € netto für jedes weitere</p><h3>Du brauchst nur eine Landing Page?</h3><p>Kein Problem! Wenn deine Seite aus nur einer Seite besteht, geben wir dir gerne einen Rabatt! Einfach anfragen :)</p>",
-                        "button": "Jetzt anfragen",
+                        "h3": "Unser Website Komplettpaket:<br /><span class='large'>3.300 €* einmalig, 19 €* monatlich</span>",
+                        "text": "<p>Unser Angebot ist einfach: einmalig 3.300 €* für die Entwicklung bezahlen und danach 19 €* monatlich für Hosting, Wartung und Support. Damit hast du die volle Transparenz — ohne versteckte Kosten!</p><p>Im Komplettpaket sind die folgenden Leistungen enthalten:</p><ul><li>individuelles einfaches Design</li><li>Entwicklung der Website</li><li>bis zu 10 Unterseiten**</li><li>Impressum und Datenschutz inklusive</li><li>bis zu 15 Seitenelemente***</li><li>SEO optimierte Texte</li><li>Mobile Optimierung</li><li>inkl. Beartung und Schulung</li><li>eine Stunde Email und Telefonsupport pro Monat</li></ul><p class='small'>* zzgl. Umsatzsteuer<br />** +100 € netto für jede weitere Unterseite<br />*** +50 € netto für jedes weitere Element</p><h3>Du brauchst nur eine Landing Page?</h3><p>Kein Problem! Wenn deine Seite aus nur einer Seite besteht, geben wir dir gerne einen Rabatt! Einfach anfragen :)</p>",
+                        "button": "Jetzt loslegen",
                         "button_link": "mailto:contact@emvi.com"
                     }
                 }
             },
             {
-                "tpl": "process",
+                "tpl": "text",
+                "data": {
+                    "bg-white": true
+                },
                 "copy": {
                     "de": {
                         "h2": "Website-Entwicklungsprozess",
                         "h3": "In wenigen Schritten zur eigenen Website",
-                        "text": "TODO"
+                        "text": "<p>Der Prozess zur deiner eigenen Website läuft in sechs einfachen Schritten ab:</p>",
+                        "button": "Beginne mit deiner kostenlosen Erstberatung",
+                        "button_link": "mailto:contact@emvi.com"
                     }
+                },
+                "content": {
+                    "content": [
+                        {
+                            "tpl": "details",
+                            "copy": {
+                                "de": {
+                                    "summary": "1. Planung und Beratung",
+                                    "content": "<p>Zunächst möchten wir hören, was du eigentlich vor hast. Was möchtest du mit deiner Website erreichen? Für wen ist die Seite? Gibt es schon eine Vorstellung, wie sie aussehen soll? Falls du noch keine Antworten zu diesen Fragen hast, ist das gar kein Problem. Wir beraten dich gerne!</p>"
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "details",
+                            "copy": {
+                                "de": {
+                                    "summary": "2. Design",
+                                    "content": "<p>Der erste Eindruck zählt! Wir designen in Kooperation mit dir deine Website. Meist geschieht dies schon direkt online, ohne Designtool als Zwischenschritt, so dass du dir besser vorstellen kannst, was dich erwartet. In dieser Phase nehmen wir gerne Feedback und Änderungwünsche an, damit du am Ende zufrieden mit dem Ergebnis bist.</p>"
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "details",
+                            "copy": {
+                                "de": {
+                                    "summary": "3. Entwicklung",
+                                    "content": "<p>Jetzt geht die Website in die Entwicklung! Wir füllen die Seiten mit deinen Bildern und Texten, helfen sie für Suchmaschinen zu optimieren (SEO) und implementieren alle Funktionen.</p>"
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "details",
+                            "copy": {
+                                "de": {
+                                    "summary": "4. Test",
+                                    "content": "<p>Nach Abschluss der Entwicklung testen wir mit dir gemeinsam alle Funktionen. Das passiert natürlich auch schon während der Entwicklung ein einem engen Feedback-Loop, aber ein finaler Test vor dem Go-Live ist unabdingbar.</p>"
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "details",
+                            "copy": {
+                                "de": {
+                                    "summary": "5. Launch",
+                                    "content": "<p>Deine Website geht online! Nach dem Test stellst du selbst oder wir für dich deine DNS Einstellungen um, damit die neue Seite auf deiner Domain erreichbar ist.</p>"
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "details",
+                            "copy": {
+                                "de": {
+                                    "summary": "6. Wartung",
+                                    "content": "<p>Nach dem Launch ist es für uns aber noch lange nicht vorbei. Wir warten deine Website, nehmen inhaltliche und technische Verbesserungen vor und helfen dir, sollten Fragen oder Probleme auftreten.</p>"
+                                }
+                            }
+                        }
+                    ]
                 }
             },
             {
@@ -188,8 +261,23 @@
                     "de": {
                         "h2": "Frequently Asked Questions",
                         "h3": "Antworten zu den wichtigsten Fragen",
-                        "text": "<p>TODO</p>"
+                        "text": "<p>Falls die gesuchte Antwort nicht dabei ist, schreib uns doch einfach</a>!",
+                        "button": "Noch Fragen? Schreib uns!",
+                        "button_link": "mailto:contact@emvi.com"
                     }
+                },
+                "content": {
+                    "content": [
+                        {
+                            "tpl": "details",
+                            "copy": {
+                                "de": {
+                                    "summary": "1. Frage TODO",
+                                    "content": "<p>TODO</p>"
+                                }
+                            }
+                        }
+                    ]
                 }
             },
             {

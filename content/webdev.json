@@ -46,7 +46,7 @@
                     "de": {
                         "h2": "Kurz zu uns",
                         "h3": "Ein kompetentes Gespann",
-                        "text": "<p>Wir sind ein Zwei-Mann-Team aus Rheda-Wiedenbrück mit umfangreicher Erfahrung im Bereich Software- und Webentwicklung, Server Infrastruktur und Design. Angefangen haben wir schon im Kindesalter mit unseren ersten eigenen Websites. Danach kam eine GbR und seit 2019 sind wir als Emvi Software GmbH tätig.</p><div class='team'><div><img src='/static/img/marvin.jpg' alt='Marvin Blum' /><p class='small'><strong>Marvin Blum</strong><br />Software Entwickler</p></div><div><img src='/static/img/daniel.jpg' alt='Daniel Schramm' /><p class='small'><strong>Daniel Schramm</strong><br />Digitalisierungsingeneur</p></div></div>"
+                        "text": "<p>Wir sind ein Zwei-Mann-Team aus Rheda-Wiedenbrück mit umfangreicher Erfahrung im Bereich Software- und Webentwicklung, Server Infrastruktur und Design. Angefangen haben wir schon im Kindesalter mit unseren ersten eigenen Websites. Danach kam eine GbR und seit 2019 sind wir als Emvi Software GmbH tätig.</p><div class='team'><div><img src='/static/img/marvin.jpg' alt='Marvin Blum' /><p class='small'><strong>Marvin Blum</strong><br />Softwareentwickler</p></div><div><img src='/static/img/daniel.jpg' alt='Daniel Schramm' /><p class='small'><strong>Daniel Schramm</strong><br />Digitalisierungsingeneur</p></div></div>"
                     }
                 }
             },
@@ -145,7 +145,7 @@
                             "copy": {
                                 "de": {
                                     "h3": "Kein Vendor Lock-In",
-                                    "text": "<p>Bei uns bist du Kunde und kein Gefangener. Alle Dienstleistungen können jederzeit herausgelöst und bei Bedarf von anderen Dienstleistern übernommen werden. Auch unser hauseigenes Content Management System ist vollständig open-source und kann kostenlos verwendet werden. Auf Wunsch exportieren wir deine Website für einen einfachen Wechsel.</p><a href='https://github.com/emvi/shifu' class='button' target='_blank'>Unser CMS auf GitHub</a>"
+                                    "text": "<p>Bei uns bist du Kunde und kein Gefangener. Alle Dienstleistungen können jederzeit herausgelöst und bei Bedarf von anderen Dienstleistern übernommen werden. Auch unser hauseigenes Content Management System ist vollständig Open-Source und kann kostenlos verwendet werden. Auf Wunsch exportieren wir deine Website für einen einfachen Wechsel.</p><a href='https://github.com/emvi/shifu' class='button' target='_blank'>Unser CMS auf GitHub</a>"
                                 }
                             }
                         },
@@ -287,8 +287,53 @@
                             "tpl": "details",
                             "copy": {
                                 "de": {
-                                    "summary": "1. Frage TODO",
-                                    "content": "<p>TODO</p>"
+                                    "summary": "Wie lange dauert ein Projekt in der Regel?",
+                                    "content": "<p>Das hängt natürlich vom Umfang und von unserer Auslastung ab. In der Regel kann aber schon nach einer Woche ein erster Prototyp bereitgestellt werden, damit wir die Details abstimmen können. Vollständig fertig wird eine Website in zwei bis vier Wochen.</p>"
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "details",
+                            "copy": {
+                                "de": {
+                                    "summary": "Kann ich wechseln, wenn mir die Dienstleistung nicht gefällt?",
+                                    "content": "<p>Natürlich! Wir haben keine festen Laufzeiten und es kann jederzeit gekündigt werden. Wir helfen gerne beim Export aller Daten und stellen die Website gegebenenfalls auch statisch zur Verfügung, so dass sie überall gehostet werden kann. Unser CMS ist Open-Source und kann kostenlos auf deinem eigenen Server weiterverwendet werden.</p><p>Allerdings werden die Kosten für das Hosting jährlich im vorraus abgerechnet und werden nicht erstattet.</p>"
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "details",
+                            "copy": {
+                                "de": {
+                                    "summary": "In welcher Programmiersprache wird meine Website programmiert?",
+                                    "content": "<p>Wir programmieren hauptsächlich in Go und JavaScript/TypeScript, sind aber in vielen Programmiersprachen bewandert. Dazu gehören z.B. auch PHP, Bash, C und viele andere.</p><p>Unser CMS setzt vollständig auf Go. Auf Wunsch kann jederzeit Zugriff auf den Quellcode gegeben werden. Unser CMS sowieso vollständig Open-Source und kann auf GitHub lizenzfrei heruntergeladen und installiert werden.</p>"
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "details",
+                            "copy": {
+                                "de": {
+                                    "summary": "Wird KI eingesetzt?",
+                                    "content": "<p>Ja und nein. Wir nutzen KI lediglich als Inspirationsquelle für Texte und Bilder. Uns ist es wichtig, dass die Websites nicht nur bei Suchmaschinen gut ankommt, sondern auch bei Menschen. Damit sie ohne das ständige Gefühl auskommen, generische Texte zu lesen.</p>"
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "details",
+                            "copy": {
+                                "de": {
+                                    "summary": "Welche Dienstleistungen werden noch angeboten?",
+                                    "content": "<p>Wir bieten neben der Websiteerstellung auch Webentwicklung, Softwareentwicklung und Linux Server Dienstleistungen an.</p><p>Der Unterschied zwischen Websites und Webanwendungen ist die Funktion. Während Websites für öffentliche Besucher gedacht sind und wenig Funktionen bieten, haben Webanwendungen einen größeren Funktionsumfang und sind oft nur intern in Verwendung.</p><p>Softwareentwicklung bezieht sich allgemein auf das Feld der Programmierung. Z.B. Desktopanwendungen, Server APIs und Datenbanken.</p><p>Im Bereich Linux administrieren wir Server und können Software bereitstellen, sowie Infrastrukturpläne erstellen.</p>"
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "details",
+                            "copy": {
+                                "de": {
+                                    "summary": "Wie viele Kaffee braucht man, um eine Website zu bauen?",
+                                    "content": "<p>Das hängt natürlich stark vom Aufwand ab. Wenn wir mit 5-8 Kaffee pro Tag rechnen, kommen schnell 25 bis 40 Kaffee auf eine Website, wobei Daniels Spezi dabei noch nicht einkalkuliert sind :)</p>"
                                 }
                             }
                         }

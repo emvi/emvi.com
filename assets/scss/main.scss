@@ -406,6 +406,22 @@ section {
     }
 }
 
+.team {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+
+    & > div {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        img {
+            max-width: 160px;
+        }
+    }
+}
+
 .cta {
     padding: 128px 0;
     background: var(--blue);

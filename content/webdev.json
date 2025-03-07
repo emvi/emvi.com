@@ -46,7 +46,7 @@
                     "de": {
                         "h2": "Kurz zu uns",
                         "h3": "Ein kompetentes Gespann",
-                        "text": "<p>TODO</p>"
+                        "text": "<p>Wir sind ein Zwei-Mann-Team aus Rheda-Wiedenbrück mit umfangreicher Erfahrung im Bereich Software- und Webentwicklung, Server Infrastruktur und Design. Angefangen haben wir schon im Kindesalter mit unseren ersten eigenen Websites. Danach kam eine GbR und seit 2019 sind wir als Emvi Software GmbH tätig.</p><div class='team'><div><img src='/static/img/marvin.jpg' alt='Marvin Blum' /><p class='small'><strong>Marvin Blum</strong><br />Software Entwickler</p></div><div><img src='/static/img/daniel.jpg' alt='Daniel Schramm' /><p class='small'><strong>Daniel Schramm</strong><br />Digitalisierungsingeneur</p></div></div>"
                     }
                 }
             },
@@ -176,7 +176,7 @@
                     "de": {
                         "h2": "Komplettpaket zum unschlagbaren Festpreis",
                         "h3": "Unser Website Komplettpaket:<br /><span class='large'>3.300 €* einmalig, 19 €* monatlich</span>",
-                        "text": "<p>Unser Angebot ist einfach: einmalig 3.300 €* für die Entwicklung bezahlen und danach 19 €* monatlich für Hosting, Wartung und Support. Damit hast du die volle Transparenz — ohne versteckte Kosten!</p><p>Im Komplettpaket sind die folgenden Leistungen enthalten:</p><ul><li>individuelles einfaches Design</li><li>Entwicklung der Website</li><li>bis zu 10 Unterseiten**</li><li>Impressum und Datenschutz inklusive</li><li>bis zu 15 Seitenelemente***</li><li>SEO optimierte Texte</li><li>Mobile Optimierung</li><li>inkl. Beartung und Schulung</li><li>eine Stunde Email und Telefonsupport pro Monat</li></ul><p class='small'>* zzgl. Umsatzsteuer<br />** +100 € netto für jede weitere Unterseite<br />*** +50 € netto für jedes weitere Element</p><h3>Du brauchst nur eine Landing Page?</h3><p>Kein Problem! Wenn deine Seite aus nur einer Seite besteht, geben wir dir gerne einen Rabatt! Einfach anfragen :)</p>",
+                        "text": "<p>Unser Angebot ist einfach: einmalig 3.300 €* für die Entwicklung bezahlen und danach 19 €* monatlich für Hosting, Wartung und Support. Damit hast du die volle Transparenz — ohne versteckte Kosten!</p><p>Im Komplettpaket sind die folgenden Leistungen enthalten:</p><ul><li>individuelles einfaches Design</li><li>Entwicklung der Website</li><li>bis zu 10 Unterseiten**</li><li>Impressum und Datenschutz inklusive</li><li>bis zu 15 Seitenelemente***</li><li>SEO optimierte Texte</li><li>Mobile Optimierung</li><li>inkl. Beartung und Schulung</li><li>eine Stunde Email und Telefonsupport pro Monat</li></ul><p class='small'>* zzgl. Umsatzsteuer<br />** +100 € netto für jede weitere Unterseite<br />*** +50 € netto für jedes weitere Element</p>",
                         "button": "Jetzt loslegen",
                         "button_link": "mailto:contact@emvi.com"
                     }
@@ -187,6 +187,18 @@
                 "data": {
                     "bg-white": true
                 },
+                "copy": {
+                    "de": {
+                        "h2": "Landing Page",
+                        "h3": "Du brauchst nur eine Landing Page?",
+                        "text": "<p>Kein Problem! Wenn deine Seite aus nur einer Seite besteht, geben wir dir gerne einen Rabatt! Einfach anfragen :)</p>",
+                        "button": "Landing Page anfragen",
+                        "button_link": "mailto:contact@emvi.com"
+                    }
+                }
+            },
+            {
+                "tpl": "text",
                 "copy": {
                     "de": {
                         "h2": "Website-Entwicklungsprozess",
@@ -257,6 +269,9 @@
             },
             {
                 "tpl": "text",
+                "data": {
+                    "bg-white": true
+                },
                 "copy": {
                     "de": {
                         "h2": "Frequently Asked Questions",

@@ -90,8 +90,8 @@
                             "tpl": "service",
                             "copy": {
                                 "de": {
-                                    "h3": "Leistungsstarkes Content Management",
-                                    "text": "<p>Unser hauseigenes Content Management System (CMS) erlaubt dir eine einfache Verwaltung deiner Website. Ob es um einfache Textanpassungen geht, den Austausch von Bildern, oder die Erstellung kompletter Seiten, mit unseren CMS kannst du Änderungen einfach selbst vornehmen.</p>"
+                                    "h3": "Leistungsstarkes Content-Management",
+                                    "text": "<p>Unser hauseigenes Content-Management-System (CMS) erlaubt dir eine einfache Verwaltung deiner Website. Ob es um einfache Textanpassungen geht, den Austausch von Bildern, oder die Erstellung kompletter Seiten, mit unseren CMS kannst du Änderungen einfach selbst vornehmen.</p>"
                                 }
                             }
                         },
@@ -100,7 +100,7 @@
                             "copy": {
                                 "de": {
                                     "h3": "Performance",
-                                    "text": "<p>Websites sollten schnell und stabil sein. Und bei uns sind sie das! Wir legen großen Wert auf performante Websites die ohne überflüssiges Gewicht schnell bei deinen Besuchern laden — unabhängig davon ob sie auf dem PC oder mobil darauf zugreifen.</p>"
+                                    "text": "<p>Websites sollten schnell und stabil sein. Und bei uns sind sie das! Wir legen großen Wert auf performante Websites, die ohne überflüssiges Gewicht schnell bei deinen Besuchern laden — unabhängig davon, ob sie auf dem PC oder mobil darauf zugreifen.</p>"
                                 }
                             }
                         },
@@ -109,7 +109,7 @@
                             "copy": {
                                 "de": {
                                     "h3": "DSGVO-konformes Analytics",
-                                    "text": "<p>Analytics ist wichtig um die Leistung deiner Seite im Blick zu behalten. Wir setzen dabei auf unser eigenes Analytics Tool: Pirsch. Pirsch ist DSGVO-konform und benötigt daher keinen nervigen Cookiebanner. Als Kunde bei uns bekommst du Gratis Zugriff auf alle Pirsch Funktionen in einem übersichtlichen und einfach zu verstehendem Dashboard.</p><a href='https://pirsch.io' class='button' target='_blank'>Zu Pirsch Analytics</a>"
+                                    "text": "<p>Analytics ist wichtig, um die Leistung deiner Seite im Blick zu behalten. Wir setzen dabei auf unser eigenes Analytics Tool: Pirsch. Pirsch ist DSGVO-konform und benötigt daher keinen nervigen Cookiebanner. Als Kunde bei uns bekommst du gratis Zugriff auf alle Pirsch Funktionen in einem übersichtlichen und einfach zu verstehendem Dashboard.</p><a href='https://pirsch.io' class='button' target='_blank'>Zu Pirsch Analytics</a>"
                                 }
                             }
                         },
@@ -118,7 +118,7 @@
                             "copy": {
                                 "de": {
                                     "h3": "Schulung und Support",
-                                    "text": "<p>Damit du nicht alleine im Regen stehen bleibst schulen wir dich für die Bedienung deiner Website. Keine Angst, unser hauseigenes Content Management System ist einfach zu verstehen und bei Fragen sind wird schnell und zuverlässig erreichbar.</p>"
+                                    "text": "<p>Damit du nicht alleine im Regen stehen bleibst, schulen wir dich für die Bedienung deiner Website. Keine Angst, unser hauseigenes Content-Management-System ist einfach zu verstehen und bei Fragen sind wir schnell und zuverlässig erreichbar.</p>"
                                 }
                             }
                         },
@@ -127,7 +127,7 @@
                             "copy": {
                                 "de": {
                                     "h3": "Updates und Wartung",
-                                    "text": "<p>Natürlich darf die Wartung und Softwareaktualisierungen nicht fehlen. Bei uns bist du in guten Händen. Wir kümmern uns proaktiv darum, dass deine Website online ist und auch bleibt. Unser hauseigenes Content Management System wird stetig weiterentwickelt und Verbesserungen werden automatisch für deine Website übernommen. Finden wir Fehler auf deiner Website oder es treten Probleme auf, korrigieren wir diese selbstständig und ohne dein Eingreifen.</p>"
+                                    "text": "<p>Natürlich darf die Wartung und Softwareaktualisierungen nicht fehlen. Bei uns bist du in guten Händen. Wir kümmern uns proaktiv darum, dass deine Website online ist und auch bleibt. Unser hauseigenes Content-Management-System wird stetig weiterentwickelt und Verbesserungen werden automatisch für deine Website übernommen. Finden wir Fehler auf deiner Website oder es treten Probleme auf, korrigieren wir diese selbstständig und ohne dein Eingreifen.</p>"
                                 }
                             }
                         },
@@ -136,7 +136,7 @@
                             "copy": {
                                 "de": {
                                     "h3": "Sicherheit",
-                                    "text": "<p>Agenturen und Websiteanbieter kämpfen häufig mit Sicherheitsproblemen. Sei es das WordPress Plugin das nicht aktualisiert wurde, oder die Sicherheitslücke in Typo3 die noch nicht geschlossen ist. Wir sind unabhängig von Drittanbietern und entwickeln bei Bedarf eigens Software für genau dein Problem. Dadurch fallen Updates weg, die eigentlich nichts mit deiner Website zu tun haben, aber neue Sicherheitslücken eröffnen. Unsere eingesetzten Technologien sind simpel und damit weniger anfällig. Frag uns gerne dazu!</p><a href='mailto:contact@emvi.com' class='button'>Kontakt aufnehmen</a>"
+                                    "text": "<p>Agenturen und Website-Anbieter kämpfen häufig mit Sicherheitsproblemen. Sei es das WordPress-Plugin, das nicht aktualisiert wurde, oder die Sicherheitslücke in Typo3, die noch nicht geschlossen ist. Wir sind unabhängig von Drittanbietern und entwickeln bei Bedarf eigens Software für genau dein Problem. Dadurch fallen Updates weg, die eigentlich nichts mit deiner Website zu tun haben, aber neue Sicherheitslücken eröffnen. Unsere eingesetzten Technologien sind simpel und damit weniger anfällig. Frag uns gerne dazu!</a>"
                                 }
                             }
                         },
@@ -145,7 +145,7 @@
                             "copy": {
                                 "de": {
                                     "h3": "Kein Vendor Lock-In",
-                                    "text": "<p>Bei uns bist du Kunde und kein Gefangener. Alle Dienstleistungen können jederzeit herausgelöst und bei Bedarf von anderen Dienstleistern übernommen werden. Auch unser hauseigenes Content Management System ist vollständig Open-Source und kann kostenlos verwendet werden. Auf Wunsch exportieren wir deine Website für einen einfachen Wechsel.</p><a href='https://github.com/emvi/shifu' class='button' target='_blank'>Unser CMS auf GitHub</a>"
+                                    "text": "<p>Bei uns bist du Kunde und kein Gefangener. Alle Dienstleistungen können jederzeit herausgelöst und bei Bedarf von anderen Dienstleistern übernommen werden. Auch unser hauseigenes Content-Management-System ist vollständig Open-Source und kann kostenlos verwendet werden. Auf Wunsch exportieren wir deine Website für einen einfachen Wechsel.</p><a href='https://github.com/emvi/shifu' class='button' target='_blank'>Unser CMS auf GitHub</a>"
                                 }
                             }
                         },
@@ -153,8 +153,8 @@
                             "tpl": "service",
                             "copy": {
                                 "de": {
-                                    "h3": "Gehostet in Deutschland bei Hetzner",
-                                    "text": "<p>Anders als viele andere Agenturen und Websiteanbieter hosten wir deine Seite nicht bei Amazon (AWS), Google, Microsoft, oder ähnlich und erzeugen damit Datenschutzprobleme. Wir hosten DSGVO-konform bei einem der größten deutschen Hostinganbieter: Hetzner. Hetzner zeichnet sich als familiengeführtes Unternehmen schon lange durch hohe Performance, Stabilität und gute Preise aus.</p><img src='/static/img/hetzner.svg' alt='Hetzner Logo' style='max-width: 200px;' />"
+                                    "h3": "Gehostet bei Hetzner in Deutschland",
+                                    "text": "<p>Anders als viele andere Agenturen und Website-Anbieter hosten wir deine Seite nicht bei Amazon (AWS), Google, Microsoft, oder ähnlich und erzeugen damit Datenschutzprobleme. Wir hosten DSGVO-konform bei einem der größten deutschen Hostinganbieter: Hetzner. Hetzner zeichnet sich als familiengeführtes Unternehmen schon lange durch hohe Performance, Stabilität und gute Preise aus.</p><img src='/static/img/hetzner.svg' alt='Hetzner Logo' style='max-width: 200px;' />"
                                 }
                             }
                         },
@@ -175,8 +175,8 @@
                 "copy": {
                     "de": {
                         "h2": "Komplettpaket zum unschlagbaren Festpreis",
-                        "h3": "Unser Website Komplettpaket:<br /><span class='large'>3.300 €* einmalig, 19 €* monatlich</span>",
-                        "text": "<p>Unser Angebot ist einfach: einmalig 3.300 €* für die Entwicklung bezahlen und danach 19 €* monatlich für Hosting, Wartung und Support. Damit hast du die volle Transparenz — ohne versteckte Kosten!</p><p>Im Komplettpaket sind die folgenden Leistungen enthalten:</p><ul><li>individuelles einfaches Design</li><li>Entwicklung der Website</li><li>bis zu 10 Unterseiten**</li><li>Impressum und Datenschutz inklusive</li><li>bis zu 15 Seitenelemente***</li><li>SEO optimierte Texte</li><li>Mobile Optimierung</li><li>inkl. Beartung und Schulung</li><li>eine Stunde Email und Telefonsupport pro Monat</li></ul><p class='small'>* zzgl. Umsatzsteuer<br />** +100 € netto für jede weitere Unterseite<br />*** +50 € netto für jedes weitere Element</p>",
+                        "h3": "Unser Website-Komplettpaket:<br /><span class='large'>3.300 €* einmalig, 19 €* monatlich</span>",
+                        "text": "<p>Unser Angebot ist einfach: einmalig 3.300 €* für die Entwicklung bezahlen und danach 19 €* monatlich für Hosting, Wartung und Support. Damit hast du die volle Transparenz — ohne versteckte Kosten!</p><p>Im Komplettpaket sind die folgenden Leistungen enthalten:</p><ul><li>individuelles einfaches Design</li><li>Entwicklung der Website</li><li>bis zu 10 Unterseiten**</li><li>Impressum und Datenschutz inklusive</li><li>bis zu 15 Seitenelemente***</li><li>SEO optimierte Texte</li><li>Mobile Optimierung</li><li>inkl. Beratung und Schulung</li><li>eine Stunde Email und Telefonsupport pro Monat</li></ul><p class='small'>* zzgl. Umsatzsteuer<br />** +100 € netto für jede weitere Unterseite<br />*** +50 € netto für jedes weitere Element</p>",
                         "button": "Jetzt loslegen",
                         "button_link": "mailto:contact@emvi.com"
                     }
@@ -189,7 +189,7 @@
                 },
                 "copy": {
                     "de": {
-                        "h2": "Landing Page",
+                        "h2": "Landing-Page",
                         "h3": "Du brauchst nur eine Landing Page?",
                         "text": "<p>Kein Problem! Wenn deine Seite aus nur einer Seite besteht, geben wir dir gerne einen Rabatt! Einfach anfragen :)</p>",
                         "button": "Landing Page anfragen",
@@ -203,7 +203,7 @@
                     "de": {
                         "h2": "Website-Entwicklungsprozess",
                         "h3": "In wenigen Schritten zur eigenen Website",
-                        "text": "<p>Der Prozess zur deiner eigenen Website läuft in sechs einfachen Schritten ab:</p>",
+                        "text": "<p>Der Prozess zu deiner eigenen Website läuft in sechs einfachen Schritten ab:</p>",
                         "button": "Beginne mit deiner kostenlosen Erstberatung",
                         "button_link": "mailto:contact@emvi.com"
                     }
@@ -215,7 +215,7 @@
                             "copy": {
                                 "de": {
                                     "summary": "1. Planung und Beratung",
-                                    "content": "<p>Zunächst möchten wir hören, was du eigentlich vor hast. Was möchtest du mit deiner Website erreichen? Für wen ist die Seite? Gibt es schon eine Vorstellung, wie sie aussehen soll? Falls du noch keine Antworten zu diesen Fragen hast, ist das gar kein Problem. Wir beraten dich gerne!</p>"
+                                    "content": "<p>Zunächst möchten wir hören, was du eigentlich vorhast. Was möchtest du mit deiner Website erreichen? Für wen ist die Seite? Gibt es schon eine Vorstellung, wie sie aussehen soll? Falls du noch keine Antworten zu diesen Fragen hast, ist das gar kein Problem. Wir beraten dich gerne!</p>"
                                 }
                             }
                         },
@@ -224,7 +224,7 @@
                             "copy": {
                                 "de": {
                                     "summary": "2. Design",
-                                    "content": "<p>Der erste Eindruck zählt! Wir designen in Kooperation mit dir deine Website. Meist geschieht dies schon direkt online, ohne Designtool als Zwischenschritt, so dass du dir besser vorstellen kannst, was dich erwartet. In dieser Phase nehmen wir gerne Feedback und Änderungwünsche an, damit du am Ende zufrieden mit dem Ergebnis bist.</p>"
+                                    "content": "<p>Der erste Eindruck zählt! Wir designen in Kooperation mit dir deine Website. Meist geschieht dies schon direkt online, ohne Designtool als Zwischenschritt, sodass du dir besser vorstellen kannst, was dich erwartet. In dieser Phase nehmen wir gerne Feedback und Änderungswünsche an, damit du am Ende zufrieden mit dem Ergebnis bist.</p>"
                                 }
                             }
                         },
@@ -242,7 +242,7 @@
                             "copy": {
                                 "de": {
                                     "summary": "4. Test",
-                                    "content": "<p>Nach Abschluss der Entwicklung testen wir mit dir gemeinsam alle Funktionen. Das passiert natürlich auch schon während der Entwicklung ein einem engen Feedback-Loop, aber ein finaler Test vor dem Go-Live ist unabdingbar.</p>"
+                                    "content": "<p>Nach Abschluss der Entwicklung testen wir mit dir gemeinsam alle Funktionen. Das passiert natürlich auch schon während der Entwicklung in einem engen Feedback-Loop, aber ein finaler Test vor dem Go-live ist unabdingbar.</p>"
                                 }
                             }
                         },
@@ -297,7 +297,7 @@
                             "copy": {
                                 "de": {
                                     "summary": "Kann ich wechseln, wenn mir die Dienstleistung nicht gefällt?",
-                                    "content": "<p>Natürlich! Wir haben keine festen Laufzeiten und es kann jederzeit gekündigt werden. Wir helfen gerne beim Export aller Daten und stellen die Website gegebenenfalls auch statisch zur Verfügung, so dass sie überall gehostet werden kann. Unser CMS ist Open-Source und kann kostenlos auf deinem eigenen Server weiterverwendet werden.</p><p>Allerdings werden die Kosten für das Hosting jährlich im vorraus abgerechnet und werden nicht erstattet.</p>"
+                                    "content": "<p>Natürlich! Wir haben keine festen Laufzeiten und es kann jederzeit gekündigt werden. Wir helfen gerne beim Export aller Daten und stellen die Website gegebenenfalls auch statisch zur Verfügung, sodass sie überall gehostet werden kann. Unser CMS ist Open-Source und kann kostenlos auf deinem eigenen Server weiterverwendet werden.</p><p>Allerdings werden die Kosten für das Hosting jährlich im Voraus abgerechnet und werden nicht erstattet.</p>"
                                 }
                             }
                         },
@@ -324,7 +324,7 @@
                             "copy": {
                                 "de": {
                                     "summary": "Welche Dienstleistungen werden noch angeboten?",
-                                    "content": "<p>Wir bieten neben der Websiteerstellung auch Webentwicklung, Softwareentwicklung und Linux Server Dienstleistungen an.</p><p>Der Unterschied zwischen Websites und Webanwendungen ist die Funktion. Während Websites für öffentliche Besucher gedacht sind und wenig Funktionen bieten, haben Webanwendungen einen größeren Funktionsumfang und sind oft nur intern in Verwendung.</p><p>Softwareentwicklung bezieht sich allgemein auf das Feld der Programmierung. Z.B. Desktopanwendungen, Server APIs und Datenbanken.</p><p>Im Bereich Linux administrieren wir Server und können Software bereitstellen, sowie Infrastrukturpläne erstellen.</p>"
+                                    "content": "<p>Wir bieten neben der Website-Erstellung auch Webentwicklung, Softwareentwicklung und Linux Server Dienstleistungen an.</p><p>Der Unterschied zwischen Websites und Webanwendungen ist die Funktion. Während Websites für öffentliche Besucher gedacht sind und wenig Funktionen bieten, haben Webanwendungen einen größeren Funktionsumfang und sind oft nur intern in Verwendung.</p><p>Softwareentwicklung bezieht sich allgemein auf das Feld der Programmierung. Z.B. Desktopanwendungen, Server APIs und Datenbanken.</p><p>Im Bereich Linux administrieren wir Server und können Software bereitstellen, sowie Infrastrukturpläne erstellen.</p>"
                                 }
                             }
                         },
@@ -333,7 +333,7 @@
                             "copy": {
                                 "de": {
                                     "summary": "Wie viele Kaffee braucht man, um eine Website zu bauen?",
-                                    "content": "<p>Das hängt natürlich stark vom Aufwand ab. Wenn wir mit 5-8 Kaffee pro Tag rechnen, kommen schnell 25 bis 40 Kaffee auf eine Website, wobei Daniels Spezi dabei noch nicht einkalkuliert sind :)</p>"
+                                    "content": "<p>Das hängt natürlich stark vom Aufwand ab. Wenn wir mit 5 bis 8 Kaffee pro Tag rechnen, kommen schnell 25 bis 40 Kaffee auf eine Website, wobei Daniels Spezi dabei noch nicht einkalkuliert sind :)</p>"
                                 }
                             }
                         }

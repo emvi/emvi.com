@@ -287,6 +287,7 @@
                             "copy": {
                                 "de": {
                                     "h3": "pirsch.io",
+                                    "text": "Pirsch Analytics ist eine DSGVO-konforme Web Analytics Lösung.",
                                     "button": "Website besuchen",
                                     "button_link": "https://pirsch.io"
                                 }
@@ -300,6 +301,7 @@
                             "copy": {
                                 "de": {
                                     "h3": "schnittfest.gmbh",
+                                    "text": "Die Seite der Schnittfest GmbH Videoproduktion.",
                                     "button": "Website besuchen",
                                     "button_link": "https://schnittfest.gmbh"
                                 }
@@ -313,6 +315,7 @@
                             "copy": {
                                 "de": {
                                     "h3": "snesgames.de",
+                                    "text": "SNES Fan Seite mit detailierten Reviews.",
                                     "button": "Website besuchen",
                                     "button_link": "https://snesgames.de"
                                 }

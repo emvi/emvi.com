@@ -49,7 +49,7 @@
                     "de": {
                         "h2": "Kurz zu uns",
                         "h3": "Ein kompetentes Gespann",
-                        "text": "<p>Wir sind ein Zwei-Mann-Team aus Rheda-Wiedenbrück mit umfangreicher Erfahrung im Bereich Software- und Webentwicklung, Server Infrastruktur und Design. Angefangen haben wir schon im Kindesalter mit unseren ersten eigenen Websites. Danach kam eine GbR und seit 2019 sind wir als Emvi Software GmbH tätig.</p><div class='team'><div><img src='/static/img/marvin.jpg' alt='Marvin Blum' /><p class='small'><strong>Marvin Blum</strong><br />Softwareentwickler</p></div><div><img src='/static/img/daniel.jpg' alt='Daniel Schramm' /><p class='small'><strong>Daniel Schramm</strong><br />Digitalisierungsingeneur</p></div></div>"
+                        "text": "<p>Wir sind ein Zwei-Mann-Team aus Rheda-Wiedenbrück mit umfangreicher Erfahrung im Bereich Software- und Webentwicklung, Serverinfrastruktur und Design. Angefangen haben wir schon im Kindesalter mit unseren ersten eigenen Websites. Danach kam eine GbR und seit 2019 sind wir als Emvi Software GmbH tätig.</p><div class='team'><div><img src='/static/img/marvin.jpg' alt='Marvin Blum' /><p class='small'><strong>Marvin Blum</strong><br />Softwareentwickler</p></div><div><img src='/static/img/daniel.jpg' alt='Daniel Schramm' /><p class='small'><strong>Daniel Schramm</strong><br />Digitalisierungsingeneur</p></div></div>"
                     }
                 }
             },
@@ -166,7 +166,7 @@
                             "copy": {
                                 "de": {
                                     "h3": "Aus deiner Region und weltweit",
-                                    "text": "<p>Wir sind dein Partner in Ostwestfalen mit Schwerpunkt in Bielefeld, Gütersloh und Paderborn. Auch weltweit haben wir Kunden und sind damit nicht nur für Deutschland der ideale Partner, sondern auch global.</p>"
+                                    "text": "<p>Wir sind dein Partner in Ostwestfalen mit Schwerpunkt in Bielefeld, Gütersloh und Paderborn. Auch weltweit haben wir Kunden und sind damit nicht nur für Deutschland der ideale Partner.</p>"
                                 }
                             }
                         }
@@ -179,7 +179,7 @@
                     "de": {
                         "h2": "Komplettpaket zum unschlagbaren Festpreis",
                         "h3": "Unser Website-Komplettpaket:<br /><span class='large'>3.300 €* einmalig, 19 €* monatlich</span>",
-                        "text": "<p>Unser Angebot ist einfach: einmalig 3.300 €* für die Entwicklung bezahlen und danach 19 €* monatlich für Hosting, Wartung und Support. Damit hast du die volle Transparenz — ohne versteckte Kosten!</p><p>Im Komplettpaket sind die folgenden Leistungen enthalten:</p><ul><li>individuelles einfaches Design</li><li>Entwicklung der Website</li><li>bis zu 10 Unterseiten**</li><li>Impressum und Datenschutz inklusive</li><li>bis zu 15 Seitenelemente***</li><li>SEO optimierte Texte</li><li>Mobile Optimierung</li><li>inkl. Beratung und Schulung</li><li>eine Stunde Email und Telefonsupport pro Monat</li></ul><p class='small'>* zzgl. Umsatzsteuer<br />** +100 € netto für jede weitere Unterseite<br />*** +50 € netto für jedes weitere Element</p>",
+                        "text": "<p>Unser Angebot ist einfach: einmalig 3.300 €* für die Entwicklung bezahlen und danach 19 €* monatlich für Hosting, Wartung und Support. Damit hast du die volle Transparenz — ohne versteckte Kosten!</p><p>Im Komplettpaket sind die folgenden Leistungen enthalten:</p><ul><li>individuelles, einfaches Design</li><li>Entwicklung der Website</li><li>bis zu 10 Unterseiten**</li><li>Impressum und Datenschutz inklusive</li><li>bis zu 15 Seitenelemente***</li><li>SEO-optimierte Texte</li><li>Mobile Optimierung</li><li>inkl. Beratung und Schulung</li><li>eine Stunde E-Mail- und Telefonsupport pro Monat</li></ul><p class='small'>* zzgl. Umsatzsteuer<br />** +100 € netto für jede weitere Unterseite<br />*** +50 € netto für jedes weitere Element</p>",
                         "button": "Jetzt loslegen",
                         "button_link": "mailto:contact@emvi.com"
                     }
@@ -194,7 +194,7 @@
                     "de": {
                         "h2": "Landing-Page",
                         "h3": "Du brauchst nur eine Landing Page?",
-                        "text": "<p>Kein Problem! Wenn deine Seite aus nur einer Seite besteht, geben wir dir gerne einen Rabatt! Einfach anfragen :)</p>",
+                        "text": "<p>Kein Problem! Wenn deine Webseite aus nur einer Seite besteht, geben wir dir gerne einen Rabatt! Einfach anfragen :)</p>",
                         "button": "Landing Page anfragen",
                         "button_link": "mailto:contact@emvi.com"
                     }
@@ -254,7 +254,7 @@
                             "copy": {
                                 "de": {
                                     "summary": "5. Launch",
-                                    "content": "<p>Deine Website geht online! Nach dem Test stellst du selbst oder wir für dich deine DNS Einstellungen um, damit die neue Seite auf deiner Domain erreichbar ist.</p>"
+                                    "content": "<p>Deine Website geht online! Nach dem Test stellst du selbst oder wir für dich deine DNS-Einstellungen um, damit die neue Seite auf deiner Domain erreichbar ist.</p>"
                                 }
                             }
                         },
@@ -363,7 +363,7 @@
                             "copy": {
                                 "de": {
                                     "summary": "In welcher Programmiersprache wird meine Website programmiert?",
-                                    "content": "<p>Wir programmieren hauptsächlich in Go und JavaScript/TypeScript, sind aber in vielen Programmiersprachen bewandert. Dazu gehören z.B. auch PHP, Bash, C und viele andere.</p><p>Unser CMS setzt vollständig auf Go. Auf Wunsch kann jederzeit Zugriff auf den Quellcode gegeben werden. Unser CMS sowieso vollständig Open-Source und kann auf GitHub lizenzfrei heruntergeladen und installiert werden.</p>"
+                                    "content": "<p>Wir programmieren hauptsächlich in Go und JavaScript/TypeScript, sind aber in vielen Programmiersprachen bewandert. Dazu gehören z.B. auch PHP, Bash, C und viele andere.</p><p>Unser CMS setzt vollständig auf Go. Auf Wunsch kann jederzeit Zugriff auf den Quellcode gegeben werden. Unser CMS ist ohnehin vollständig Open-Source und kann auf GitHub lizenzfrei heruntergeladen und installiert werden.</p>"
                                 }
                             }
                         },

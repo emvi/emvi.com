@@ -329,6 +329,8 @@ section {
     background: var(--blue);
 
     .content {
+        z-index: 1;
+
         h1 {
             max-width: 900px;
         }

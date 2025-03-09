@@ -12,12 +12,12 @@
                 "ref": "head",
                 "copy": {
                     "en": {
-                        "title": "Emvi - Reliable, high quality and fast web development as a fixed price package",
-                        "meta_description": "We develop high-quality, high-performance and reliable websites and web applications at a fixed price of €3,300 (VAT) or individually according to your ideas."
+                        "title": "Emvi - High quality website for a fixed price package",
+                        "meta_description": "We develop high-quality, high-performance and reliable websites and web applications at a fixed price or individually according to your ideas."
                     },
                     "de": {
-                        "title": "Emvi - Zuverlässige, hochwertige und schnelle Webentwicklung mit Festpreis aus Westfalen",
-                        "meta_description": "Wir entwickeln qualitativ hochwertige, leistungsstarke und zuverlässige Websites und Webanwendungen zum Festpreis von 3.300 € netto oder individuell nach deinen Vorstellungen."
+                        "title": "Emvi - Webentwicklung mit Festpreis aus Westfalen",
+                        "meta_description": "Wir entwickeln qualitativ hochwertige, leistungsstarke und zuverlässige Websites und Webanwendungen zum Festpreis oder individuell nach deinen Vorstellungen."
                     }
                 }
             },

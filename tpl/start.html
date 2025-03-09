@@ -1,3 +1,4 @@
+{{/* Script tag needs to be on top! */}}
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const arrow = document.getElementsByClassName("arrow");
@@ -16,7 +17,13 @@
     });
 </script>
 
+{{$bg := get .Content "bg"}}
+
 <section id="start" class="start">
+    {{if $bg}}
+        <div class="start-bg" style="background-image: url('{{$bg}}');"></div>
+    {{end}}
+
     <div class="content">
         <h1>{{copy .Page .Content "h1"}}</h1>
         <p>{{html (copy .Page .Content "text")}}</p>

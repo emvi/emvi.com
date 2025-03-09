@@ -29,6 +29,9 @@
             },
             {
                 "tpl": "start",
+                "data": {
+                    "bg": "/static/img/website-bg.png"
+                },
                 "copy": {
                     "en": {
                         "h1": "Reliable, high quality and fast web development as a fixed price package.",
@@ -261,6 +264,57 @@
                                 "de": {
                                     "summary": "6. Wartung",
                                     "content": "<p>Nach dem Launch ist es für uns aber noch lange nicht vorbei. Wir warten deine Website, nehmen inhaltliche und technische Verbesserungen vor und helfen dir, sollten Fragen oder Probleme auftreten.</p>"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "tpl": "projects",
+                "copy": {
+                    "de": {
+                        "h2": "Referenzen"
+                    }
+                },
+                "content": {
+                    "content": [
+                        {
+                            "tpl": "project",
+                            "data": {
+                                "img": "/static/references/pirsch.png"
+                            },
+                            "copy": {
+                                "de": {
+                                    "h3": "pirsch.io",
+                                    "button": "Website besuchen",
+                                    "button_link": "https://pirsch.io"
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "project",
+                            "data": {
+                                "img": "/static/references/schnittfest.png"
+                            },
+                            "copy": {
+                                "de": {
+                                    "h3": "schnittfest.gmbh",
+                                    "button": "Website besuchen",
+                                    "button_link": "https://schnittfest.gmbh"
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "project",
+                            "data": {
+                                "img": "/static/references/snesgames.png"
+                            },
+                            "copy": {
+                                "de": {
+                                    "h3": "snesgames.de",
+                                    "button": "Website besuchen",
+                                    "button_link": "https://snesgames.de"
                                 }
                             }
                         }

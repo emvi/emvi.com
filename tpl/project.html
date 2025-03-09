@@ -12,4 +12,10 @@
     {{if $link}}
         <a href="mailto:contact@emvi.com" class="button white" pirsch-link="Let's chat">{{copy .Page .Content "contact"}}</a>
     {{end}}
+
+    {{if (copy .Page .Content "button")}}
+        <a href="{{copy .Page .Content "button_link"}}" target="_blank" class="button">
+            {{copy .Page .Content "button"}}
+        </a>
+    {{end}}
 </li>

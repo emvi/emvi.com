@@ -4,31 +4,31 @@
 *,
 *::before,
 *::after {
-    font-family: inherit;
-    box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    font-family: inherit;
 }
 
 html {
-    font-family: "Inter", "Roboto", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
 
     --black: #000;
     --dark-grey: #707070;
     --light-grey: #eaeaea;
     --white: #fff;
     --blue: #b3cde6;
+    overflow-x: hidden;
+    font-family: "Inter", "Roboto", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
 }
 
 body {
-    min-width: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width: 320px;
     margin-right: calc(-100vw + 100%); /* Fix for scroll-bar jump */
 }
 
@@ -43,57 +43,65 @@ p {
 }
 
 h1 {
-    font-family: "Inter Display", "Inter", "Roboto", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 64px;
     font-weight: 500;
+    font-size: 64px;
     line-height: 1.4;
+    font-family: "Inter Display", "Inter", "Roboto", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 h2 {
-    font-size: 16px;
+    color: var(--dark-grey);
     font-weight: 500;
+    font-size: 16px;
     line-height: 1.4;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--dark-grey);
 }
 
 h3,
 .h3 {
-    font-family: "Inter Display", "Inter", "Roboto", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 32px;
     font-weight: 500;
+    font-size: 32px;
     line-height: 1.4;
+    font-family: "Inter Display", "Inter", "Roboto", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+    .large {
+        font-size: 3rem
+    }
 }
 
 h4,
 .h4 {
-    font-family: "Inter Display", "Inter", "Roboto", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 24px;
     font-weight: 500;
+    font-size: 24px;
     line-height: 1.4;
+    font-family: "Inter Display", "Inter", "Roboto", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 p {
-    font-size: 20px;
     font-weight: 400;
+    font-size: 20px;
     line-height: 1.6;
 
     a {
         color: var(--blue);
-        transition: opacity .1s ease;
         cursor: pointer;
+        transition: opacity .2s ease;
 
         &:hover,
         &:focus {
             opacity: .8;
         }
     }
+
+    &.small {
+        font-size: small;
+    }
 }
 
 a {
     color: var(--black);
-    transition: opacity .1s ease;
+    transition: opacity .2s ease;
 
     &:hover,
     &:focus {
@@ -102,57 +110,106 @@ a {
 }
 
 small {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.5;
     color: var(--black);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+strong {
+    font-weight: 500;
+}
+
+details {
+    width: 100%;
+    padding: 16px;
+    background: var(--light-grey);
+
+    summary {
+        position: relative;
+        margin: -16px;
+        padding: 16px;
+        font-size: 20px;
+        list-style: none;
+        cursor: pointer;
+        transition: 0.2s;
+        user-select: none;
+
+        &::after {
+            display: block;
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 20px;
+            height: 20px;
+            background: url("/static/icons/arrow.svg");
+            content: "";
+            transition: 0.2s;
+        }
+
+        &:hover {
+            background: var(--blue);
+        }
+    }
+
+    &[open] > summary {
+        background: var(--blue);
+    }
+
+    &[open] > summary::after {
+        transform: rotate(180deg);
+    }
+
+    p:first-of-type {
+        margin-top: 32px;
+    }
 }
 
 .button {
     display: inline-flex;
-    justify-content: center;
-    align-items: center;
     flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
     padding: 16px 24px;
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--white);
     background: var(--black);
+    color: var(--white);
+    font-weight: 500;
+    font-size: 16px;
     white-space: nowrap;
     cursor: pointer;
-    transition: opacity .1s ease;
+    transition: opacity .2s ease;
 
     &:hover,
     &:focus {
-        opacity: .8;
         text-decoration: none;
+        opacity: .8;
     }
 
     &.white {
-        color: var(--black);
         background: var(--white);
+        color: var(--black);
     }
 }
 
 img {
-    width: 100%;
     display: block;
+    width: 100%;
 }
 
 header {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
     background-color: var(--blue);
 
     .content {
-        height: 88px;
-        width: 1200px;
-        max-width: calc(100% - 96px);
         display: flex;
         align-items: center;
         justify-content: space-between;
+        width: 1200px;
+        max-width: calc(100% - 96px);
+        height: 88px;
     
         .logo {
             display: block;
@@ -170,10 +227,10 @@ header {
                 gap: 12px;
 
                 a {
-                    font-weight: 400;
                     color: var(--black);
+                    font-weight: 400;
                     opacity: .8;
-                    transition: opacity .1s ease;
+                    transition: opacity .2s ease;
 
                     &:hover,
                     &:focus {
@@ -196,17 +253,17 @@ header {
 }
 
 section {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
     padding: 128px 0 192px;
     
     .content {
-        width: 1200px;
-        max-width: calc(100% - 96px);
         display: flex;
         flex-direction: column;
+        width: 1200px;
+        max-width: calc(100% - 96px);
         gap: 48px;
 
         &.text {
@@ -214,14 +271,34 @@ section {
         }
 
         .box {
-            max-width: 800px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            max-width: 800px;
             gap: 12px;
 
             .button {
                 margin-top: 24px;
+            }
+
+            ul {
+                margin: 0 0 0 48px;
+            
+                li {
+                    position: relative;
+                    margin: 0 0 12px 0;
+                    font-size: 20px;
+
+                    &::before {
+                        display: block;
+                        position: absolute;
+                        left: -24px;
+                        width: 20px;
+                        height: 20px;
+                        background-image: url("/static/icons/check.svg");
+                        content: "";
+                    }
+                }
             }
         }
 
@@ -246,19 +323,26 @@ section {
 }
 
 .start {
-    background: var(--blue);
+    position: relative;
     padding: 96px 0 64px;
+    overflow: hidden;
+    background: var(--blue);
 
     .content {
-        h1,
+        z-index: 1;
+
+        h1 {
+            max-width: 900px;
+        }
+
         p {
             max-width: 800px;
         }
 
         .arrow {
-            height: 48px;
-            width: 36px;
             align-self: flex-end;
+            width: 36px;
+            height: 48px;
             cursor: pointer;
             transition: transform .2s ease .2s;
 
@@ -267,6 +351,18 @@ section {
                 transition: transform .2s ease;
             }
         }
+    }
+
+    &-bg {
+        position: absolute;
+        width: 100%;
+        max-width: 1920px;
+        height: 100%;
+        max-height: 1080px;
+        background-position: bottom center;
+        background-size: cover;
+        background-blend-mode: darken;
+        opacity: 0.1;
     }
 }
 
@@ -283,6 +379,11 @@ section {
         p {
             color: var(--white);
         }
+    }
+
+    .button {
+        background: var(--white);
+        color: var(--black);
     }
 }
 
@@ -308,6 +409,44 @@ section {
     }
 }
 
+.text {
+    background: var(--light-grey);
+
+    .content {
+        p {
+            max-width: 800px;
+        }
+    }
+
+    details {
+        background: var(--white);
+    }
+
+    &-white {
+        background: var(--white);
+
+        details {
+            background: var(--light-grey);
+        }
+    }
+}
+
+.team {
+    display: flex;
+    margin-top: 24px;
+    gap: 12px;
+
+    & > div {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        img {
+            max-width: 160px;
+        }
+    }
+}
+
 .cta {
     padding: 128px 0;
     background: var(--blue);
@@ -315,27 +454,27 @@ section {
     .content {
         display: grid;
         grid-template-columns: 40% 60%;
+        overflow: hidden;
         gap: 0;
         background: var(--white);
-        overflow: hidden;
 
         .box {
             padding: 64px;
         }
 
         .img {
-            max-height: 512px;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            max-height: 512px;
             overflow: hidden;
 
             img {
                 flex-shrink: 0;
-                max-height: 100%;
-                min-height: 100%;
                 width: auto;
                 min-width: 100%;
+                min-height: 100%;
+                max-height: 100%;
             }
         }
     }
@@ -371,8 +510,8 @@ section {
     .content {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
 
         h1 {
             font-size: 256px;
@@ -387,19 +526,19 @@ section {
 }
 
 footer {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
     background: var(--blue);
 
     .content {
-        height: 96px;
-        width: 1200px;
-        max-width: calc(100% - 96px);
         display: flex;
         align-items: center;
         justify-content: space-between;
+        width: 1200px;
+        max-width: calc(100% - 96px);
+        height: 96px;
         gap: 24px;
 
         small,
@@ -408,11 +547,11 @@ footer {
         }
 
         a {
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 1.5;
             color: var(--black);
-            transition: opacity .1s ease;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.5;
+            transition: opacity .2s ease;
 
             &:hover,
             &:focus {
@@ -471,6 +610,10 @@ footer {
 
     h3 {
         font-size: 24px;
+
+        .large {
+            font-size: 2rem
+        }
     }
 
     p {
@@ -479,6 +622,12 @@ footer {
 
     small {
         font-size: 14px;
+    }
+
+    details {
+        summary {
+            font-size: 18px;
+        }
     }
 
     .button {
@@ -502,6 +651,17 @@ footer {
 
             .box {
                 gap: 6px;
+
+                ul {                
+                    li {
+                        font-size: 18px;
+
+                        &::before {
+                            width: 18px;
+                            height: 18px;
+                        }
+                    }
+                }
             }
 
             .grid {
@@ -601,6 +761,27 @@ footer {
                 width: 100%;
                 padding: 16px 24px;
             }
+
+            .box {
+                gap: 6px;
+
+                ul {                
+                    li {
+                        font-size: 16px;
+
+                        &::before {
+                            width: 16px;
+                            height: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    details {
+        summary {
+            font-size: 16px;
         }
     }
 
@@ -635,18 +816,18 @@ footer {
         }
     
         *::-webkit-scrollbar-thumb {
-            height: 64px;
+            -webkit-border-radius: 8px;
             width: 64px;
+            height: 64px;
             border: 5px solid rgba(0,0,0,0);
             background-clip: padding-box;
-            -webkit-border-radius: 8px;
             background-color: rgba(127,127, 127,.4);
         }
         
         *::-webkit-scrollbar-button {
+            display: none;
             width: 0;
             height: 0;
-            display: none;
         }
         *::-webkit-scrollbar-corner {
             background-color: transparent;

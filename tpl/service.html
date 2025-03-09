@@ -1,4 +1,10 @@
 <li>
     <h3>{{copy .Page .Content "h3"}}</h3>
-    <p>{{html (copy .Page .Content "text")}}</p>
+    {{html (copy .Page .Content "text")}}
+
+    {{if (copy .Page .Content "button")}}
+        <a href="{{copy .Page .Content "button_link"}}" class="button">
+            {{copy .Page .Content "button"}}
+        </a>
+    {{end}}
 </li>

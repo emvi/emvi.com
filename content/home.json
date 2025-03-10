@@ -114,7 +114,8 @@
                         {
                             "tpl": "project",
                             "data": {
-                                "img": "/static/img/pirsch.png"
+                                "img": "/static/img/pirsch.png",
+                                "img_alt": "Pirsch Analytics"
                             },
                             "copy": {
                                 "en": {
@@ -130,7 +131,8 @@
                         {
                             "tpl": "project",
                             "data": {
-                                "img": "/static/img/emvi.png"
+                                "img": "/static/img/emvi.png",
+                                "img_alt": "Emvi Knowledge Base"
                             },
                             "copy": {
                                 "en": {

@@ -6,7 +6,11 @@
     <p>{{html (copy .Page .Content "text")}}</p>
     
     {{if $img}}
-        <img src="{{$img}}" alt="Pirsch Analytics" loading="lazy">
+        <img src="{{$img}}"
+            alt="{{get .Content "img_alt"}}"
+            loading="lazy"
+            {{if get .Content "img_width"}}width="{{get .Content "img_width"}}"{{end}}
+            {{if get .Content "img_height"}}height="{{get .Content "img_height"}}"{{end}} />
     {{end}}
 
     {{if $link}}

@@ -366,6 +366,26 @@ section {
     }
 }
 
+.website-bg {
+    background-image: url("/static/img/website-bg.png");
+
+    @media only screen and (max-width: 1920px) {
+        background-image: url("/static/img/website-bg-1920.png");
+    }
+
+    @media only screen and (max-width: 1200px) {
+        background-image: url("/static/img/website-bg-1200.png");
+    }
+
+    @media only screen and (max-width: 800px) {
+        background-image: url("/static/img/website-bg-800.png");
+    }
+
+    @media only screen and (max-width: 600px) {
+        background-image: url("/static/img/website-bg-600.png");
+    }
+}
+
 .projects {
     background: var(--black);
 
@@ -384,6 +404,11 @@ section {
     .button {
         background: var(--white);
         color: var(--black);
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
     }
 }
 

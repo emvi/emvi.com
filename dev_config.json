@@ -10,6 +10,9 @@
         "secure_cookies": false,
         "cookie_domain_name": "emvi.com"
     },
+    "api": {
+        "secret": "${API_SECRET}"
+    },
     "git": {
         "update_seconds": 30,
         "repository": "https://github.com/emvi/emvi.com.git"
@@ -34,5 +37,13 @@
     "analytics": {
         "provider": "pirsch",
         "client_secret": ""
+    },
+    "ui": {
+        "path": "/admin",
+        "admin_password": "${ADMIN_PASSWORD}"
+    },
+    "captcha": {
+        "hmac_key": "test",
+        "max_number": 10000
     }
 }

@@ -30,8 +30,11 @@
                     <label for="message">{{copy .Page .Content "form_message"}}</label>
                     <textarea name="message" id="message"></textarea>
                 </fieldset>
+                <altcha-widget challengeurl="/contact/challenge"></altcha-widget>
                 <input type="submit" value="{{copy .Page .Content "form_send"}}" />
             </form>
         </div>
     </div>
 </section>
+
+<script async defer src="/static/js/altcha.js" type="module"></script>

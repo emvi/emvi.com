@@ -48,7 +48,7 @@
     },
     "email": {
         "host": "smtp.gmail.com",
-        "port": 465,
+        "port": 587,
         "username": "contact@emvi.com",
         "password": "",
         "from": "contact@emvi.com"

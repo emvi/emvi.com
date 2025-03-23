@@ -1,4 +1,4 @@
-package contact
+package captcha
 
 import (
 	"encoding/json"

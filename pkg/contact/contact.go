@@ -1,5 +1,0 @@
-package contact
-
-func Contact() {
-
-}

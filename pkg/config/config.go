@@ -17,11 +17,20 @@ var (
 
 type Config struct {
 	Captcha Captcha `json:"captcha"`
+	Email   Email   `json:"email"`
 }
 
 type Captcha struct {
 	HMACKey   string `toml:"hmac_key"`
 	MaxNumber int64  `toml:"max_number"`
+}
+
+type Email struct {
+	Host     string `json:"host"`
+	Port     int    `json:"port"`
+	Username string `json:"username"`
+	Password string `json:"password"`
+	From     string `json:"from"`
 }
 
 func Load() {

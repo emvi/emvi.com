@@ -3,7 +3,7 @@
         <h2>{{copy .Page .Content "h2"}}</h2>
         {{html (copy .Page .Content "text")}}
         <div class="box">
-            <form>
+            <form method="post">
                 <fieldset>
                     <label for="name">{{copy .Page .Content "form_name"}}</label>
                     <input type="text" name="name" id="name" required />

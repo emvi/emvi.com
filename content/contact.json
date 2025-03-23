@@ -3,6 +3,7 @@
         "en": "/contact",
         "de": "/de/kontakt"
     },
+    "handler": "contact_form",
     "sitemap": {
         "priority": "0.1"
     },

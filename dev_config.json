@@ -45,5 +45,12 @@
     "captcha": {
         "hmac_key": "test",
         "max_number": 10000
+    },
+    "email": {
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "username": "contact@emvi.com",
+        "password": "",
+        "from": "contact@emvi.com"
     }
 }

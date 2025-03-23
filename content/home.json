@@ -154,11 +154,13 @@
                                 "en": {
                                     "h3": "Your next project?",
                                     "text": "Whether it's an internal tool for your company or a highly available Software-as-a-Service — we help you to get your ideas off the ground!",
+                                    "contact_link": "/contact",
                                     "contact": "Let's chat"
                                 },
                                 "de": {
                                     "h3": "Dein nächstes Projekt?",
                                     "text": "Ob ein internes Tool für Dein Unternehmen oder eine hochverfügbare Software-as-a-Service - wir helfen Dir, Deine Ideen auf den Weg zu bringen!",
+                                    "contact_link": "/de/kontakt",
                                     "contact": "Lass uns reden"
                                 }
                             }
@@ -186,10 +188,12 @@
                 "copy": {
                     "en": {
                         "text": "Do you have a project in mind? Let's talk!",
+                        "contact_link": "/contact",
                         "contact": "Contact us"
                     },
                     "de": {
                         "text": "Hast Du ein Projekt im Sinn? Lass uns reden!",
+                        "contact_link": "/de/kontakt",
                         "contact": "Kontakt aufnehmen"
                     }
                 }

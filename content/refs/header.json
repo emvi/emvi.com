@@ -5,9 +5,11 @@
     },
     "copy": {
         "en": {
+            "contact_link": "/contact",
             "contact": "Contact us"
         },
         "de": {
+            "contact_link": "/de/kontakt",
             "contact": "Kontakt aufnehmen"
         }
     }

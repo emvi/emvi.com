@@ -237,14 +237,14 @@
                         "h3": "Our complete website package:<br /><span class='large'>$3,300* once, $19* monthly</span>",
                         "text": "<p>Our offer is simple: pay $3,300* once for development and then $19* per month for hosting, maintenance and support. This gives you full transparency - with no hidden costs!</p><p>The complete package includes the following services:</p><ul><li>Individual and simple Design</li><li>Website development</li><li>Up to 10 pages**</li><li>Up to 15 page elements***</li><li>SEO optimized copy</li><li>Mobile optimization</li><li>Consulting and training</li><li>One hour of e-mail or telephone support per month</li></ul><p class='small'>* VAT<br />** +$100 VAT per additional page<br />*** +$50 VAT per additional element</p>",
                         "button": "Get started now",
-                        "button_link": "mailto:contact@emvi.com"
+                        "button_link": "/contact"
                     },
                     "de": {
                         "h2": "Komplettpaket zum unschlagbaren Festpreis",
                         "h3": "Unser Website-Komplettpaket:<br /><span class='large'>3.300 €* einmalig, 19 €* monatlich</span>",
                         "text": "<p>Unser Angebot ist einfach: einmalig 3.300 €* für die Entwicklung bezahlen und danach 19 €* monatlich für Hosting, Wartung und Support. Damit hast du die volle Transparenz — ohne versteckte Kosten!</p><p>Im Komplettpaket sind die folgenden Leistungen enthalten:</p><ul><li>individuelles, einfaches Design</li><li>Entwicklung der Website</li><li>bis zu 10 Unterseiten**</li><li>Impressum und Datenschutz inklusive</li><li>bis zu 15 Seitenelemente***</li><li>SEO-optimierte Texte</li><li>Mobile Optimierung</li><li>inkl. Beratung und Schulung</li><li>eine Stunde E-Mail- und Telefonsupport pro Monat</li></ul><p class='small'>* zzgl. Umsatzsteuer<br />** +100 € netto für jede weitere Unterseite<br />*** +50 € netto für jedes weitere Element</p>",
                         "button": "Jetzt loslegen",
-                        "button_link": "mailto:contact@emvi.com"
+                        "button_link": "/de/kontakt"
                     }
                 }
             },
@@ -259,14 +259,14 @@
                         "h3": "You only need a landing page?",
                         "text": "<p>No problem! If your website consists of only one page, we will gladly give you a discount! Just ask us :)</p>",
                         "button": "Request landing page",
-                        "button_link": "mailto:contact@emvi.com"
+                        "button_link": "/contact"
                     },
                     "de": {
                         "h2": "Landing-Page",
                         "h3": "Du brauchst nur eine Landing Page?",
                         "text": "<p>Kein Problem! Wenn deine Webseite aus nur einer Seite besteht, geben wir dir gerne einen Rabatt! Einfach anfragen :)</p>",
                         "button": "Landing Page anfragen",
-                        "button_link": "mailto:contact@emvi.com"
+                        "button_link": "/de/kontakt"
                     }
                 }
             },
@@ -278,14 +278,14 @@
                         "h3": "Your own website in just a few steps",
                         "text": "<p>The process of creating your own website involves six simple steps:</p>",
                         "button": "Start with your free consultation",
-                        "button_link": "mailto:contact@emvi.com"
+                        "button_link": "/contact"
                     },
                     "de": {
                         "h2": "Website-Entwicklungsprozess",
                         "h3": "In wenigen Schritten zur eigenen Website",
                         "text": "<p>Der Prozess zu deiner eigenen Website läuft in sechs einfachen Schritten ab:</p>",
                         "button": "Beginne mit deiner kostenlosen Erstberatung",
-                        "button_link": "mailto:contact@emvi.com"
+                        "button_link": "/de/kontakt"
                     }
                 },
                 "content": {
@@ -466,14 +466,14 @@
                         "h3": "Answers to the Most Important Questions",
                         "text": "<p>If you can't find the answer you're looking for, just write to us!</p>",
                         "button": "Any questions? Write to us!",
-                        "button_link": "mailto:contact@emvi.com"
+                        "button_link": "/contact"
                     },
                     "de": {
                         "h2": "Frequently Asked Questions",
                         "h3": "Antworten zu den wichtigsten Fragen",
                         "text": "<p>Falls die gesuchte Antwort nicht dabei ist, schreib uns doch einfach!</p>",
                         "button": "Noch Fragen? Schreib uns!",
-                        "button_link": "mailto:contact@emvi.com"
+                        "button_link": "/de/kontakt"
                     }
                 },
                 "content": {
@@ -564,10 +564,12 @@
                 "copy": {
                     "en": {
                         "text": "Reach out to grab your website package now including free and non-binding conselling!",
+                        "contact_link": "/contact",
                         "contact": "Request package"
                     },
                     "de": {
                         "text": "Hol dir jetzt dein Website-Paket mit kostenloser und unverbindlicher Beratung!",
+                        "contact_link": "/de/kontakt",
                         "contact": "Paket anfragen"
                     }
                 }

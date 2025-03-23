@@ -3,11 +3,15 @@
     "copy": {
         "en": {
             "copyright": "© 2025 Emvi Software GmbH. All rights reserved.",
+            "contact_link": "/contact",
+            "contact": "Contact",
             "legal_link": "/legal",
             "legal": "Legal Notice"
         },
         "de": {
             "copyright": "© 2025 Emvi Software GmbH. Alle Rechte vorbehalten.",
+            "contact_link": "/de/kontakt",
+            "contact": "Kontakt",
             "legal_link": "/de/legal",
             "legal": "Impressum"
         }

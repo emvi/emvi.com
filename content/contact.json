@@ -1,0 +1,82 @@
+{
+    "path": {
+        "en": "/contact",
+        "de": "/de/kontakt"
+    },
+    "sitemap": {
+        "priority": "0.1"
+    },
+    "content": {
+        "content": [
+            {
+                "ref": "head",
+                "copy": {
+                    "en": {
+                        "title": "Emvi - Let's talk about your project!",
+                        "meta_description": "Contact us to talk about what kind of project you have in mind and how we can help."
+                    },
+                    "de": {
+                        "title": "Emvi - Lass uns über dein Projekt sprechen!",
+                        "meta_description": "Setz dich mit uns in Verbindung, um zu besprechen, welche Art von Projekt dir vorschwebt und wie wir dabei helfen können."
+                    }
+                }
+            },
+            {
+                "ref": "header",
+                "data": {
+                    "bg": true
+                }
+            },
+            {
+                "tpl": "start",
+                "copy": {
+                    "en": {
+                        "h1": "Let's talk about your project!",
+                        "text": "Contact us to talk about what kind of project you have in mind and how we can help. Don't worry, we don't bite :)"
+                    },
+                    "de": {
+                        "h1": "Lass uns über dein Projekt sprechen!",
+                        "text": "Setz dich mit uns in Verbindung, um zu besprechen, welche Art von Projekt dir vorschwebt und wie wir dabei helfen können. Keine Sorge, wir beißen nicht :)"
+                    }
+                }
+            },
+            {
+                "tpl": "contact",
+                "copy": {
+                    "en": {
+                        "h2": "Reach out now",
+                        "text": "<p>Reach out via our contact form or by sending us an <a href='mailto:contact@emvi.com'>email</a>!</p>",
+                        "form_name": "Name",
+                        "form_email": "Email address",
+                        "form_phone": "Phone number (optional)",
+                        "form_type": "What can we help you with?",
+                        "form_type_option_0": "Web Development",
+                        "form_type_option_1": "Software Development",
+                        "form_type_option_2": "IT Consulting",
+                        "form_type_option_3": "Cloud/Server Administration and Hosting",
+                        "form_type_option_4": "UI/UX Development",
+                        "form_message": "Message (optional)",
+                        "form_send": "Send"
+                    },
+                    "de": {
+                        "h2": "Jetzt Kontakt aufnehmen",
+                        "text": "<p>Kontaktiere uns über unser Formular oder sende uns eine <a href='mailto:contact@emvi.com'>Email</a>!</p>",
+                        "form_name": "Name",
+                        "form_email": "E-Mail Addresse",
+                        "form_phone": "Telefonnummer (optional)",
+                        "form_type": "Womit können wir dir helfen?",
+                        "form_type_option_0": "Web-Entwicklung",
+                        "form_type_option_1": "Software-Entwicklung",
+                        "form_type_option_2": "IT Consulting",
+                        "form_type_option_3": "Cloud/Server Administration und Hosting",
+                        "form_type_option_4": "UI/UX-Entwicklung",
+                        "form_message": "Nachricht (optional)",
+                        "form_send": "Senden"
+                    }
+                }
+            },
+            {"ref": "footer"},
+            {"ref": "end"}
+        ]
+    }
+}

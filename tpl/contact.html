@@ -1,0 +1,55 @@
+<section class="contact">
+    <div class="content">
+        <h2>{{copy .Page .Content "h2"}}</h2>
+        {{$success := get .Page "success"}}
+
+        {{if $success}}
+            <p>{{copy .Page .Content "form_success"}}</p>
+        {{else}}
+            {{html (copy .Page .Content "text")}}
+            <div class="box">
+                {{$e := get .Page "error"}}
+
+                {{if eq $e "captcha"}}
+                    <p style="color: red;">{{copy .Page .Content "form_error_captcha"}}</p>
+                {{else if eq $e "form"}}
+                    <p style="color: red;">{{copy .Page .Content "form_error_input"}}</p>
+                {{end}}
+
+                <form method="post">
+                    <fieldset>
+                        <label for="name">{{copy .Page .Content "form_name"}}</label>
+                        <input type="text" name="name" id="name" required />
+                    </fieldset>
+                    <fieldset>
+                        <label for="email">{{copy .Page .Content "form_email"}}</label>
+                        <input type="email" name="email" id="email" required />
+                    </fieldset>
+                    <fieldset>
+                        <label for="phone">{{copy .Page .Content "form_phone"}}</label>
+                        <input type="text" name="phone" id="phone" />
+                    </fieldset>
+                    <fieldset>
+                        <label for="type">{{copy .Page .Content "form_type"}}</label>
+                        <select name="type" id="type" required>
+                            <option>{{copy .Page .Content "form_type_option_0"}}</option>
+                            <option>{{copy .Page .Content "form_type_option_1"}}</option>
+                            <option>{{copy .Page .Content "form_type_option_2"}}</option>
+                            <option>{{copy .Page .Content "form_type_option_3"}}</option>
+                            <option>{{copy .Page .Content "form_type_option_4"}}</option>
+                            <option>{{copy .Page .Content "form_type_option_5"}}</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label for="message">{{copy .Page .Content "form_message"}}</label>
+                        <textarea name="message" id="message"></textarea>
+                    </fieldset>
+                    <altcha-widget challengeurl="/contact/challenge"></altcha-widget>
+                    <input type="submit" value="{{copy .Page .Content "form_send"}}" />
+                </form>
+            </div>
+        {{end}}
+    </div>
+</section>
+
+<script async defer src="/static/js/altcha.js" type="module"></script>

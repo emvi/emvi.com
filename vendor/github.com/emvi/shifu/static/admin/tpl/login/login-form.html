@@ -1,0 +1,21 @@
+<form method="post" hx-post="{{path}}" hx-swap="outerHTML" hx-target-*="this">
+    <fieldset>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" value="{{.Data.Email}}" />
+
+        {{if .Data.Error}}
+            <span class="error">{{.Data.Error}}</span>
+        {{end}}
+    </fieldset>
+    <fieldset>
+        <label for="password">Passwort</label>
+        <input type="password" name="password" id="password" />
+    </fieldset>
+    <fieldset class="checkbox">
+        <input type="checkbox" name="stay_logged_in" id="stay_logged_in" />
+        <label for="stay_logged_in">Eingeloggt bleiben</label>
+    </fieldset>
+    <div style="display: flex;justify-content: flex-end;">
+        <input type="submit" value="Anmelden" />
+    </div>
+</form>

@@ -120,6 +120,54 @@ strong {
     font-weight: 500;
 }
 
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+
+    fieldset {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    label {
+        color: var(--dark-grey);
+        font-size: 14px;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        border: 1px solid var(--black);
+        padding: 8px;
+        font-size: 20px;
+        background: var(--white);
+
+        &:focus {
+            border-color: var(--blue);
+        }
+
+        @media only screen and (max-width: 768px) {
+            font-size: 18px;
+        }
+        
+        @media only screen and (max-width: 512px) {
+            font-size: 16px;
+        }
+    }
+
+    textarea {
+        min-height: 100px;
+    }
+
+    input[type~="submit"] {
+        width: auto;
+    }
+}
+
 details {
     width: 100%;
     padding: 16px;
@@ -165,7 +213,7 @@ details {
     }
 }
 
-.button {
+.button, input[type~="submit"] {
     display: inline-flex;
     flex-wrap: nowrap;
     align-items: center;
@@ -452,6 +500,36 @@ section {
 
         details {
             background: var(--light-grey);
+        }
+    }
+}
+
+.contact {
+    h2 {
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 1.4;
+        letter-spacing: 0;
+        font-family: "Inter Display", "Inter", "Roboto", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        color: var(--black);
+        text-transform: none;
+
+        @media only screen and (max-width: 1024px) {
+            font-size: 28px;
+        }
+
+        @media only screen and (max-width: 768px) {
+            font-size: 24px;
+        }
+
+        @media only screen and (max-width: 512px) {
+            font-size: 22px;
+        }
+    }
+
+    .content {
+        p {
+            max-width: 800px;
         }
     }
 }

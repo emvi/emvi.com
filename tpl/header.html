@@ -8,7 +8,7 @@
                 <a href="#" {{if eq .Page.Language "en"}}class="active"{{end}} data-lang="x-default">EN</a>
                 <a href="#" {{if eq .Page.Language "de"}}class="active"{{end}} data-lang="de">DE</a>
             </div>
-            <a href="mailto:contact@emvi.com" class="button">{{copy .Page .Content "contact"}}</a>
+            <a href="{{copy .Page .Content "contact_link"}}" class="button">{{copy .Page .Content "contact"}}</a>
         </div>
     </div>
 </header>

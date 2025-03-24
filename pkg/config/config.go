@@ -31,6 +31,7 @@ type Email struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
 	From     string `json:"from"`
+	To       string `json:"to"`
 }
 
 func Load() {

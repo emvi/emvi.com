@@ -51,6 +51,7 @@
         "port": 587,
         "username": "contact@emvi.com",
         "password": "",
-        "from": "contact@emvi.com"
+        "from": "contact@emvi.com",
+        "to": "contact@emvi.com"
     }
 }

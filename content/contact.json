@@ -58,7 +58,10 @@
                         "form_type_option_4": "Cloud/Server Administration and Hosting",
                         "form_type_option_5": "UI/UX Development",
                         "form_message": "Message (optional)",
-                        "form_send": "Send"
+                        "form_send": "Send",
+                        "form_error_captcha": "The Captcha failed, please try again.",
+                        "form_error_input": "Please enter the required fields.",
+                        "form_success": "Thank you for your request! We will get back to you as soon as possible."
                     },
                     "de": {
                         "h2": "Jetzt Kontakt aufnehmen",
@@ -74,7 +77,10 @@
                         "form_type_option_4": "Cloud/Server Administration und Hosting",
                         "form_type_option_5": "UI/UX-Entwicklung",
                         "form_message": "Nachricht (optional)",
-                        "form_send": "Senden"
+                        "form_send": "Senden",
+                        "form_error_captcha": "Das Captcha ist fehlgeschlagen, bitte versuche es erneut.",
+                        "form_error_input": "Bitte fülle alle Pflichtfelder aus.",
+                        "form_success": "Vielen Dank für deine Anfrage! Wir melden uns so bald wie möglich bei dir."
                     }
                 }
             },

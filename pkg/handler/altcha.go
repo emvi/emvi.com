@@ -1,4 +1,4 @@
-package captcha
+package handler
 
 import (
 	"encoding/json"

@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	configFile = "config.json"
+	configFile = "public/config.json"
 )
 
 var (

@@ -1,0 +1,16 @@
+<section class="text {{if get .Content "bg-white"}}text-white{{end}}">
+    <div class="content">
+        <h2>{{copy .Page .Content "h2"}}</h2>
+        <div class="box">
+            <h3>{{html (copy .Page .Content "h3")}}</h3>
+            {{html (copy .Page .Content "text")}}
+            {{.CMS.Render .Args .Page (fmt "%s.content" .Content.Position) (index .Content.Content "content")}}
+
+            {{if (copy .Page .Content "button")}}
+                <a href="{{copy .Page .Content "button_link"}}" class="button">
+                    {{copy .Page .Content "button"}}
+                </a>
+            {{end}}
+        </div>
+    </div>
+</section>

@@ -1,10 +1,9 @@
-{{define "database-window-title"}}
-    <img src="{{config.UI.Path}}/static/icons/db.svg" alt="" />
-    <span>Datenbank</span>
-{{end}}
+{{ define "database-window-title" }}
+    <span>{{ i18n .Data.Lang "db_window_title" }}</span>
+{{ end }}
 
-{{define "database-window-content"}}
-    <p>TODO</p>
-{{end}}
+{{ define "database-window-content" }}
+    <p>{{ i18n .Data.Lang "db_wip" }}</p>
+{{ end }}
 
-{{template "window.html" .}}
+{{ template "window.html" . }}

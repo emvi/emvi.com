@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"fmt"
 	"github.com/Masterminds/sprig/v3"
+	"github.com/emvi/shifu/pkg/admin/db"
+	"github.com/emvi/shifu/pkg/admin/model"
 	"github.com/emvi/shifu/pkg/cfg"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
@@ -11,7 +13,6 @@ import (
 	"html/template"
 	"log/slog"
 	"math/rand/v2"
-	"net/http"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -267,37 +268,51 @@ func formatInt(i int) string {
 	return out[:len(out)-1]
 }
 
-func isLoggedIn(r *http.Request) bool {
-	cookie, err := r.Cookie("session")
+func isLoggedIn(page *Content) bool {
+	cookie, err := page.Request.Cookie("session")
 
-	if err != nil {
+	if err != nil || cookie.Value == "" {
 		return false
 	}
 
-	return cookie.Value != "" && cookie.Expires.Before(time.Now())
+	s := new(model.Session)
+
+	if err := db.Get().Get(s, `SELECT * FROM "session" WHERE session = ?`, cookie.Value); err != nil {
+		return false
+	}
+
+	if s == nil || s.Expires.Before(time.Now()) {
+		return false
+	}
+
+	return true
 }
 
-func adminHead(r *http.Request) template.HTML {
-	if isLoggedIn(r) {
+func adminHead(page *Content) template.HTML {
+	if isLoggedIn(page) {
 		path := cfg.Get().UI.Path
 		return template.HTML(fmt.Sprintf(`<link rel="prefetch" href="%s/static/fonts/Inter-Medium.woff2" as="font" type="font/woff2" />
 			<link rel="prefetch" href="%s/static/fonts/Inter-Regular.woff2" as="font" type="font/woff2" />
 			<link rel="prefetch" href="%s/static/fonts/InterDisplay-Medium.woff2" as="font" type="font/woff2" />
 			<link rel="stylesheet" type="text/css" href="%s/static/admin.css" />
+			<link rel="stylesheet" type="text/css" href="%s/static/trix/trix.css" />
+			<link rel="stylesheet" type="text/css" href="%s/static/jsoneditor/jsoneditor.css" />
+			<script defer src="%s/static/trix/trix.min.js"></script>
+			<script defer src="%s/static/jsoneditor/jsoneditor.js"></script>
 			<script defer src="%s/static/htmx.min.js"></script>
 			<script defer src="%s/static/htmx-ext-response-targets.min.js"></script>
-			<script defer src="%s/static/admin.js"></script>`, path, path, path, path, path, path, path))
+			<script defer src="%s/static/admin.js"></script>`, path, path, path, path, path, path, path, path, path, path, path))
 	}
 
 	return ""
 }
 
-func adminBody(r *http.Request) template.HTML {
-	if isLoggedIn(r) {
+func adminBody(page *Content) template.HTML {
+	if isLoggedIn(page) {
 		path := cfg.Get().UI.Path
-		return template.HTML(fmt.Sprintf(`<div hx-get="%s/toolbar"
+		return template.HTML(fmt.Sprintf(`<div hx-get="%s/toolbar?path=%s&language=%s"
 			hx-swap="outerHTML"
-			hx-trigger="load"></div>`, path))
+			hx-trigger="load"></div>`, path, page.File, page.Language))
 	}
 
 	return ""

@@ -8,11 +8,13 @@ import (
 	"github.com/emvi/shifu/pkg/cfg"
 	"log/slog"
 	"net/http"
+	"strings"
 	"time"
 )
 
 // LoginForm is the login form data and errors.
 type LoginForm struct {
+	Lang  string
 	Email string
 	Error string
 }
@@ -29,13 +31,14 @@ func Login(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		email := r.FormValue("email")
+		email := strings.ToLower(r.FormValue("email"))
 		password := r.FormValue("password")
 		stayLoggedIn := r.FormValue("stay_logged_in")
 		var user model.User
 
-		if err := db.Get().Get(&user, `SELECT * FROM "user" WHERE email = ?`, email); err != nil {
+		if err := db.Get().Get(&user, `SELECT * FROM "user" WHERE lower(email) = ?`, email); err != nil {
 			tpl.Get().Execute(w, "login-form.html", LoginForm{
+				Lang:  tpl.GetUILanguage(r),
 				Email: email,
 				Error: "user not found",
 			})
@@ -45,6 +48,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 		if !util.ComparePassword(password+user.PasswordSalt, user.Password) {
 			tpl.Get().Execute(w, "login-form.html", LoginForm{
+				Lang:  tpl.GetUILanguage(r),
 				Email: email,
 				Error: "user not found",
 			})
@@ -61,6 +65,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 			if err := db.Get().Get(&exists, `SELECT EXISTS (SELECT 1 FROM "session" WHERE session = ?)`, session); err != nil {
 				slog.Error("Error reading session", "error", err)
 				tpl.Get().Execute(w, "login-form.html", LoginForm{
+					Lang:  tpl.GetUILanguage(r),
 					Email: email,
 					Error: "error creating session",
 				})
@@ -75,11 +80,12 @@ func Login(w http.ResponseWriter, r *http.Request) {
 			days = 7
 		}
 
-		expires := time.Now().Add(time.Hour * 24 * time.Duration(days))
+		expires := time.Now().UTC().Add(time.Hour * 24 * time.Duration(days))
 
 		if _, err := db.Get().Exec(`INSERT INTO "session" (user_id, session, expires) VALUES (?, ?, ?)`, user.ID, session, expires); err != nil {
 			slog.Error("Error storing session", "error", err)
 			tpl.Get().Execute(w, "login-form.html", LoginForm{
+				Lang:  tpl.GetUILanguage(r),
 				Email: email,
 				Error: "error creating session",
 			})
@@ -100,5 +106,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	tpl.Get().Execute(w, "login.html", LoginForm{})
+	tpl.Get().Execute(w, "login.html", LoginForm{
+		Lang: tpl.GetUILanguage(r),
+	})
 }

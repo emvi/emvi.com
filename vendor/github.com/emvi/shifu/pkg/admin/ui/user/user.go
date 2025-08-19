@@ -2,31 +2,35 @@ package user
 
 import (
 	"github.com/emvi/shifu/pkg/admin/db"
-	"github.com/emvi/shifu/pkg/admin/middleware"
 	"github.com/emvi/shifu/pkg/admin/model"
 	"github.com/emvi/shifu/pkg/admin/tpl"
 	"github.com/emvi/shifu/pkg/admin/ui"
+	"github.com/emvi/shifu/pkg/middleware"
 	"log/slog"
 	"net/http"
 )
 
 // User renders the user management dialog.
 func User(w http.ResponseWriter, r *http.Request) {
+	lang := tpl.GetUILanguage(r)
 	tpl.Get().Execute(w, "user.html", struct {
+		WindowOptions ui.WindowOptions
+		Lang          string
 		Admin         bool
 		Self          *model.User
-		WindowOptions ui.WindowOptions
 		User          []model.User
 	}{
-		Admin: middleware.IsAdmin(r),
-		Self:  middleware.GetUser(r),
 		WindowOptions: ui.WindowOptions{
 			ID:         "shifu-user",
 			TitleTpl:   "user-window-title",
 			ContentTpl: "user-window-content",
 			MinWidth:   500,
+			Lang:       lang,
 		},
-		User: listUser(),
+		Lang:  lang,
+		Admin: middleware.IsAdmin(r),
+		Self:  middleware.GetUser(r),
+		User:  listUser(),
 	})
 }
 

@@ -334,19 +334,21 @@ func NewResolver(call config.APICall, fs fs.FS, log logger.Log, caches *cache.Ca
 			res.tsConfigOverride, err = r.parseTSConfig(options.TSConfigPath, visited, fs.Dir(options.TSConfigPath))
 		} else {
 			source := logger.Source{
-				KeyPath:    logger.Path{Text: fs.Join(fs.Cwd(), "<tsconfig.json>"), Namespace: "file"},
-				PrettyPath: "<tsconfig.json>",
-				Contents:   options.TSConfigRaw,
+				KeyPath:     logger.Path{Text: fs.Join(fs.Cwd(), "<tsconfig.json>"), Namespace: "file"},
+				PrettyPaths: logger.PrettyPaths{Abs: "<tsconfig.json>", Rel: "<tsconfig.json>"},
+				Contents:    options.TSConfigRaw,
 			}
 			res.tsConfigOverride, err = r.parseTSConfigFromSource(source, visited, fs.Cwd())
 		}
 		if err != nil {
 			if err == syscall.ENOENT {
+				prettyPaths := MakePrettyPaths(r.fs, logger.Path{Text: options.TSConfigPath, Namespace: "file"})
 				r.log.AddError(nil, logger.Range{}, fmt.Sprintf("Cannot find tsconfig file %q",
-					PrettyPath(r.fs, logger.Path{Text: options.TSConfigPath, Namespace: "file"})))
+					prettyPaths.Select(options.LogPathStyle)))
 			} else if err != errParseErrorAlreadyLogged {
+				prettyPaths := MakePrettyPaths(r.fs, logger.Path{Text: options.TSConfigPath, Namespace: "file"})
 				r.log.AddError(nil, logger.Range{}, fmt.Sprintf("Cannot read file %q: %s",
-					PrettyPath(r.fs, logger.Path{Text: options.TSConfigPath, Namespace: "file"}), err.Error()))
+					prettyPaths.Select(options.LogPathStyle), err.Error()))
 			}
 		} else {
 			r.flushDebugLogs(flushDueToSuccess)
@@ -1000,6 +1002,18 @@ func (r resolverQuery) resolveWithoutSymlinks(sourceDir string, sourceDirInfo *d
 			return &ResolveResult{PathPair: PathPair{Primary: logger.Path{Text: absPath, Namespace: "file"}, IsExternal: true}}
 		}
 
+		// Node's actual behavior deviates from its published algorithm by not
+		// running the "LOAD_AS_FILE" step if the import path looks like it
+		// resolves to a directory instead of a file. Attempt to replicate that
+		// behavior here. This really only matters for intentionally confusing
+		// edge cases where a directory is named the same thing as a file.
+		// Unfortunately people actually create situations like this.
+		hasTrailingSlash := importPath == "." ||
+			importPath == ".." ||
+			strings.HasSuffix(importPath, "/") ||
+			strings.HasSuffix(importPath, "/.") ||
+			strings.HasSuffix(importPath, "/..")
+
 		// Check the "browser" map
 		if importDirInfo := r.dirInfoCached(r.fs.Dir(absPath)); importDirInfo != nil {
 			if remapped, ok := r.checkBrowserMap(importDirInfo, absPath, absolutePathKind); ok {
@@ -1008,18 +1022,28 @@ func (r resolverQuery) resolveWithoutSymlinks(sourceDir string, sourceDirInfo *d
 				}
 				if remappedResult, ok, diffCase, sideEffects := r.resolveWithoutRemapping(importDirInfo.enclosingBrowserScope, *remapped); ok {
 					result = ResolveResult{PathPair: remappedResult, DifferentCase: diffCase, PrimarySideEffectsData: sideEffects}
+					hasTrailingSlash = false
 					checkRelative = false
 					checkPackage = false
 				}
 			}
 		}
 
-		if checkRelative {
-			if absolute, ok, diffCase := r.loadAsFileOrDirectory(absPath); ok {
+		if hasTrailingSlash {
+			if absolute, ok, diffCase := r.loadAsDirectory(absPath); ok {
 				checkPackage = false
 				result = ResolveResult{PathPair: absolute, DifferentCase: diffCase}
 			} else if !checkPackage {
 				return nil
+			}
+		} else {
+			if checkRelative {
+				if absolute, ok, diffCase := r.loadAsFileOrDirectory(absPath); ok {
+					checkPackage = false
+					result = ResolveResult{PathPair: absolute, DifferentCase: diffCase}
+				} else if !checkPackage {
+					return nil
+				}
 			}
 		}
 	}
@@ -1066,10 +1090,13 @@ func (r resolverQuery) resolveWithoutRemapping(sourceDirInfo *dirInfo, importPat
 	}
 }
 
-func PrettyPath(fs fs.FS, path logger.Path) string {
+func MakePrettyPaths(fs fs.FS, path logger.Path) logger.PrettyPaths {
+	absPath := path.Text
+	relPath := path.Text
+
 	if path.Namespace == "file" {
-		if rel, ok := fs.Rel(fs.Cwd(), path.Text); ok {
-			path.Text = rel
+		if rel, ok := fs.Rel(fs.Cwd(), relPath); ok {
+			relPath = rel
 		}
 
 		// These human-readable paths are used in error messages, comments in output
@@ -1077,16 +1104,21 @@ func PrettyPath(fs fs.FS, path logger.Path) string {
 		// These should be platform-independent so our output doesn't depend on which
 		// operating system it was run. Replace Windows backward slashes with standard
 		// forward slashes.
-		path.Text = strings.ReplaceAll(path.Text, "\\", "/")
+		relPath = strings.ReplaceAll(relPath, "\\", "/")
 	} else if path.Namespace != "" {
-		path.Text = fmt.Sprintf("%s:%s", path.Namespace, path.Text)
+		absPath = fmt.Sprintf("%s:%s", path.Namespace, absPath)
+		relPath = fmt.Sprintf("%s:%s", path.Namespace, relPath)
 	}
 
 	if path.IsDisabled() {
-		path.Text = "(disabled):" + path.Text
+		absPath = "(disabled):" + absPath
+		relPath = "(disabled):" + relPath
 	}
 
-	return path.Text + path.IgnoredSuffix
+	return logger.PrettyPaths{
+		Abs: absPath + path.IgnoredSuffix,
+		Rel: relPath + path.IgnoredSuffix,
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1197,9 +1229,9 @@ func (r resolverQuery) parseTSConfig(file string, visited map[string]bool, confi
 
 	keyPath := logger.Path{Text: file, Namespace: "file"}
 	source := logger.Source{
-		KeyPath:    keyPath,
-		PrettyPath: PrettyPath(r.fs, keyPath),
-		Contents:   contents,
+		KeyPath:     keyPath,
+		PrettyPaths: MakePrettyPaths(r.fs, keyPath),
+		Contents:    contents,
 	}
 	if visited != nil {
 		// This is only non-nil for "build" API calls. This is nil for "transform"
@@ -1249,9 +1281,9 @@ func (r resolverQuery) parseTSConfigFromSource(source logger.Source, visited map
 				r.log.AddID(logger.MsgID_TSConfigJSON_Cycle, logger.Warning, &tracker, extendsRange,
 					fmt.Sprintf("Base config file %q forms cycle", extends))
 			} else if err != errParseErrorAlreadyLogged {
-				r.log.AddError(&tracker, extendsRange,
-					fmt.Sprintf("Cannot read file %q: %s",
-						PrettyPath(r.fs, logger.Path{Text: extendsFile, Namespace: "file"}), err.Error()))
+				prettyPaths := MakePrettyPaths(r.fs, logger.Path{Text: extendsFile, Namespace: "file"})
+				r.log.AddError(&tracker, extendsRange, fmt.Sprintf("Cannot read file %q: %s",
+					prettyPaths.Select(r.options.LogPathStyle), err.Error()))
 			}
 			return nil, true
 		}
@@ -1533,9 +1565,9 @@ func (r resolverQuery) dirInfoUncached(path string) *dirInfo {
 		// list which contains such paths and treating them as missing means we just
 		// ignore them during path resolution.
 		if err != syscall.ENOENT && err != syscall.ENOTDIR {
-			r.log.AddError(nil, logger.Range{},
-				fmt.Sprintf("Cannot read directory %q: %s",
-					PrettyPath(r.fs, logger.Path{Text: path, Namespace: "file"}), err.Error()))
+			prettyPaths := MakePrettyPaths(r.fs, logger.Path{Text: path, Namespace: "file"})
+			r.log.AddError(nil, logger.Range{}, fmt.Sprintf("Cannot read directory %q: %s",
+				prettyPaths.Select(r.options.LogPathStyle), err.Error()))
 		}
 		return nil
 	}
@@ -1623,12 +1655,13 @@ func (r resolverQuery) dirInfoUncached(path string) *dirInfo {
 			info.enclosingTSConfigJSON, err = r.parseTSConfig(tsConfigPath, make(map[string]bool), r.fs.Dir(tsConfigPath))
 			if err != nil {
 				if err == syscall.ENOENT {
+					prettyPaths := MakePrettyPaths(r.fs, logger.Path{Text: tsConfigPath, Namespace: "file"})
 					r.log.AddError(nil, logger.Range{}, fmt.Sprintf("Cannot find tsconfig file %q",
-						PrettyPath(r.fs, logger.Path{Text: tsConfigPath, Namespace: "file"})))
+						prettyPaths.Select(r.options.LogPathStyle)))
 				} else if err != errParseErrorAlreadyLogged {
+					prettyPaths := MakePrettyPaths(r.fs, logger.Path{Text: tsConfigPath, Namespace: "file"})
 					r.log.AddID(logger.MsgID_TSConfigJSON_Missing, logger.Debug, nil, logger.Range{},
-						fmt.Sprintf("Cannot read file %q: %s",
-							PrettyPath(r.fs, logger.Path{Text: tsConfigPath, Namespace: "file"}), err.Error()))
+						fmt.Sprintf("Cannot read file %q: %s", prettyPaths.Select(r.options.LogPathStyle), err.Error()))
 				}
 			}
 		}
@@ -1711,9 +1744,9 @@ func (r resolverQuery) loadAsFile(path string, extensionOrder []string) (string,
 	}
 	if err != nil {
 		if err != syscall.ENOENT {
-			r.log.AddError(nil, logger.Range{},
-				fmt.Sprintf("Cannot read directory %q: %s",
-					PrettyPath(r.fs, logger.Path{Text: dirPath, Namespace: "file"}), err.Error()))
+			prettyPaths := MakePrettyPaths(r.fs, logger.Path{Text: dirPath, Namespace: "file"})
+			r.log.AddError(nil, logger.Range{}, fmt.Sprintf("Cannot read directory %q: %s",
+				prettyPaths.Select(r.options.LogPathStyle), err.Error()))
 		}
 		return "", false, nil
 	}
@@ -1897,6 +1930,19 @@ func (r resolverQuery) loadAsFileOrDirectory(path string) (PathPair, bool, *fs.D
 	absolute, ok, diffCase := r.loadAsFile(path, extensionOrder)
 	if ok {
 		return PathPair{Primary: logger.Path{Text: absolute, Namespace: "file"}}, true, diffCase
+	}
+
+	return r.loadAsDirectory(path)
+}
+
+func (r resolverQuery) loadAsDirectory(path string) (PathPair, bool, *fs.DifferentCase) {
+	extensionOrder := r.options.ExtensionOrder
+	if r.kind.MustResolveToCSS() {
+		// Use a special import order for CSS "@import" imports
+		extensionOrder = r.cssExtensionOrder
+	} else if helpers.IsInsideNodeModules(path) {
+		// Use a special import order for imports inside "node_modules"
+		extensionOrder = r.nodeModulesExtensionOrder
 	}
 
 	// Is this a directory?
@@ -2735,10 +2781,11 @@ func (r resolverQuery) finalizeImportsExportsResult(
 						fmt.Sprintf("The file %q is exported at path %q:", query, subpath)))
 
 					// Provide an inline suggestion message with the correct import path
+					prettyPaths := MakePrettyPaths(r.fs, absolute.Primary)
 					actualImportPath := path.Join(esmPackageName, subpath)
 					r.debugMeta.suggestionText = string(helpers.QuoteForJSON(actualImportPath, false))
 					r.debugMeta.suggestionMessage = fmt.Sprintf("Import from %q to get the file %q:",
-						actualImportPath, PrettyPath(r.fs, absolute.Primary))
+						actualImportPath, prettyPaths.Select(r.options.LogPathStyle))
 				}
 			}
 		}
@@ -2753,11 +2800,12 @@ func (r resolverQuery) finalizeImportsExportsResult(
 
 		// Provide an inline suggestion message with the correct import path
 		if status == pjStatusModuleNotFoundMissingExtension {
+			prettyPaths := MakePrettyPaths(r.fs, logger.Path{Text: r.fs.Join(absDirPath, resolvedPath+missingSuffix), Namespace: "file"})
 			actualImportPath := path.Join(esmPackageName, esmPackageSubpath+missingSuffix)
 			r.debugMeta.suggestionRange = suggestionRangeEnd
 			r.debugMeta.suggestionText = missingSuffix
 			r.debugMeta.suggestionMessage = fmt.Sprintf("Import from %q to get the file %q:",
-				actualImportPath, PrettyPath(r.fs, logger.Path{Text: r.fs.Join(absDirPath, resolvedPath+missingSuffix), Namespace: "file"}))
+				actualImportPath, prettyPaths.Select(r.options.LogPathStyle))
 		}
 
 	case pjStatusUnsupportedDirectoryImport, pjStatusUnsupportedDirectoryImportMissingIndex:
@@ -2769,11 +2817,12 @@ func (r resolverQuery) finalizeImportsExportsResult(
 
 		// Provide an inline suggestion message with the correct import path
 		if status == pjStatusUnsupportedDirectoryImportMissingIndex {
+			prettyPaths := MakePrettyPaths(r.fs, logger.Path{Text: r.fs.Join(absDirPath, resolvedPath+missingSuffix), Namespace: "file"})
 			actualImportPath := path.Join(esmPackageName, esmPackageSubpath+missingSuffix)
 			r.debugMeta.suggestionRange = suggestionRangeEnd
 			r.debugMeta.suggestionText = missingSuffix
 			r.debugMeta.suggestionMessage = fmt.Sprintf("Import from %q to get the file %q:",
-				actualImportPath, PrettyPath(r.fs, logger.Path{Text: r.fs.Join(absDirPath, resolvedPath+missingSuffix), Namespace: "file"}))
+				actualImportPath, prettyPaths.Select(r.options.LogPathStyle))
 		}
 
 	case pjStatusUndefinedNoConditionsMatch:

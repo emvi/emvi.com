@@ -1,18 +1,19 @@
 package main
 
 import (
+	"log/slog"
+
 	"github.com/emvi/emvi.com/pkg/config"
 	"github.com/emvi/emvi.com/pkg/handler"
 	shifu "github.com/emvi/shifu/pkg"
 	"github.com/go-chi/chi/v5"
-	"log/slog"
 )
 
 func main() {
 	config.Load()
 	router := chi.NewRouter()
 	router.Get("/contact/challenge", handler.Captcha)
-	s, err := shifu.NewServer("", shifu.ServerOptions{
+	s, err := shifu.NewServer("public", shifu.ServerOptions{
 		Router: router,
 	})
 

@@ -104,13 +104,13 @@
                             "copy": {
                                 "en": {
                                     "h3": "groeneveld-reisen.de",
-                                    "text": "The website for Groeneveld traveling agency.",
+                                    "text": "Website development for Groeneveld traveling agency. Design by <a href='https://www.tomm.design/' target='_blank'>tomm design</a>.",
                                     "button": "Visit website",
                                     "button_link": "https://groeneveld-reisen.de"
                                 },
                                 "de": {
                                     "h3": "groeneveld-reisen.de",
-                                    "text": "Die Seite der Groeneveld Reiseagentur.",
+                                    "text": "Webentwicklung für die Groeneveld Reiseagentur. Design by <a href='https://www.tomm.design/' target='_blank'>tomm design</a>.",
                                     "button": "Website besuchen",
                                     "button_link": "https://groeneveld-reisen.de"
                                 }

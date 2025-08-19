@@ -35,11 +35,11 @@
                 "copy": {
                     "en": {
                         "h1": "Reliable, high quality and fast web development as a fixed price package.",
-                        "text": "If you need a website or web development without surprises, you've come to the right place. We develop high-quality, high-performance and reliable websites and web applications at a fixed price of <strong>$3,500 (VAT)</strong> or individually according to your ideas."
+                        "text": "If you need a website or web development without surprises, you've come to the right place. We develop high-quality, high-performance and reliable websites and web applications at a fixed price of <strong>$4,600 (VAT)</strong> or individually according to your ideas."
                     },
                     "de": {
                         "h1": "Zuverlässige, hochwertige und schnelle Webentwicklung mit Festpreis aus Westfalen.",
-                        "text": "Wenn du eine Website oder Webentwicklung ohne Überraschungen brauchst, bist du bei uns genau richtig. Wir entwickeln qualitativ hochwertige, leistungsstarke und zuverlässige Websites und Webanwendungen zum Festpreis von <strong>3.300 € netto</strong> oder individuell nach deinen Vorstellungen."
+                        "text": "Wenn du eine Website oder Webentwicklung ohne Überraschungen brauchst, bist du bei uns genau richtig. Wir entwickeln qualitativ hochwertige, leistungsstarke und zuverlässige Websites und Webanwendungen zum Festpreis von <strong>4.600 € netto</strong> oder individuell nach deinen Vorstellungen."
                     }
                 }
             },
@@ -56,6 +56,113 @@
                         "h3": "Ein kompetentes Gespann",
                         "text": "<p>Wir sind ein Zwei-Mann-Team aus Rheda-Wiedenbrück mit umfangreicher Erfahrung im Bereich Software- und Webentwicklung, Serverinfrastruktur und Design. Angefangen haben wir schon im Kindesalter mit unseren ersten eigenen Websites. Danach kam eine GbR und seit 2019 sind wir als Emvi Software GmbH tätig.</p><div class='team'><div><img src='/static/img/marvin.jpg' alt='Marvin Blum' width='160' height='160' /><p class='small'><strong>Marvin Blum</strong><br />Softwareentwickler</p></div><div><img src='/static/img/daniel.jpg' alt='Daniel Schramm' width='160' height='160' /><p class='small'><strong>Daniel Schramm</strong><br />Digitalisierungsingeneur</p></div></div>"
                     }
+                }
+            },
+            {
+                "tpl": "projects",
+                "copy": {
+                    "en": {
+                        "h2": "References"
+                    },
+                    "de": {
+                        "h2": "Referenzen"
+                    }
+                },
+                "content": {
+                    "content": [
+                        {
+                            "tpl": "project",
+                            "data": {
+                                "img": "/static/references/pirsch.png",
+                                "img_alt": "pirsch.io",
+                                "img_width": 552,
+                                "img_height": 872
+                            },
+                            "copy": {
+                                "en": {
+                                    "h3": "pirsch.io",
+                                    "text": "Pirsch Analytics is a GDPR-compliant web analytics solution.",
+                                    "button": "Visit website",
+                                    "button_link": "https://pirsch.io"
+                                },
+                                "de": {
+                                    "h3": "pirsch.io",
+                                    "text": "Pirsch Analytics ist eine DSGVO-konforme Web Analytics Lösung.",
+                                    "button": "Website besuchen",
+                                    "button_link": "https://pirsch.io"
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "project",
+                            "data": {
+                                "img": "/static/references/groeneveld.webp",
+                                "img_alt": "groeneveld-reisen.de",
+                                "img_width": 552,
+                                "img_height": 872
+                            },
+                            "copy": {
+                                "en": {
+                                    "h3": "groeneveld-reisen.de",
+                                    "text": "The website for Groeneveld traveling agency.",
+                                    "button": "Visit website",
+                                    "button_link": "https://groeneveld-reisen.de"
+                                },
+                                "de": {
+                                    "h3": "groeneveld-reisen.de",
+                                    "text": "Die Seite der Groeneveld Reiseagentur.",
+                                    "button": "Website besuchen",
+                                    "button_link": "https://groeneveld-reisen.de"
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "project",
+                            "data": {
+                                "img": "/static/references/schnittfest.png",
+                                "img_alt": "schnittfest.gmbh",
+                                "img_width": 552,
+                                "img_height": 872
+                            },
+                            "copy": {
+                                "en": {
+                                    "h3": "schnittfest.gmbh",
+                                    "text": "The website for the Schnittfest GmbH video production company.",
+                                    "button": "Visit website",
+                                    "button_link": "https://schnittfest.gmbh"
+                                },
+                                "de": {
+                                    "h3": "schnittfest.gmbh",
+                                    "text": "Die Seite der Schnittfest GmbH Videoproduktion.",
+                                    "button": "Website besuchen",
+                                    "button_link": "https://schnittfest.gmbh"
+                                }
+                            }
+                        },
+                        {
+                            "tpl": "project",
+                            "data": {
+                                "img": "/static/references/snesgames.png",
+                                "img_alt": "snesgames.de",
+                                "img_width": 552,
+                                "img_height": 872
+                            },
+                            "copy": {
+                                "en": {
+                                    "h3": "snesgames.de",
+                                    "text": "SNES fan page with detailed game reviews.",
+                                    "button": "Visit website",
+                                    "button_link": "https://snesgames.de"
+                                },
+                                "de": {
+                                    "h3": "snesgames.de",
+                                    "text": "SNES Fan Seite mit detailierten Reviews.",
+                                    "button": "Website besuchen",
+                                    "button_link": "https://snesgames.de"
+                                }
+                            }
+                        }
+                    ]
                 }
             },
             {
@@ -234,15 +341,15 @@
                 "copy": {
                     "en": {
                         "h2": "Complete Package at an Unbeatable Fixed Price",
-                        "h3": "Our complete website package:<br /><span class='large'>$3,300* once, $19* monthly</span>",
-                        "text": "<p>Our offer is simple: pay $3,300* once for development and then $19* per month for hosting, maintenance and support. This gives you full transparency - with no hidden costs!</p><p>The complete package includes the following services:</p><ul><li>Individual and simple Design</li><li>Website development</li><li>Up to 10 pages**</li><li>Up to 15 page elements***</li><li>SEO optimized copy</li><li>Mobile optimization</li><li>Consulting and training</li><li>One hour of e-mail or telephone support per month</li></ul><p class='small'>* VAT<br />** +$100 VAT per additional page<br />*** +$50 VAT per additional element</p>",
+                        "h3": "Our complete website package:<br /><span class='large'>$4,600* once, $19* monthly</span>",
+                        "text": "<p>Our offer is simple: pay $4,600* once for development and then $19* per month for hosting, maintenance and support. This gives you full transparency - with no hidden costs!</p><p>The complete package includes the following services:</p><ul><li>Individual and simple Design</li><li>Website development</li><li>Up to 10 pages**</li><li>Up to 15 page elements***</li><li>SEO optimized copy</li><li>Mobile optimization</li><li>Consulting and training</li><li>One hour of e-mail or telephone support per month</li></ul><p class='small'>* VAT<br />** +$100 VAT per additional page<br />*** +$50 VAT per additional element</p>",
                         "button": "Get started now",
                         "button_link": "/contact"
                     },
                     "de": {
                         "h2": "Komplettpaket zum unschlagbaren Festpreis",
-                        "h3": "Unser Website-Komplettpaket:<br /><span class='large'>3.300 €* einmalig, 19 €* monatlich</span>",
-                        "text": "<p>Unser Angebot ist einfach: einmalig 3.300 €* für die Entwicklung bezahlen und danach 19 €* monatlich für Hosting, Wartung und Support. Damit hast du die volle Transparenz — ohne versteckte Kosten!</p><p>Im Komplettpaket sind die folgenden Leistungen enthalten:</p><ul><li>individuelles, einfaches Design</li><li>Entwicklung der Website</li><li>bis zu 10 Unterseiten**</li><li>Impressum und Datenschutz inklusive</li><li>bis zu 15 Seitenelemente***</li><li>SEO-optimierte Texte</li><li>Mobile Optimierung</li><li>inkl. Beratung und Schulung</li><li>eine Stunde E-Mail- und Telefonsupport pro Monat</li></ul><p class='small'>* zzgl. Umsatzsteuer<br />** +100 € netto für jede weitere Unterseite<br />*** +50 € netto für jedes weitere Element</p>",
+                        "h3": "Unser Website-Komplettpaket:<br /><span class='large'>4.600 €* einmalig, 19 €* monatlich</span>",
+                        "text": "<p>Unser Angebot ist einfach: einmalig 4.600 €* für die Entwicklung bezahlen und danach 19 €* monatlich für Hosting, Wartung und Support. Damit hast du die volle Transparenz — ohne versteckte Kosten!</p><p>Im Komplettpaket sind die folgenden Leistungen enthalten:</p><ul><li>individuelles, einfaches Design</li><li>Entwicklung der Website</li><li>bis zu 10 Unterseiten**</li><li>Impressum und Datenschutz inklusive</li><li>bis zu 15 Seitenelemente***</li><li>SEO-optimierte Texte</li><li>Mobile Optimierung</li><li>inkl. Beratung und Schulung</li><li>eine Stunde E-Mail- und Telefonsupport pro Monat</li></ul><p class='small'>* zzgl. Umsatzsteuer<br />** +100 € netto für jede weitere Unterseite<br />*** +50 € netto für jedes weitere Element</p>",
                         "button": "Jetzt loslegen",
                         "button_link": "/de/kontakt"
                     }
@@ -365,90 +472,6 @@
                                 "de": {
                                     "summary": "6. Wartung",
                                     "content": "<p>Nach dem Launch ist es für uns aber noch lange nicht vorbei. Wir warten deine Website, nehmen inhaltliche und technische Verbesserungen vor und helfen dir, sollten Fragen oder Probleme auftreten.</p>"
-                                }
-                            }
-                        }
-                    ]
-                }
-            },
-            {
-                "tpl": "projects",
-                "copy": {
-                    "en": {
-                        "h2": "References"
-                    },
-                    "de": {
-                        "h2": "Referenzen"
-                    }
-                },
-                "content": {
-                    "content": [
-                        {
-                            "tpl": "project",
-                            "data": {
-                                "img": "/static/references/pirsch.png",
-                                "img_alt": "pirsch.io",
-                                "img_width": 552,
-                                "img_height": 872
-                            },
-                            "copy": {
-                                "en": {
-                                    "h3": "pirsch.io",
-                                    "text": "Pirsch Analytics is a GDPR-compliant web analytics solution.",
-                                    "button": "Visit website",
-                                    "button_link": "https://pirsch.io"
-                                },
-                                "de": {
-                                    "h3": "pirsch.io",
-                                    "text": "Pirsch Analytics ist eine DSGVO-konforme Web Analytics Lösung.",
-                                    "button": "Website besuchen",
-                                    "button_link": "https://pirsch.io"
-                                }
-                            }
-                        },
-                        {
-                            "tpl": "project",
-                            "data": {
-                                "img": "/static/references/schnittfest.png",
-                                "img_alt": "schnittfest.gmbh",
-                                "img_width": 552,
-                                "img_height": 872
-                            },
-                            "copy": {
-                                "en": {
-                                    "h3": "schnittfest.gmbh",
-                                    "text": "The website for the Schnittfest GmbH video production company.",
-                                    "button": "Visit website",
-                                    "button_link": "https://schnittfest.gmbh"
-                                },
-                                "de": {
-                                    "h3": "schnittfest.gmbh",
-                                    "text": "Die Seite der Schnittfest GmbH Videoproduktion.",
-                                    "button": "Website besuchen",
-                                    "button_link": "https://schnittfest.gmbh"
-                                }
-                            }
-                        },
-                        {
-                            "tpl": "project",
-                            "data": {
-                                "img": "/static/references/snesgames.png",
-                                "img_alt": "snesgames.de",
-                                "img_width": 552,
-                                "img_height": 872
-                            },
-                            "copy": {
-                                "en": {
-                                    "h3": "snesgames.de",
-                                    "text": "SNES fan page with detailed game reviews.",
-                                    "button": "Visit website",
-                                    "button_link": "https://snesgames.de"
-                                },
-                                "de": {
-                                    "h3": "snesgames.de",
-                                    "text": "SNES Fan Seite mit detailierten Reviews.",
-                                    "button": "Website besuchen",
-                                    "button_link": "https://snesgames.de"
                                 }
                             }
                         }

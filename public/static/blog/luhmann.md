@@ -4,10 +4,6 @@
 
 Niklas Luhmann was a german sociologist and system theorist. Born in Lüneburg, Germany in 1927, he spent most of his life studying the socio-ecological structure of societies, being one of the most important scientists of the 20th century in this field. Furthermore, he is considered to be one of the most productive scientists yet. In his career, he wrote about 60 books and other documents without the help of assistants. An impressive amount of publications.
 
-![Niklas Luhmann](/static/blog/luhmann/luhmann.jpg)
-
-*Niklas Luhmann (born on December, 8th 1927, died on November, 6th 1998)*
-
 How could he be so productive and how did he manage to keep track of his knowledge? After reading this article you will know how he did it and how you can implement his method for yourself.
 
 ## The Zettelkasten
@@ -18,17 +14,9 @@ A Zettelkasten (die Zettelkästen in plural) is a methodology for thinking in wr
 
 As a tool, the Zettelkasten is a box (or a box of boxes) to hold index cards or slips of paper ("Zettel"). Each card holds a piece of information, an index and the source of the information. The index can be an ongoing number, the date and time or anything else you can use as a unique identifier. The information is a short note in most cases and should be limited to a few words or sentences. The size of the card helps to keep it brief. Drawings and other forms of information can be used too.
 
-![Zettel](/static/blog/luhmann/zettel.png)
-
-*An example of a Zettel about Gleichheit ("equality") taken from Luhmann's Zettelkasten.*
-
 The cards are then arranged inboxes. Each box contains a set of cards that are related to each other. The boxes are labeled by a broader topic or a time period, depending on what you're writing, like a history book for example.
 
 Inside a box, cards can be organized further by placing tabs with keywords in between, so that you can look up cards more easily inside large boxes. Luhmann did not use tabs.
-
-![Zettelkasten](/static/blog/luhmann/kasten.jpg)
-
-*Luhmann's Zettelkasten at the University of Bielefeld.*
 
 As you fill your Zettelkasten, you will add more and more cards. To unleash its full potential, cards must be linked manually by using the box label, keywords and the card index you're referring to. Cards can be linked with none, one or multiple other cards. To connect them you will have to search and traverse the Zettelkasten's structure a lot, which is part of its design and brings some of the key benefits.
 

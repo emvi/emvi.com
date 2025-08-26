@@ -2,9 +2,6 @@
     "label": "HTML Head",
     "layout": true,
     "copy": {
-        "copyright": {
-            "label": "Copyright"
-        },
         "title": {
             "label": "Title"
         },

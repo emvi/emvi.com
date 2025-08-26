@@ -1,3 +1,42 @@
 {
-    "label": "Projekt"
+    "label": "Projekt",
+    "copy": {
+        "h3": {
+            "label": "Überschrift"
+        },
+        "text": {
+            "label": "Text",
+            "type": "html"
+        },
+        "contact": {
+            "label": "Kontakt Button"
+        },
+        "contact_link": {
+            "label": "Kontakt Link"
+        },
+        "button": {
+            "label": "Button"
+        },
+        "button_link": {
+            "label": "Button Link"
+        }
+    },
+    "data": {
+        "img": {
+            "label": "Bild",
+            "type": "img"
+        },
+        "img_alt": {
+            "label": "Bild Alt-Text"
+        },
+        "img_width": {
+            "label": "Bild Breite"
+        },
+        "img_height": {
+            "label": "Bild Höhe"
+        },
+        "link": {
+            "label": "Link"
+        }
+    }
 }

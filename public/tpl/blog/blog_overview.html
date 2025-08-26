@@ -1,6 +1,10 @@
 <section id="blog" class="blog" data-shifu-element="{{ .Content.Position }}">
     <div class="content">
-        <h1>{{copy .Page .Content "h1"}}</h1>
-        {{.CMS.Render .Args .Page (fmt "%s.content" .Content.Position) (index .Content.Content "content")}}
+        <h1>{{ copy .Page .Content "h1" }}</h1>
+        {{ .CMS.Render .Args .Page (fmt "%s.content" .Content.Position) (index .Content.Content "content") }}
+
+        {{ if loggedIn .Page }}
+            <slot name="{{ .Content.Position }}/content"></slot>
+        {{ end }}
     </div>
 </section>

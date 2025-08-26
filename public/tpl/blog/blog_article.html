@@ -1,7 +1,7 @@
 <section id="blog" class="blog" data-shifu-element="{{ .Content.Position }}">
     <div class="content">
         <article>
-            {{markdown (get .Content "md") .}}
+            {{ markdown (get .Content "md") . }}
         </article>
     </div>
 </section>

@@ -1,3 +1,14 @@
 {
-    "label": "Blog Übersicht"
+    "label": "Blog Übersicht",
+    "content": {
+        "content": {
+            "label": "Artikel",
+            "tpl_filter": ["blog_entry"]
+        }
+    },
+    "copy": {
+        "h1": {
+            "label": "Überschrift"
+        }
+    }
 }

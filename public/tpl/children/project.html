@@ -1,25 +1,27 @@
-{{$img := get .Content "img"}}
-{{$link := get .Content "link"}}
+{{ $img := get .Content "img" }}
+{{ $link := get .Content "link" }}
 
 <li data-shifu-element="{{ .Content.Position }}">
-    <h3>{{copy .Page .Content "h3"}}</h3>
-    <p>{{html (copy .Page .Content "text")}}</p>
+    <h3>{{ copy .Page .Content "h3" }}</h3>
+    <p>{{ html (copy .Page .Content "text") }}</p>
     
-    {{if $img}}
-        <img src="{{$img}}"
-            alt="{{get .Content "img_alt"}}"
+    {{ if $img }}
+        <img src="{{ $img }}"
+            alt="{{ get .Content "img_alt" }}"
             loading="lazy"
-            {{if get .Content "img_width"}}width="{{get .Content "img_width"}}"{{end}}
-            {{if get .Content "img_height"}}height="{{get .Content "img_height"}}"{{end}} />
-    {{end}}
+            {{ if get .Content "img_width" }}width="{{ get .Content "img_width" }}"{{ end }}
+            {{ if get .Content "img_height" }}height="{{ get .Content "img_height" }}"{{ end }} />
+    {{ end }}
 
-    {{if $link}}
-        <a href="{{copy .Page .Content "contact_link"}}" class="button white" pirsch-link="Let's chat">{{copy .Page .Content "contact"}}</a>
-    {{end}}
-
-    {{if (copy .Page .Content "button")}}
-        <a href="{{copy .Page .Content "button_link"}}" target="_blank" class="button">
-            {{copy .Page .Content "button"}}
+    {{ if $link }}
+        <a href="{{ copy .Page .Content "contact_link" }}" class="button white" pirsch-link="Let's chat">
+            {{ copy .Page .Content "contact" }}
         </a>
-    {{end}}
+    {{ end }}
+
+    {{ if (copy .Page .Content "button") }}
+        <a href="{{ copy .Page .Content "button_link" }}" target="_blank" class="button">
+            {{ copy .Page .Content "button" }}
+        </a>
+    {{ end }}
 </li>

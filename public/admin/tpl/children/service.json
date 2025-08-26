@@ -1,3 +1,18 @@
 {
-    "label": "Service"
+    "label": "Service",
+    "copy": {
+        "h3": {
+            "label": "Überschrift"
+        },
+        "text": {
+            "label": "Text",
+            "type": "html"
+        },
+        "button": {
+            "label": "Button"
+        },
+        "button_link": {
+            "label": "Button Link"
+        }
+    }
 }

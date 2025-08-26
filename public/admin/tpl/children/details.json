@@ -1,3 +1,11 @@
 {
-    "label": "Details"
+    "label": "Details",
+    "copy": {
+        "summary": {
+            "label": "Frage"
+        },
+        "content": {
+            "label": "Antwort"
+        }
+    }
 }

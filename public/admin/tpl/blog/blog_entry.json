@@ -1,3 +1,13 @@
 {
-    "label": "Blog Eintrag"
+    "label": "Blog Eintrag",
+    "copy": {
+        "title": {
+            "label": "Überschrift"
+        }
+    },
+    "data": {
+        "link": {
+            "label": "Link"
+        }
+    }
 }

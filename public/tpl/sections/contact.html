@@ -16,7 +16,7 @@
                     <p style="color: red;">{{copy .Page .Content "form_error_input"}}</p>
                 {{end}}
 
-                <form method="post">
+                <form method="post" class="form">
                     <fieldset>
                         <label for="name">{{copy .Page .Content "form_name"}}</label>
                         <input type="text" name="name" id="name" required />

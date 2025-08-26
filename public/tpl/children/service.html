@@ -1,10 +1,10 @@
 <li data-shifu-element="{{ .Content.Position }}">
-    <h3>{{copy .Page .Content "h3"}}</h3>
-    {{html (copy .Page .Content "text")}}
+    <h3>{{ copy .Page .Content "h3" }}</h3>
+    {{ html (copy .Page .Content "text") }}
 
-    {{if (copy .Page .Content "button")}}
-        <a href="{{copy .Page .Content "button_link"}}" class="button">
-            {{copy .Page .Content "button"}}
+    {{ if (copy .Page .Content "button") }}
+        <a href="{{ copy .Page .Content "button_link" }}" class="button">
+            {{ copy .Page .Content "button" }}
         </a>
-    {{end}}
+    {{ end }}
 </li>

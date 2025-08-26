@@ -1,3 +1,8 @@
 {
-    "label": "Blog Artikel"
+    "label": "Blog Artikel",
+    "data": {
+        "md": {
+            "label": "Markdown Datei"
+        }
+    }
 }

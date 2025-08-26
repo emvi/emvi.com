@@ -19,7 +19,7 @@
 
 {{$bg := get .Content "bg"}}
 
-<section id="start" class="start">
+<section id="start" class="start" data-shifu-element="{{ .Content.Position }}">
     {{if $bg}}
         <div class="start-bg {{$bg}}"></div>
     {{end}}

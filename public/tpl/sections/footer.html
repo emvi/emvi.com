@@ -1,4 +1,4 @@
-<footer {{if .}}style="background-color: #fff;"{{end}}>
+<footer {{if .}}style="background-color: #fff;"{{end}} data-shifu-element="{{ .Content.Position }}">
     <div class="content">
         <small>{{copy .Page .Content "copyright"}}</small>
         <div style="display: flex;gap: 8px;">

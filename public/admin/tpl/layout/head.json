@@ -1,0 +1,15 @@
+{
+    "label": "HTML Head",
+    "layout": true,
+    "copy": {
+        "copyright": {
+            "label": "Copyright"
+        },
+        "title": {
+            "label": "Title"
+        },
+        "meta_description": {
+            "label": "Meta Description"
+        }
+    }
+}

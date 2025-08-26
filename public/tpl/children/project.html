@@ -1,7 +1,7 @@
 {{$img := get .Content "img"}}
 {{$link := get .Content "link"}}
 
-<li>
+<li data-shifu-element="{{ .Content.Position }}">
     <h3>{{copy .Page .Content "h3"}}</h3>
     <p>{{html (copy .Page .Content "text")}}</p>
     

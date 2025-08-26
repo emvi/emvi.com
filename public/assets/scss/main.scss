@@ -168,7 +168,7 @@ form {
     }
 }
 
-details {
+.details {
     width: 100%;
     padding: 16px;
     background: var(--light-grey);
@@ -240,7 +240,6 @@ details {
 }
 
 img {
-    display: block;
     width: 100%;
 }
 

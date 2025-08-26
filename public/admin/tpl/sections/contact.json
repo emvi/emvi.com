@@ -1,3 +1,57 @@
 {
-    "label": "Kontakt"
+    "label": "Kontakt",
+    "copy": {
+        "h2": {
+            "label": "Überschrift"
+        },
+        "text": {
+            "label": "Text",
+            "type": "html"
+        },
+        "form_success": {
+            "label": "Erfolgsmeldung"
+        },
+        "form_error_captcha": {
+            "label": "Fehlermeldung Captcha"
+        },
+        "form_error_input": {
+            "label": "Fehlermeldung Eingabe"
+        },
+        "form_name": {
+            "label": "Label Name"
+        },
+        "form_email": {
+            "label": "Label Email"
+        },
+        "form_phone": {
+            "label": "Label Telefon"
+        },
+        "form_type": {
+            "label": "Label Typ"
+        },
+        "form_message": {
+            "label": "Label Nachricht"
+        },
+        "form_send": {
+            "label": "Absenden Button"
+        },
+        "form_type_option_0": {
+            "label": "Typ Option 1"
+        },
+        "form_type_option_1": {
+            "label": "Typ Option 2"
+        },
+        "form_type_option_2": {
+            "label": "Typ Option 3"
+        },
+        "form_type_option_3": {
+            "label": "Typ Option 4"
+        },
+        "form_type_option_4": {
+            "label": "Typ Option 5"
+        },
+        "form_type_option_5": {
+            "label": "Typ Option 6"
+        }
+    }
 }

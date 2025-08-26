@@ -1,3 +1,27 @@
 {
-    "label": "Text"
+    "label": "Text",
+    "content": {
+        "content": {
+            "label": "Details",
+            "tpl_filter": ["details"]
+        }
+    },
+    "copy": {
+        "h2": {
+            "label": "Überschrift H2"
+        },
+        "h3": {
+            "label": "Überschrift H3"
+        },
+        "text": {
+            "label": "Text",
+            "type": "html"
+        },
+        "button": {
+            "label": "Button"
+        },
+        "button_link": {
+            "label": "Button Link"
+        }
+    }
 }

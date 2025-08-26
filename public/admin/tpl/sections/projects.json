@@ -1,3 +1,14 @@
 {
-    "label": "Projekte"
+    "label": "Projekte",
+    "content": {
+        "content": {
+            "label": "Projekte",
+            "tpl_filter": ["project"]
+        }
+    },
+    "copy": {
+        "h2": {
+            "label": "Überschrift"
+        }
+    }
 }

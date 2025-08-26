@@ -1,9 +1,13 @@
-<footer {{if .}}style="background-color: #fff;"{{end}} data-shifu-element="{{ .Content.Position }}">
+<footer {{ if . }}style="background-color: #fff;"{{ end }} data-shifu-element="{{ .Content.Position }}">
     <div class="content">
-        <small>{{copy .Page .Content "copyright"}}</small>
+        <small>{{ copy .Page .Content "copyright" }}</small>
         <div style="display: flex;gap: 8px;">
-            <a href="{{copy .Page .Content "contact_link"}}">{{copy .Page .Content "contact"}}</a>
-            <a href="{{copy .Page .Content "legal_link"}}">{{copy .Page .Content "legal"}}</a>
+            <a href="{{ copy .Page .Content "contact_link" }}">
+                {{ copy .Page .Content "contact" }}
+            </a>
+            <a href="{{ copy .Page .Content "legal_link" }}">
+                {{ copy .Page .Content "legal" }}
+            </a>
         </div>
     </div>
 </footer>

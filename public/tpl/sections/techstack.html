@@ -1,9 +1,9 @@
 <section id="technologies" class="technologies" data-shifu-element="{{ .Content.Position }}">
     <div class="content">
-        <h2>{{copy .Page .Content "h2"}}</h2>
+        <h2>{{ copy .Page .Content "h2" }}</h2>
         <div class="box">
-            <h3>{{copy .Page .Content "h3"}}</h3>
-            <p>{{copy .Page .Content "text"}}</p>
+            <h3>{{ copy .Page .Content "h3" }}</h3>
+            <p>{{ html (copy .Page .Content "text") }}</p>
         </div>
         <ul class="grid">
             <li>

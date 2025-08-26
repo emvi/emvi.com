@@ -1,3 +1,17 @@
 {
-    "label": "Header"
+    "label": "Header",
+    "copy": {
+        "contact_link": {
+            "label": "Kontakt Link"
+        },
+        "contact": {
+            "label": "Kontakt Button"
+        }
+    },
+    "data": {
+        "bg": {
+            "label": "Hintergrund",
+            "type": "boolean"
+        }
+    }
 }

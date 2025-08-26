@@ -1,3 +1,9 @@
 {
-    "label": "Legal"
+    "label": "Legal",
+    "copy": {
+        "copy": {
+            "label": "Text",
+            "type": "html"
+        }
+    }
 }

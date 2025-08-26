@@ -1,3 +1,14 @@
 {
-    "label": "Services"
+    "label": "Services",
+    "content": {
+        "content": {
+            "label": "Services",
+            "tpl_filter": ["service"]
+        }
+    },
+    "copy": {
+        "h2": {
+            "label": "Überschrift"
+        }
+    }
 }

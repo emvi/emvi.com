@@ -1,3 +1,20 @@
 {
-    "label": "Footer"
+    "label": "Footer",
+    "copy": {
+        "copyright": {
+            "label": "Copyright"
+        },
+        "contact_link": {
+            "label": "Kontakt Link"
+        },
+        "contact": {
+            "label": "Kontakt Button"
+        },
+        "legal_link": {
+            "label": "Legal Link"
+        },
+        "legal": {
+            "label": "Legal Button"
+        }
+    }
 }

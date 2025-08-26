@@ -1,8 +1,10 @@
 <section id="cta" class="cta" data-shifu-element="{{ .Content.Position }}">
     <div class="content">
         <div class="box">
-            <h3>{{copy .Page .Content "text"}}</h3>
-            <a href="{{copy .Page .Content "contact_link"}}" class="button" pirsch-link="Contact">{{copy .Page .Content "contact"}}</a>
+            <h3>{{ copy .Page .Content "text" }}</h3>
+            <a href="{{copy .Page .Content "contact_link" }}" class="button" pirsch-link="Contact">
+                {{ copy .Page .Content "contact" }}
+            </a>
         </div>
         <div class="img">
             <img src="/static/img/team.jpg"

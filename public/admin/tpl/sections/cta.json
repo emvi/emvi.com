@@ -1,3 +1,14 @@
 {
-    "label": "CTA"
+    "label": "CTA",
+    "copy": {
+        "text": {
+            "label": "Text"
+        },
+        "contact_link": {
+            "label": "Kontakt Link"
+        },
+        "contact": {
+            "label": "Kontakt Button"
+        }
+    }
 }

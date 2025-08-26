@@ -1,3 +1,22 @@
 {
-    "label": "Start"
+    "label": "Start",
+    "copy": {
+        "h1": {
+            "label": "Überschrift"
+        },
+        "text": {
+            "label": "Text",
+            "type": "html"
+        }
+    },
+    "data": {
+        "bg": {
+            "label": "Hintergrund (CSS Klasse)",
+            "type": "select",
+            "options": {
+                "": "Keine",
+                "website-bg": "Website"
+            }
+        }
+    }
 }

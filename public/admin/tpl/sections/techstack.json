@@ -1,3 +1,15 @@
 {
-    "label": "Techstack"
+    "label": "Techstack",
+    "copy": {
+        "h2": {
+            "label": "Überschrift H2"
+        },
+        "h3": {
+            "label": "Überschrift H3"
+        },
+        "text": {
+            "label": "Text",
+            "type": "html"
+        }
+    }
 }

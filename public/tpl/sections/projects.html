@@ -1,12 +1,28 @@
-<section id="projects" class="projects" data-shifu-element="{{ .Content.Position }}">
+<section id="projects" class="projects" data-aos="fade-in" data-shifu-element="{{ .Content.Position }}">
     <div class="content">
         <h2>{{ copy .Page .Content "h2" }}</h2>
-        <ul class="grid">
-            {{ .CMS.Render .Args .Page (fmt "%s.content" .Content.Position) (index .Content.Content "content") }}
+        <div class="glide projects-slides">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    {{.CMS.Render .Args .Page (fmt "%s.content" .Content.Position) (index .Content.Content "content")}}
 
-            {{ if loggedIn .Page }}
-                <slot name="{{ .Content.Position }}/content"></slot>
-            {{ end }}
-        </ul>
+                    {{ if loggedIn .Page }}
+                        <slot name="{{ .Content.Position }}/content"></slot>
+                    {{ end }}
+                </ul>
+            </div>
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+                    <svg width="13" height="21" viewBox="0 0 13 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.56 0.439656C11.8409 0.720907 11.9987 1.10216 11.9987 1.49966C11.9987 1.89716 11.8409 2.27841 11.56 2.55966L4.12002 9.99966L11.56 17.4397C11.7074 17.577 11.8256 17.7426 11.9076 17.9266C11.9896 18.1106 12.0337 18.3092 12.0372 18.5106C12.0408 18.712 12.0037 18.9121 11.9283 19.0989C11.8528 19.2856 11.7405 19.4553 11.5981 19.5977C11.4557 19.7402 11.286 19.8525 11.0992 19.9279C10.9124 20.0033 10.7124 20.0404 10.511 20.0368C10.3096 20.0333 10.1109 19.9892 9.92695 19.9072C9.74295 19.8252 9.57735 19.707 9.44002 19.5597L0.940022 11.0597C0.659122 10.7784 0.501343 10.3972 0.501343 9.99966C0.501343 9.60216 0.659122 9.22091 0.940022 8.93966L9.44002 0.439656C9.72127 0.158755 10.1025 0.000976562 10.5 0.000976562C10.8975 0.000976562 11.2788 0.158755 11.56 0.439656Z" fill="black"/>
+                    </svg>
+                </button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+                    <svg width="13" height="21" viewBox="0 0 13 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.56 0.439656C11.8409 0.720907 11.9987 1.10216 11.9987 1.49966C11.9987 1.89716 11.8409 2.27841 11.56 2.55966L4.12002 9.99966L11.56 17.4397C11.7074 17.577 11.8256 17.7426 11.9076 17.9266C11.9896 18.1106 12.0337 18.3092 12.0372 18.5106C12.0408 18.712 12.0037 18.9121 11.9283 19.0989C11.8528 19.2856 11.7405 19.4553 11.5981 19.5977C11.4557 19.7402 11.286 19.8525 11.0992 19.9279C10.9124 20.0033 10.7124 20.0404 10.511 20.0368C10.3096 20.0333 10.1109 19.9892 9.92695 19.9072C9.74295 19.8252 9.57735 19.707 9.44002 19.5597L0.940022 11.0597C0.659122 10.7784 0.501343 10.3972 0.501343 9.99966C0.501343 9.60216 0.659122 9.22091 0.940022 8.93966L9.44002 0.439656C9.72127 0.158755 10.1025 0.000976562 10.5 0.000976562C10.8975 0.000976562 11.2788 0.158755 11.56 0.439656Z" fill="black"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
     </div>
 </section>

@@ -1,9 +1,15 @@
 {{ $img := get .Content "img" }}
 {{ $link := get .Content "link" }}
 
-<li data-shifu-element="{{ .Content.Position }}">
+<li class="glide__slide project" data-shifu-element="{{ .Content.Position }}">
     <h3>{{ copy .Page .Content "h3" }}</h3>
     <p>{{ html (copy .Page .Content "text") }}</p>
+
+    {{ if (copy .Page .Content "button") }}
+        <a href="{{ copy .Page .Content "button_link" }}" target="_blank" class="button">
+            {{ copy .Page .Content "button" }}
+        </a>
+    {{ end }}
     
     {{ if $img }}
         <img src="{{ $img }}"
@@ -16,12 +22,6 @@
     {{ if $link }}
         <a href="{{ copy .Page .Content "contact_link" }}" class="button white" pirsch-link="Let's chat">
             {{ copy .Page .Content "contact" }}
-        </a>
-    {{ end }}
-
-    {{ if (copy .Page .Content "button") }}
-        <a href="{{ copy .Page .Content "button_link" }}" target="_blank" class="button">
-            {{ copy .Page .Content "button" }}
         </a>
     {{ end }}
 </li>

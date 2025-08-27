@@ -1,6 +1,14 @@
     {{ adminBody .Page }}
 
-    <script type="text/javascript">
+    <script src="/static/js/aos.js"></script>
+    <script>
+        AOS.init({
+            delay: 100,
+            duration: 600,
+            once: true
+        });
+    </script>
+    <script>
         document.addEventListener("DOMContentLoaded", () => {
             const links = document.querySelectorAll("[pirsch-link]");
             links.forEach(link => link.addEventListener("click", e => {

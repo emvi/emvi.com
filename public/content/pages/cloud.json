@@ -1,0 +1,72 @@
+{
+    "path": {
+        "de": "/de/cloud-infrastruktur",
+        "en": "/cloud-infrastructure"
+    },
+    "sitemap": {
+        "priority": "0.900000"
+    },
+    "analytics": {
+        "experiment": {
+            "name": "",
+            "variant": ""
+        }
+    },
+    "content": {
+        "content": [
+            {
+                "sitemap": {},
+                "analytics": {
+                    "experiment": {
+                        "name": "",
+                        "variant": ""
+                    }
+                },
+                "ref": "head",
+                "copy": {
+                    "de": {
+                        "meta_description": "Unsere Erfahrung mit verteilten Systemen gewährleistet einen unterbrechungsfreien Service für dein Team oder Kunden bei gleichzeitig niedrigen Kosten.",
+                        "title": "Emvi - Cloud Infrastruktur Enwicklung und Management"
+                    },
+                    "en": {
+                        "meta_description": "Our experience in distributed systems build on top of the latest cloud technologies ensures uninterrupted service for your team or customers while keeping costs low.",
+                        "title": "Emvi - Cloud infrastructure development and management"
+                    }
+                }
+            },
+            {
+                "sitemap": {},
+                "analytics": {
+                    "experiment": {
+                        "name": "",
+                        "variant": ""
+                    }
+                },
+                "ref": "header",
+                "data": {
+                    "bg": true
+                }
+            },
+            {
+                "sitemap": {},
+                "analytics": {
+                    "experiment": {
+                        "name": "",
+                        "variant": ""
+                    }
+                },
+                "ref": "footer"
+            },
+            {
+                "sitemap": {},
+                "analytics": {
+                    "experiment": {
+                        "name": "",
+                        "variant": ""
+                    }
+                },
+                "ref": "end"
+            }
+        ]
+    }
+}

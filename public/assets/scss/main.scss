@@ -42,6 +42,10 @@ p {
     margin-block-end: 0;
 }
 
+p:empty {
+    display: none;
+}
+
 h1 {
     font-weight: 500;
     font-size: 64px;

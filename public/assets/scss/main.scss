@@ -512,7 +512,9 @@ section {
 }
 
 .technologies {
-    background: var(--light-grey);
+    &-bg {
+        background: var(--light-grey);
+    }
 
     .content {
         .grid {
@@ -552,6 +554,12 @@ section {
         details {
             background: var(--light-grey);
         }
+    }
+}
+
+.services {
+    &-bg {
+        background: var(--light-grey);
     }
 }
 

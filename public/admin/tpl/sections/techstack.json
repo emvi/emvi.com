@@ -11,5 +11,11 @@
             "label": "Text",
             "type": "html"
         }
+    },
+    "data": {
+        "bg": {
+            "label": "Hintergrund",
+            "type": "boolean"
+        }
     }
 }

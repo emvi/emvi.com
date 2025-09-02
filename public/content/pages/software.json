@@ -1,1 +1,690 @@
-{"path":{"de":"/de/software-entwicklung","en":"/software-development"},"sitemap":{"priority":"0.900000"},"analytics":{"experiment":{"name":"","variant":""}},"content":{"content":[{"sitemap":{},"analytics":{"experiment":{"name":"","variant":""}},"ref":"head","copy":{"de":{"meta_description":"Wir entwickeln hochwertige und leistungsstarke Software individuell nach deinen Anforderungen.","title":"Emvi - Entwicklung hochwertiger Software und Anwendungen"},"en":{"meta_description":"We develop high-quality, well-performing software and applications according to your requirements.","title":"Emvi - High quality software and applications"}}},{"sitemap":{},"analytics":{"experiment":{"name":"","variant":""}},"ref":"header","data":{"bg":true}},{"sitemap":{},"analytics":{"experiment":{"name":"","variant":""}},"tpl":"start","data":{"bg":""},"copy":{"de":{"h1":"Hochwertige und leistungsstarke Software nach deinen Anforderungen.","text":"\u003cp\u003eAutomatisiere deine Prozesse mit hochwertiger und individuell entwickelter Software und löse echte Probleme. Wir entwickeln und betreuen leistungsstarke Anwendungen, die genau auf deine Anforderungen abgestimmt sind.\u003c/p\u003e"},"en":{"h1":"High-quality, well-performing software and applications according to your requirements.","text":"\u003cp\u003eAutomate your processes with high-quality, custom-developed software and solve real problems. We develop and support powerful applications that are tailored precisely to your requirements.\u003c/p\u003e"}}},{"sitemap":{},"analytics":{"experiment":{"name":"","variant":""}},"ref":"about_us"},{"sitemap":{},"analytics":{"experiment":{"name":"","variant":""}},"tpl":"projects","copy":{"de":{"h2":"Projekte"},"en":{"h2":"Projects"}},"content":{"content":[{"sitemap":{},"analytics":{"experiment":{"name":"","variant":""}},"tpl":"project","data":{"img":"/static/img/pirsch.png","img_alt":"Pirsch Analytics"},"copy":{"de":{"h3":"Pirsch Analytics","text":"Unsere Analytics-Lösung ohne Cookies, bei der der Datenschutz im Vordergrund steht. Lass Google Analytics hinter Dir und besuche \u003ca href='https://pirsch.io/' target='_blank'\u003epirsch.io\u003c/a\u003e, um mehr zu erfahren."},"en":{"h3":"Pirsch Analytics","text":"Our fully-featured and cookie-free web analytics solution with privacy is mind. Leave Google Analytics behind and visit \u003ca href='https://pirsch.io/' target='_blank'\u003epirsch.io\u003c/a\u003e to learn more."}}},{"sitemap":{},"analytics":{"experiment":{"name":"","variant":""}},"tpl":"project","data":{"img":"/static/img/emvi.png","img_alt":"Emvi Knowledge Base"},"copy":{"de":{"h3":"Emvi Wissensdatenbank","text":"Unsere leichtgewichtige Wikisoftware mit Echtzeit-Zusammenarbeit und einem leistungsstarken Editor. Dieses Projekt wurde zugunsten von Pirsch eingestellt."},"en":{"h3":"Emvi Knowledge Base","text":"Our lightweight wiki software with real-time collaboration and a powerful editor. This project has since been discontinued in favor of Pirsch Analytics."}}},{"sitemap":{},"analytics":{"experiment":{"name":"","variant":""}},"tpl":"project","data":{"link":"mailto:contact@emvi.com"},"copy":{"de":{"contact":"Lass uns reden","contact_link":"/de/kontakt","h3":"Dein nächstes Projekt?","text":"Ob ein internes Tool für Dein Unternehmen oder eine hochverfügbare Software-as-a-Service - wir helfen Dir, Deine Ideen auf den Weg zu bringen!"},"en":{"contact":"Let's chat","contact_link":"/contact","h3":"Your next project?","text":"Whether it's an internal tool for your company or a highly available Software-as-a-Service — we help you to get your ideas off the ground!"}}}]}},{"sitemap":{},"analytics":{"experiment":{"name":"","variant":""}},"tpl":"services","copy":{"de":{"h2":"Unsere Softwareentwicklungs-Leistungen"},"en":{"h2":"Our Software Development Services"}},"content":{"content":[]}},{"sitemap":{},"analytics":{"experiment":{"name":"","variant":""}},"tpl":"techstack","copy":{"de":{"h2":"Technologien","h3":"Ein moderner Techstack","text":"\u003cp\u003eWir verwenden bewährte Tools, um schnelle und zuverlässige Ergebnisse zu liefern. Zu unseren bevorzugten Tools gehören Go, VueJS und PostgreSQL auf HashiCorp-Infrastruktur und Hetzner-Servern. Wenn du bereits über eine bestehendes System verfügen, arbeiten wir gerne mit deinen Programmiersprachen und Technologien.\u003c/p\u003e"},"en":{"h2":"Technologies","h3":"A Modern Techstack","text":"\u003cp\u003eWe use battle-tested tools to deliver fast and reliable results. Our preferred stack includes Go, VueJS and PostgreSQL on HashiCorp infrastructure and Hetzner servers. If you already have a setup in place, we are happy to work with your programming languages and technologies.\u003c/p\u003e"}}},{"sitemap":{},"analytics":{"experiment":{"name":"","variant":""}},"tpl":"cta","copy":{"de":{"contact":"Jetzt anfragen","contact_link":"/de/kontakt","text":"Bereit, deine Prozesse zu automatisieren?"},"en":{"contact":"Reach out now","contact_link":"/contact","text":"Ready to automate your processes?"}}},{"sitemap":{},"analytics":{"experiment":{"name":"","variant":""}},"ref":"footer"},{"sitemap":{},"analytics":{"experiment":{"name":"","variant":""}},"ref":"end"}]}}
+{
+    "path": {
+        "de": "/de/software-entwicklung",
+        "en": "/software-development"
+    },
+    "sitemap": {
+        "priority": "0.900000"
+    },
+    "analytics": {
+        "experiment": {
+            "name": "",
+            "variant": ""
+        }
+    },
+    "content": {
+        "content": [
+            {
+                "sitemap": {},
+                "analytics": {
+                    "experiment": {
+                        "name": "",
+                        "variant": ""
+                    }
+                },
+                "ref": "head",
+                "copy": {
+                    "de": {
+                        "meta_description": "Wir entwickeln hochwertige und leistungsstarke Software individuell nach deinen Anforderungen.",
+                        "title": "Emvi - Entwicklung hochwertiger Software und Anwendungen"
+                    },
+                    "en": {
+                        "meta_description": "We develop high-quality, well-performing software and applications according to your requirements.",
+                        "title": "Emvi - High quality software and applications"
+                    }
+                }
+            },
+            {
+                "sitemap": {},
+                "analytics": {
+                    "experiment": {
+                        "name": "",
+                        "variant": ""
+                    }
+                },
+                "ref": "header",
+                "data": {
+                    "bg": true
+                }
+            },
+            {
+                "sitemap": {},
+                "analytics": {
+                    "experiment": {
+                        "name": "",
+                        "variant": ""
+                    }
+                },
+                "tpl": "start",
+                "data": {
+                    "bg": ""
+                },
+                "copy": {
+                    "de": {
+                        "h1": "Hochwertige und leistungsstarke Software und Anwendungsentwicklung nach deinen Anforderungen.",
+                        "text": "\u003cp\u003eAutomatisiere deine Prozesse mit hochwertiger und individuell entwickelter Software und löse echte Probleme. Wir entwickeln und betreuen leistungsstarke Anwendungen, die genau auf deine Anforderungen abgestimmt sind.\u003c/p\u003e"
+                    },
+                    "en": {
+                        "h1": "High-quality, well-performing software and application development according to your requirements.",
+                        "text": "\u003cp\u003eAutomate your processes with high-quality, custom-developed software and solve real problems. We develop and support powerful applications that are tailored precisely to your requirements.\u003c/p\u003e"
+                    }
+                }
+            },
+            {
+                "sitemap": {},
+                "analytics": {
+                    "experiment": {
+                        "name": "",
+                        "variant": ""
+                    }
+                },
+                "ref": "about_us"
+            },
+            {
+                "sitemap": {},
+                "analytics": {
+                    "experiment": {
+                        "name": "",
+                        "variant": ""
+                    }
+                },
+                "tpl": "projects",
+                "copy": {
+                    "de": {
+                        "h2": "Projekte"
+                    },
+                    "en": {
+                        "h2": "Projects"
+                    }
+                },
+                "content": {
+                    "content": [
+                        {
+                            "sitemap": {},
+                            "analytics": {
+                                "experiment": {
+                                    "name": "",
+                                    "variant": ""
+                                }
+                            },
+                            "tpl": "project",
+                            "data": {
+                                "img": "/static/img/pirsch.png",
+                                "img_alt": "Pirsch Analytics"
+                            },
+                            "copy": {
+                                "de": {
+                                    "h3": "Pirsch Analytics",
+                                    "text": "Unsere Analytics-Lösung ohne Cookies, bei der der Datenschutz im Vordergrund steht. Lass Google Analytics hinter Dir und besuche \u003ca href='https://pirsch.io/' target='_blank'\u003epirsch.io\u003c/a\u003e, um mehr zu erfahren."
+                                },
+                                "en": {
+                                    "h3": "Pirsch Analytics",
+                                    "text": "Our fully-featured and cookie-free web analytics solution with privacy is mind. Leave Google Analytics behind and visit \u003ca href='https://pirsch.io/' target='_blank'\u003epirsch.io\u003c/a\u003e to learn more."
+                                }
+                            }
+                        },
+                        {
+                            "sitemap": {},
+                            "analytics": {
+                                "experiment": {
+                                    "name": "",
+                                    "variant": ""
+                                }
+                            },
+                            "tpl": "project",
+                            "data": {
+                                "img": "/static/img/vms.webp",
+                                "img_alt": "VMS"
+                            },
+                            "copy": {
+                                "de": {
+                                    "h3": "Vendor Management System",
+                                    "text": "Ein Vendor Management System (VMS) zur Verwaltung und Einsatzplanung von Leiharbeitern mit direkter Kommunikation zu verschiedenen Unternehmen. Übernommen wurde die vollständige Entwicklung inkl. Design und Hosting."
+                                },
+                                "en": {
+                                    "h3": "Vendor Management System",
+                                    "text": "A vendor management system (VMS) for managing and scheduling temporary workers with direct communication to various companies. The entire development process, including design and hosting, was done by us."
+                                }
+                            }
+                        },
+                        {
+                            "sitemap": {},
+                            "analytics": {
+                                "experiment": {
+                                    "name": "",
+                                    "variant": ""
+                                }
+                            },
+                            "tpl": "project",
+                            "data": {
+                                "img": "/static/img/lernapp.webp",
+                                "img_alt": "Digitale Lernapp für die Holzmanufaktur Harsewinkel e.V."
+                            },
+                            "copy": {
+                                "de": {
+                                    "h3": "Digitale Lernapp für die Holzmanufaktur Harsewinkel e.V.",
+                                    "text": "Eine Lernplattform-Prototyp auf dem Tablet für Schüler. Entwickelt für die Holzmanufaktur Harsewinkel e.V."
+                                },
+                                "en": {
+                                    "h3": "Digital Students App for the Holzmanufaktur Harsewinkel e.V.",
+                                    "text": "A learning platform prototype on tablets for students. Developed for Holzmanufaktur Harsewinkel e.V."
+                                }
+                            }
+                        },
+                        {
+                            "sitemap": {},
+                            "analytics": {
+                                "experiment": {
+                                    "name": "",
+                                    "variant": ""
+                                }
+                            },
+                            "tpl": "project",
+                            "data": {
+                                "img": "/static/img/emvi.png",
+                                "img_alt": "Emvi Knowledge Base"
+                            },
+                            "copy": {
+                                "de": {
+                                    "h3": "Emvi Wissensdatenbank",
+                                    "text": "Unsere leichtgewichtige Wikisoftware mit Echtzeit-Zusammenarbeit und einem leistungsstarken Editor. Dieses Projekt wurde zugunsten von Pirsch eingestellt."
+                                },
+                                "en": {
+                                    "h3": "Emvi Knowledge Base",
+                                    "text": "Our lightweight wiki software with real-time collaboration and a powerful editor. This project has since been discontinued in favor of Pirsch Analytics."
+                                }
+                            }
+                        },
+                        {
+                            "sitemap": {},
+                            "analytics": {
+                                "experiment": {
+                                    "name": "",
+                                    "variant": ""
+                                }
+                            },
+                            "tpl": "project",
+                            "data": {
+                                "link": "mailto:contact@emvi.com"
+                            },
+                            "copy": {
+                                "de": {
+                                    "contact": "Lass uns reden",
+                                    "contact_link": "/de/kontakt",
+                                    "h3": "Dein nächstes Projekt?",
+                                    "text": "Ob ein internes Tool für Dein Unternehmen oder eine hochverfügbare Software-as-a-Service - wir helfen Dir, Deine Ideen auf den Weg zu bringen!"
+                                },
+                                "en": {
+                                    "contact": "Let's chat",
+                                    "contact_link": "/contact",
+                                    "h3": "Your next project?",
+                                    "text": "Whether it's an internal tool for your company or a highly available Software-as-a-Service — we help you to get your ideas off the ground!"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "sitemap": {},
+                "analytics": {
+                    "experiment": {
+                        "name": "",
+                        "variant": ""
+                    }
+                },
+                "tpl": "text",
+                "data": {
+                    "button2_new_tab": "on",
+                    "button_new_tab": "on"
+                },
+                "copy": {
+                    "de": {
+                        "button": "Emvi auf GitHub",
+                        "button2": "Pirsch Analytics auf GitHub",
+                        "button2_link": "https://github.com/pirsch-analytics",
+                        "button_link": "https://github.com/emvi",
+                        "h2": "Open-Source Projekte",
+                        "h3": "Weitere Open-Source-Projekte von uns findest du auf GitHub",
+                        "text": "\u003cp\u003eFind a variety of open-source projects on GitHub.\u003c/p\u003e"
+                    },
+                    "en": {
+                        "button": "Emvi on GitHub",
+                        "button2": "Pirsch Analytics on GitHub",
+                        "button2_link": "https://github.com/pirsch-analytics",
+                        "button_link": "https://github.com/emvi",
+                        "h2": "Open-Source Projects",
+                        "h3": "Find More of Our Open-Source Projects on Github",
+                        "text": "\u003cp\u003eFind a variety of open-source projects on GitHub.\u003c/p\u003e"
+                    }
+                },
+                "content": {
+                    "content": []
+                }
+            },
+            {
+                "sitemap": {},
+                "analytics": {
+                    "experiment": {
+                        "name": "",
+                        "variant": ""
+                    }
+                },
+                "tpl": "services",
+                "copy": {
+                    "de": {
+                        "h2": "Unsere Softwareentwicklungs-Leistungen"
+                    },
+                    "en": {
+                        "h2": "Our Software Development Services"
+                    }
+                },
+                "content": {
+                    "content": [
+                        {
+                            "sitemap": {},
+                            "analytics": {
+                                "experiment": {
+                                    "name": "",
+                                    "variant": ""
+                                }
+                            },
+                            "tpl": "service",
+                            "copy": {
+                                "de": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Entwicklung kundenspezifischer Webanwendungen",
+                                    "text": "\u003cp\u003eTransformiere deine Geschäftsprozesse mit maßgeschneiderten Webanwendungen, die unter Verwendung moderner Frameworks und Technologien entwickelt wurden. Wir erstellen skalierbare, sichere und benutzerfreundliche Lösungen, die sich nahtlos in deine bestehenden Systeme integrieren lassen. Wir liefern Anwendungen, die mit deinem Unternehmen wachsen und eine außergewöhnliche Benutzererfahrung auf allen Geräten bieten, von komplexen Unternehmensplattformen bis hin zu optimierten Workflow-Tools.\u003c/p\u003e"
+                                },
+                                "en": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Custom Web Application Development",
+                                    "text": "\u003cp\u003eTransform your business processes with bespoke web applications built using modern frameworks and technologies. We create scalable, secure and user-friendly solutions that integrate seamlessly with your existing systems. We deliver applications that grow with your business and provide exceptional user experiences across all devices, from complex enterprise platforms to streamlined workflow tools.\u003c/p\u003e"
+                                }
+                            }
+                        },
+                        {
+                            "sitemap": {},
+                            "analytics": {
+                                "experiment": {
+                                    "name": "",
+                                    "variant": ""
+                                }
+                            },
+                            "tpl": "service",
+                            "copy": {
+                                "de": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Enterprise Software Lösungen",
+                                    "text": "\u003cp\u003eOptimiere deine Betriebsabläufe mit umfassender Unternehmenssoftware, die für komplexe Geschäftsanforderungen entwickelt wurde. Wir entwickeln unternehmenskritische Systemanwendungen, die Arbeitsabläufe automatisieren, die Effizienz verbessern und Echtzeit-Einblicke liefern. Unsere Unternehmenslösungen sind auf Skalierbarkeit, Sicherheit und nahtlose Integration in Ihre bestehende Technologieumgebung ausgelegt.\u003c/p\u003e"
+                                },
+                                "en": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Enterprise Software Solutions",
+                                    "text": "\u003cp\u003eStreamline your operations with comprehensive enterprise software designed to handle complex business requirements. We develop mission-critical system applications that automate workflows, improve efficiency, and provide real-time insights. Our enterprise solutions are built for scalability, security, and seamless integration with your existing technology stack.\u003c/p\u003e"
+                                }
+                            }
+                        },
+                        {
+                            "sitemap": {},
+                            "analytics": {
+                                "experiment": {
+                                    "name": "",
+                                    "variant": ""
+                                }
+                            },
+                            "tpl": "service",
+                            "copy": {
+                                "de": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "API Entwicklung und Integration",
+                                    "text": "\u003cp\u003eSchöpfe das volle Potenzial deiner Daten aus, indem du deine Systeme mit maßgeschneiderten APIs und Integrationen von Drittanbietern verbinden. Wir entwickeln RESTful-APIs und Microservices-Architekturen, um nahtlose Verbindungen zwischen verschiedenen Plattformen herzustellen, die einen reibungslosen Datenfluss und erweiterte Funktionen ermöglichen. Unsere Integrationsdienste helfen dir, vorhandene Tools optimal zu nutzen und gleichzeitig neue Funktionen zu entwickeln, um das Wachstum deines Unternehmens voranzutreiben.\u003c/p\u003e"
+                                },
+                                "en": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "API Development and Integration",
+                                    "text": "\u003cp\u003eUnlock the full potential of your data by connecting your systems with custom API development and third-party integrations. We develop RESTful APIs and microservices architectures to create seamless connections between different platforms, enabling smooth data flow and enhanced functionality. Our integration services help you make the most of existing tools while developing new capabilities to drive business growth.\u003c/p\u003e"
+                                }
+                            }
+                        },
+                        {
+                            "sitemap": {},
+                            "analytics": {
+                                "experiment": {
+                                    "name": "",
+                                    "variant": ""
+                                }
+                            },
+                            "tpl": "service",
+                            "copy": {
+                                "de": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Datenbankdesign und Optimierung",
+                                    "text": "\u003cp\u003eOptimiere die Leistung deiner Anwendungen mit unseren fachmännisch entwickelten Datenbanklösungen. Wir erstellen effiziente Datenbankarchitekturen, implementieren Datenmigrationsstrategien und optimieren Abfragen, um die Leistung zu maximieren. Unsere umfassenden Datenbankdienstleistungen umfassen Backup- und Wiederherstellungslösungen, Sicherheitsimplementierung und laufende Wartung, damit deine Daten sicher und zugänglich bleiben.\u003c/p\u003e"
+                                },
+                                "en": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Database Design and Optimization",
+                                    "text": "\u003cp\u003eOptimise the performance of your applications with our expertly designed database solutions. We create efficient database architectures, implement data migration strategies and optimise queries to maximise performance. Our comprehensive database services include backup and recovery solutions, security implementation and ongoing maintenance, ensuring your data remains both safe and accessible.\u003c/p\u003e"
+                                }
+                            }
+                        },
+                        {
+                            "sitemap": {},
+                            "analytics": {
+                                "experiment": {
+                                    "name": "",
+                                    "variant": ""
+                                }
+                            },
+                            "tpl": "service",
+                            "copy": {
+                                "de": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Cloud-Lösungen und Migrationen",
+                                    "text": "\u003cp\u003eNutze die Leistungsfähigkeit des Cloud Computing mit unseren maßgeschneiderten Cloud-nativen Anwendungen und nahtlosen Migrationsdiensten. Wir helfen dir dabei, deine bestehenden Anwendungen in die Cloud zu verlagern, neue Cloud-First-Lösungen zu entwickeln und skalierbare Architekturen mit Hetzner, AWS, Azure oder der Google Cloud Platform zu implementieren. Dank unserer Cloud-Expertise können wir eine hohe Verfügbarkeit, Kostenoptimierung und verbesserte Sicherheit für deine Anwendungen gewährleisten.\u003c/p\u003e"
+                                },
+                                "en": {
+                                    "button": "Learn more",
+                                    "button_link": "/cloud-infrastructure",
+                                    "h3": "Cloud Solutions and Migration",
+                                    "text": "\u003cp\u003eLeverage the power of cloud computing with our custom cloud-native applications and seamless migration services. We can help you to move your existing applications to the cloud, develop new cloud-first solutions and implement scalable architectures using Hetzner, AWS, Azure or the Google Cloud Platform. Thanks to our cloud expertise, we can ensure high availability, cost optimisation and enhanced security for your applications.\u003c/p\u003e"
+                                }
+                            }
+                        },
+                        {
+                            "sitemap": {},
+                            "analytics": {
+                                "experiment": {
+                                    "name": "",
+                                    "variant": ""
+                                }
+                            },
+                            "tpl": "service",
+                            "copy": {
+                                "de": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Softwarewartung und Support",
+                                    "text": "\u003cp\u003eSorge mit unseren umfassenden Wartungs- und Supportleistungen für einen reibungslosen Betrieb deiner Anwendungen. Wir bieten regelmäßige Updates und Sicherheitspatches sowie Leistungsüberwachung und technischen Support, damit deine Software auch weiterhin den sich wandelnden Anforderungen deines Unternehmens gerecht wird. Unser proaktiver Ansatz identifiziert potenzielle Probleme, bevor sie sich auf den Betrieb auswirken, und trägt so zur Aufrechterhaltung einer optimalen Leistung und Benutzerzufriedenheit bei.\u003c/p\u003e"
+                                },
+                                "en": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Software Maintenance and Support",
+                                    "text": "\u003cp\u003eEnsure your applications run smoothly with our comprehensive maintenance and support services. We provide regular updates and security patches, as well as performance monitoring and technical support, to ensure that your software continues to meet your business's evolving needs. Our proactive approach identifies potential issues before they affect your operations, helping to maintain optimal performance and user satisfaction.\u003c/p\u003e"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "sitemap": {},
+                "analytics": {
+                    "experiment": {
+                        "name": "",
+                        "variant": ""
+                    }
+                },
+                "tpl": "services",
+                "data": {
+                    "bg": "on"
+                },
+                "copy": {
+                    "de": {
+                        "h2": "Wie maßgeschneiderte Software deinem Unternehmen zugute kommt"
+                    },
+                    "en": {
+                        "h2": "How Custom Software Benefits Your Business"
+                    }
+                },
+                "content": {
+                    "content": [
+                        {
+                            "sitemap": {},
+                            "analytics": {
+                                "experiment": {
+                                    "name": "",
+                                    "variant": ""
+                                }
+                            },
+                            "tpl": "service",
+                            "copy": {
+                                "de": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Erhöhte betriebliche Effizienz",
+                                    "text": "\u003cp\u003eMaßgeschneiderte Software macht manuelle Prozesse überflüssig und automatisiert sich wiederholende Aufgaben, sodass sich dein Team auf wertschöpfende Tätigkeiten konzentrieren kann. Durch die Optimierung von Arbeitsabläufen und die Reduzierung menschlicher Fehler erzielest du erhebliche Verbesserungen bei der Produktivität und den Betriebskosten.\u003c/p\u003e"
+                                },
+                                "en": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Increased Operational Efficiency",
+                                    "text": "\u003cp\u003eCustom software eliminates manual processes and automates repetitive tasks, allowing your team to focus on high-value activities. By streamlining workflows and reducing human error, you'll see significant improvements in productivity and operational costs.\u003c/p\u003e"
+                                }
+                            }
+                        },
+                        {
+                            "sitemap": {},
+                            "analytics": {
+                                "experiment": {
+                                    "name": "",
+                                    "variant": ""
+                                }
+                            },
+                            "tpl": "service",
+                            "copy": {
+                                "de": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Skalierbare Wachstumslösungen",
+                                    "text": "\u003cp\u003eIm Gegensatz zu Standardsoftware können maßgeschneiderte Anwendungen so skaliert werden, dass sie mit deinem Unternehmen mitwachsen. Wir entwickeln flexible Architekturen, die eine steigende Nutzerzahl, zusätzliche Funktionen und wachsende Datenanforderungen bewältigen können, ohne die Leistung zu beeinträchtigen. So stellst du sicher, dass deine Softwareinvestition auch bei der Weiterentwicklung deines Unternehmens weiterhin einen Mehrwert liefert, ohne dass kostspielige Neuanschaffungen oder größere Überarbeitungen erforderlich sind.\u003c/p\u003e"
+                                },
+                                "en": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Scalable Growth Solutions",
+                                    "text": "\u003cp\u003eUnlike off-the-shelf software, custom applications can be scaled to grow with your business. We develop flexible architectures that can handle increased user numbers, extra features and growing data requirements without compromising performance. This ensures that your software investment continues to deliver value as your company evolves, eliminating the need for costly replacements or major overhauls.\u003c/p\u003e"
+                                }
+                            }
+                        },
+                        {
+                            "sitemap": {},
+                            "analytics": {
+                                "experiment": {
+                                    "name": "",
+                                    "variant": ""
+                                }
+                            },
+                            "tpl": "service",
+                            "copy": {
+                                "de": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Wettbewerbsvorteil am Markt",
+                                    "text": "\u003cp\u003eMaßgeschneiderte Software bietet einzigartige Funktionen, mit denen sich dein Unternehmen von Mitbewerbern abhebt, die generische Lösungen einsetzen. Durch die Implementierung von Funktionen, die speziell für Ihre Branche und Ihr Geschäftsmodell entwickelt wurden, könnst du erstklassige Dienstleistungen anbieten, das Kundenerlebnis verbessern und Marktchancen nutzen, die mit standardisierter Software nicht realisierbar sind. Dieser technologische Vorsprung führt direkt zu Wettbewerbsvorteilen und Umsatzwachstum.\u003c/p\u003e"
+                                },
+                                "en": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Competitive Market Advantage",
+                                    "text": "\u003cp\u003eCustom software provides unique capabilities, setting your business apart from competitors using generic solutions. By implementing features that are specifically designed for your industry and business model, you can offer superior services, enhance customer experiences and seize market opportunities that standardised software cannot address. This technological advantage translates directly into competitive advantage and revenue growth.\u003c/p\u003e"
+                                }
+                            }
+                        },
+                        {
+                            "sitemap": {},
+                            "analytics": {
+                                "experiment": {
+                                    "name": "",
+                                    "variant": ""
+                                }
+                            },
+                            "tpl": "service",
+                            "copy": {
+                                "de": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Vollständige Kontrolle und Eigentumsrechte",
+                                    "text": "\u003cp\u003eÜbernimm die vollständige Verantwortung für deine Software, frei von Lizenzbeschränkungen, Abhängigkeiten von Anbietern und wiederkehrenden Abonnementgebühren. Mit einer individuellen Entwicklung hast du die volle Kontrolle über Funktionen, Updates und Integrationen, sodass du die Software an die sich ändernden Anforderungen deines Unternehmens anpassen kannst. Diese Eigenverantwortung eliminiert das Risiko einer Anbieterabhängigkeit und stellt sicher, dass Ihre wichtigen Geschäftstools verfügbar bleiben und sich nach deinem Zeitplan anpassen lassen.\u003c/p\u003e"
+                                },
+                                "en": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Complete Control and Ownership",
+                                    "text": "\u003cp\u003eTake complete ownership of your software, free from licensing restrictions, vendor dependencies and recurring subscription fees. With custom development, you have full control over features, updates and integrations, so you can modify the software as your business needs change. This ownership eliminates the risk of vendor lock-in and ensures that your critical business tools remain available and customisable according to your timeline.\u003c/p\u003e"
+                                }
+                            }
+                        },
+                        {
+                            "sitemap": {},
+                            "analytics": {
+                                "experiment": {
+                                    "name": "",
+                                    "variant": ""
+                                }
+                            },
+                            "tpl": "service",
+                            "copy": {
+                                "de": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Kostengünstige langfristige Investition",
+                                    "text": "\u003cp\u003eObwohl die anfänglichen Entwicklungskosten für maßgeschneiderte Software höher sein können als die für Standardlösungen, bietet sie langfristig einen höheren Mehrwert durch geringere Lizenzgebühren, den Wegfall unnötiger Funktionen und niedrigere Integrationskosten. Die speziell für deine Prozesse entwickelte Software erfordert weniger Schulungs- und Supportaufwand und sorgt für höhere Produktivitätssteigerungen, die die Anfangsinvestition durch betriebliche Einsparungen schnell amortisieren.\u003c/p\u003e"
+                                },
+                                "en": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Cost-Effective Long-Term Investment",
+                                    "text": "\u003cp\u003eAlthough the initial development costs of custom software may be higher than those of off-the-shelf solutions, it provides superior long-term value through reduced licensing fees, the elimination of unnecessary features and lower integration costs. Built specifically for your processes, the software requires less training and support, delivering higher productivity gains that quickly offset the initial investment through operational savings.\u003c/p\u003e"
+                                }
+                            }
+                        },
+                        {
+                            "sitemap": {},
+                            "analytics": {
+                                "experiment": {
+                                    "name": "",
+                                    "variant": ""
+                                }
+                            },
+                            "tpl": "service",
+                            "copy": {
+                                "de": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Nahtlose Systemintegration",
+                                    "text": "\u003cp\u003eVerbinde deine Geschäftstools und Datenquellen über benutzerdefinierte Integrationen, um Datensilos und die Notwendigkeit manueller Dateneingaben zu vermeiden. Wir stellen nahtlose Verbindungen zwischen deinen bestehenden Systemen, Datenbanken und Drittanbieterdiensten her und sorgen so für einen konsistenten Informationsfluss im gesamten Unternehmen. Diese Integrationen reduzieren Fehler, verbessern die Datengenauigkeit und liefern umfassende Einblicke für eine bessere Entscheidungsfindung.\u003c/p\u003e"
+                                },
+                                "en": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Seamless System Integration",
+                                    "text": "\u003cp\u003eConnect all your business tools and data sources via custom integrations to eliminate data silos and the need for manual data entry. We establish seamless connections between your existing systems, databases and third-party services, ensuring a consistent flow of information across your organisation. These integrations reduce errors, improve data accuracy and provide comprehensive insights for better decision-making.\u003c/p\u003e"
+                                }
+                            }
+                        },
+                        {
+                            "sitemap": {},
+                            "analytics": {
+                                "experiment": {
+                                    "name": "",
+                                    "variant": ""
+                                }
+                            },
+                            "tpl": "service",
+                            "copy": {
+                                "de": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Engagierter technischer Support",
+                                    "text": "\u003cp\u003eErhalte personalisierten Support von Entwicklern, die deine Software in- und auswendig kennen. Im Gegensatz zu anderen Support-Teams, die mehrere Produkte betreuen, verfügen wir über fundierte Kenntnisse deiner spezifischen Anwendung, sodass wir Probleme schneller lösen und dir effektiver helfen können. Dieser dedizierte Support-Service trägt dazu bei, Ausfallzeiten zu minimieren und Probleme schnell zu beheben.\u003c/p\u003e"
+                                },
+                                "en": {
+                                    "button": "",
+                                    "button_link": "",
+                                    "h3": "Dedicated Technical Support",
+                                    "text": "\u003cp\u003eReceive personalised support from developers who know your software inside out. Unlike generic support teams handling multiple products, we have in-depth knowledge of your specific application, enabling us to resolve problems faster and provide more effective assistance. This dedicated support service helps to minimise downtime and resolve any issues quickly.\u003c/p\u003e"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "sitemap": {},
+                "analytics": {
+                    "experiment": {
+                        "name": "",
+                        "variant": ""
+                    }
+                },
+                "tpl": "techstack",
+                "copy": {
+                    "de": {
+                        "h2": "Technologien",
+                        "h3": "Ein moderner Techstack",
+                        "text": "\u003cp\u003eWir verwenden bewährte Tools, um schnelle und zuverlässige Ergebnisse zu liefern. Zu unseren bevorzugten Tools gehören Go, VueJS und PostgreSQL auf HashiCorp-Infrastruktur und Hetzner-Servern. Wenn du bereits über eine bestehendes System verfügen, arbeiten wir gerne mit deinen Programmiersprachen und Technologien.\u003c/p\u003e"
+                    },
+                    "en": {
+                        "h2": "Technologies",
+                        "h3": "A Modern Techstack",
+                        "text": "\u003cp\u003eWe use battle-tested tools to deliver fast and reliable results. Our preferred stack includes Go, VueJS and PostgreSQL on HashiCorp infrastructure and Hetzner servers. If you already have a setup in place, we are happy to work with your programming languages and technologies.\u003c/p\u003e"
+                    }
+                }
+            },
+            {
+                "sitemap": {},
+                "analytics": {
+                    "experiment": {
+                        "name": "",
+                        "variant": ""
+                    }
+                },
+                "tpl": "cta",
+                "copy": {
+                    "de": {
+                        "contact": "Jetzt anfragen",
+                        "contact_link": "/de/kontakt",
+                        "text": "Bereit, deine Prozesse zu automatisieren?"
+                    },
+                    "en": {
+                        "contact": "Reach out now",
+                        "contact_link": "/contact",
+                        "text": "Ready to automate your processes?"
+                    }
+                }
+            },
+            {
+                "sitemap": {},
+                "analytics": {
+                    "experiment": {
+                        "name": "",
+                        "variant": ""
+                    }
+                },
+                "ref": "footer"
+            },
+            {
+                "sitemap": {},
+                "analytics": {
+                    "experiment": {
+                        "name": "",
+                        "variant": ""
+                    }
+                },
+                "ref": "end"
+            }
+        ]
+    }
+}

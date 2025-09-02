@@ -1,3 +1,8 @@
+{{ $button := copy .Page .Content "button" }}
+{{ $button2 := copy .Page .Content "button2" }}
+{{ $buttonNewTab := get .Content "button_new_tab" }}
+{{ $button2NewTab := get .Content "button2_new_tab" }}
+
 <section class="text {{ if get .Content "bg-white" }}text-white{{ end }}" data-aos="fade-in" data-shifu-element="{{ .Content.Position }}">
     <div class="content">
         <h2>{{ copy .Page .Content "h2" }}</h2>
@@ -10,10 +15,24 @@
                 <slot name="{{ .Content.Position }}/content"></slot>
             {{ end }}
 
-            {{ if (copy .Page .Content "button") }}
-                <a href="{{ copy .Page .Content "button_link" }}" class="button">
-                    {{ copy .Page .Content "button" }}
+            {{ if and $button $button2 }}
+                <div style="display: flex;gap: 8px;">
+            {{ end }}
+
+            {{ if $button }}
+                <a href="{{ copy .Page .Content "button_link" }}" {{ if $buttonNewTab }}target="_blank"{{ end }} class="button">
+                    {{ $button }}
                 </a>
+            {{ end }}
+
+            {{ if $button2 }}
+                <a href="{{ copy .Page .Content "button2_link" }}" {{ if $button2NewTab }}target="_blank"{{ end }} class="button">
+                    {{ $button2 }}
+                </a>
+            {{ end }}
+
+            {{ if and $button $button2 }}
+                </div>
             {{ end }}
         </div>
     </div>

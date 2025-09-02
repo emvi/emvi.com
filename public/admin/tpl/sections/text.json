@@ -22,6 +22,22 @@
         },
         "button_link": {
             "label": "Button Link"
+        },
+        "button2": {
+            "label": "Button 2"
+        },
+        "button2_link": {
+            "label": "Button 2 Link"
+        }
+    },
+    "data": {
+        "button_new_tab": {
+            "label": "Button neuer Tab",
+            "type": "boolean"
+        },
+        "button2_new_tab": {
+            "label": "Button 2 neuer Tab",
+            "type": "boolean"
         }
     }
 }

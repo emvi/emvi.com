@@ -55,6 +55,61 @@
                         "variant": ""
                     }
                 },
+                "tpl": "start",
+                "data": {
+                    "bg": ""
+                },
+                "copy": {
+                    "de": {
+                        "h1": "Cloud-Infrastruktur und -Entwicklung aus Rheda-Wiedenbrück.",
+                        "text": "\u003cp\u003eStabilität und Verfügbarkeit sind der Schlüssel zum Erfolg. Unsere Erfahrung mit den neuesten Cloud-Technologien gewährleisten einen unterbrechungsfreien Service für dein Team oder Kunden und hält die Kosten niedrig.\u003c/p\u003e"
+                    },
+                    "en": {
+                        "h1": "Cloud Infrastructure and Development Made in Germany.",
+                        "text": "\u003cp\u003eStability and availability are the keys to success. Our experience with the latest cloud technologies ensures uninterrupted service for your team or customers and keeps costs low.\u003c/p\u003e"
+                    }
+                }
+            },
+            {
+                "sitemap": {},
+                "analytics": {
+                    "experiment": {
+                        "name": "",
+                        "variant": ""
+                    }
+                },
+                "ref": "about_us"
+            },
+            {
+                "sitemap": {},
+                "analytics": {
+                    "experiment": {
+                        "name": "",
+                        "variant": ""
+                    }
+                },
+                "tpl": "cta",
+                "copy": {
+                    "de": {
+                        "contact": "Jetzt anfragen",
+                        "contact_link": "/de/kontakt",
+                        "text": "Bist du bereit für den Umstieg auf die Cloud?"
+                    },
+                    "en": {
+                        "contact": "Reach out now",
+                        "contact_link": "/contact",
+                        "text": "Are you ready to move to the cloud?"
+                    }
+                }
+            },
+            {
+                "sitemap": {},
+                "analytics": {
+                    "experiment": {
+                        "name": "",
+                        "variant": ""
+                    }
+                },
                 "ref": "footer"
             },
             {

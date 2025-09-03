@@ -5,14 +5,15 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/altcha-org/altcha-lib-go"
-	"github.com/emvi/emvi.com/pkg/config"
-	"github.com/emvi/shifu/pkg/cms"
 	"log/slog"
 	"net/http"
 	"net/smtp"
 	"strings"
 	"unicode/utf8"
+
+	"github.com/altcha-org/altcha-lib-go"
+	"github.com/emvi/emvi.com/pkg/config"
+	"github.com/emvi/shifu/pkg/cms"
 )
 
 func ContactForm(cms *cms.CMS, page cms.Content, args map[string]string, w http.ResponseWriter, r *http.Request) {
@@ -52,7 +53,7 @@ func ContactForm(cms *cms.CMS, page cms.Content, args map[string]string, w http.
 					return
 				}
 
-				page.Data["success"] = true
+				page.Data["success"] = "true"
 				slog.Info("Email sent")
 			}
 		}

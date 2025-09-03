@@ -31,6 +31,10 @@
         }
     },
     "data": {
+        "bg-white": {
+            "label": "Hintergrund weiß",
+            "type": "boolean"
+        },
         "button_new_tab": {
             "label": "Button neuer Tab",
             "type": "boolean"

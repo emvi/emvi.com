@@ -1,12 +1,17 @@
+{{ $success := get .Page "success" }}
+
 <section class="contact" data-aos="fade-in" data-shifu-element="{{ .Content.Position }}">
     <div class="content">
         <h2>{{ copy .Page .Content "h2" }}</h2>
-        {{ $success := get .Page "success" }}
 
+        <p>{{ $success }}</p>
+        <p>{{ copy .Page .Content "form_success" }}</p>
+        
         {{ if $success }}
             <p>{{ copy .Page .Content "form_success" }}</p>
         {{ else }}
             {{ html (copy .Page .Content "text") }}
+
             <div class="box">
                 {{ $e := get .Page "error" }}
 

@@ -2,15 +2,16 @@ package content
 
 import (
 	"fmt"
+	"html/template"
+	"log/slog"
+	"net/http"
+	"path/filepath"
+
 	"github.com/emvi/shifu/pkg/admin/tpl"
 	"github.com/emvi/shifu/pkg/admin/ui"
 	"github.com/emvi/shifu/pkg/admin/ui/shared"
 	"github.com/emvi/shifu/pkg/cfg"
 	"github.com/emvi/shifu/pkg/cms"
-	"html/template"
-	"log/slog"
-	"net/http"
-	"path/filepath"
 )
 
 // PageTree is the data required to render the page tree.
@@ -25,6 +26,7 @@ type PageTree struct {
 	ElementPosition  string
 	ElementDirection string
 	AddElement       template.HTML
+	UpdateElement    template.HTML
 	MoveElement      string
 	DeleteElement    string
 }

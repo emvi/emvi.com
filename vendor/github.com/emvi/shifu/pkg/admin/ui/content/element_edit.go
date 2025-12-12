@@ -2,13 +2,16 @@ package content
 
 import (
 	"fmt"
+	htmlTpl "html/template"
+	"log/slog"
+	"net/http"
+	"slices"
+	"strings"
+
 	"github.com/emvi/shifu/pkg/admin/tpl"
 	"github.com/emvi/shifu/pkg/admin/ui"
 	"github.com/emvi/shifu/pkg/admin/ui/shared"
 	"github.com/emvi/shifu/pkg/cms"
-	"log/slog"
-	"net/http"
-	"strings"
 )
 
 // EditElement updates the copy and data for an element.
@@ -81,6 +84,7 @@ func EditElement(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
+		element.DisplayName = r.FormValue("display_name")
 		element.Copy = getCopyFromRequest(r)
 		element.Data = getDataFromRequest(r)
 
@@ -103,7 +107,7 @@ func EditElement(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
-		body, err := content.RenderElement(w, r, page, elementPath, element)
+		updatedElement, err := content.RenderElement(w, r, page, elementPath, element)
 
 		if err != nil {
 			slog.Error("Error rendering updated element", "error", err)
@@ -111,12 +115,17 @@ func EditElement(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		w.Header().Set("HX-Retarget", fmt.Sprintf("[data-shifu-element='%s']", elementPath))
-
-		if _, err := w.Write(body); err != nil {
-			slog.Error("Error sending updated element", "error", err)
-		}
-
+		setTemplateNames(page)
+		w.Header().Add("HX-Reswap", "innerHTML")
+		tpl.Get().Execute(w, "page-tree.html", PageTree{
+			Language:        shared.GetLanguage(r),
+			Lang:            tpl.GetUILanguage(r),
+			Path:            path,
+			Page:            page,
+			Positions:       tplCfgCache.GetPositions(),
+			ElementPosition: elementPath,
+			UpdateElement:   htmlTpl.HTML(updatedElement),
+		})
 		go content.Update()
 		return
 	}
@@ -193,6 +202,7 @@ func getPageLanguages(page *cms.Content) []string {
 		keys = append(keys, k)
 	}
 
+	slices.Sort(keys)
 	return keys
 }
 

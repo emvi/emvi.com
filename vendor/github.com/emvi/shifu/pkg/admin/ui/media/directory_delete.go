@@ -1,14 +1,16 @@
 package media
 
 import (
-	"github.com/emvi/shifu/pkg/admin/tpl"
-	"github.com/emvi/shifu/pkg/admin/ui"
-	"github.com/emvi/shifu/pkg/cfg"
 	"log/slog"
 	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/emvi/shifu/pkg/admin/tpl"
+	"github.com/emvi/shifu/pkg/admin/ui"
+	"github.com/emvi/shifu/pkg/admin/ui/shared"
+	"github.com/emvi/shifu/pkg/cfg"
 )
 
 // DeleteDirectory deletes a directory.
@@ -33,14 +35,14 @@ func DeleteDirectory(w http.ResponseWriter, r *http.Request) {
 
 		tpl.Get().Execute(w, "media-tree.html", struct {
 			Lang            string
-			Directories     []Directory
+			Directories     []shared.Directory
 			Interactive     bool
 			Selection       bool
 			SelectionTarget string
 			SelectionField  SelectionField
 		}{
 			Lang:        tpl.GetUILanguage(r),
-			Directories: listDirectories(w),
+			Directories: shared.ListDirectories(w, mediaDir, false),
 			Interactive: true,
 		})
 		return

@@ -1,14 +1,8 @@
 package pages
 
 import (
+	"errors"
 	"fmt"
-	"github.com/emvi/iso-639-1"
-	"github.com/emvi/shifu/pkg/admin/tpl"
-	"github.com/emvi/shifu/pkg/admin/ui"
-	"github.com/emvi/shifu/pkg/admin/ui/shared"
-	"github.com/emvi/shifu/pkg/cfg"
-	"github.com/emvi/shifu/pkg/cms"
-	"github.com/emvi/shifu/pkg/middleware"
 	"io/fs"
 	"log/slog"
 	"net/http"
@@ -17,31 +11,44 @@ import (
 	"strconv"
 	"strings"
 	"unicode"
+
+	"github.com/emvi/iso-639-1"
+	"github.com/emvi/shifu/pkg/admin/tpl"
+	"github.com/emvi/shifu/pkg/admin/ui"
+	"github.com/emvi/shifu/pkg/admin/ui/shared"
+	"github.com/emvi/shifu/pkg/cfg"
+	"github.com/emvi/shifu/pkg/cms"
+	"github.com/emvi/shifu/pkg/middleware"
 )
 
 // SavePageData is the data for the page form.
 type SavePageData struct {
-	Admin     bool
-	Lang      string
-	Name      string
-	PagePath  map[string]string
-	Cache     bool
-	Sitemap   float64
-	Handler   string
-	Path      string
-	Header    map[string]string
-	Errors    map[string]string
-	New       bool
-	Saved     bool
-	Languages map[string]iso6391.Language
+	Admin          bool
+	Lang           string
+	Directories    []shared.Directory
+	SelectionField string
+	SelectionID    string
+	Name           string
+	PagePath       map[string]string
+	Cache          bool
+	Sitemap        float64
+	Handler        string
+	Path           string
+	Selected       string
+	Header         map[string]string
+	Errors         map[string]string
+	New            bool
+	Saved          bool
+	Languages      map[string]iso6391.Language
 }
 
 // SavePage creates or updates a page.
 func SavePage(w http.ResponseWriter, r *http.Request) {
-	path := strings.TrimSpace(r.URL.Query().Get("path"))
+	path := strings.TrimSuffix(strings.TrimSpace(r.URL.Query().Get("path")), "/")
 
 	if r.Method == http.MethodPost {
 		overwrite := strings.HasSuffix(path, ".json")
+		parent := strings.TrimSpace(r.FormValue("parent"))
 		name := strings.TrimSpace(r.FormValue("name"))
 		cache := strings.ToLower(strings.TrimSpace(r.FormValue("cache"))) == "on"
 		sitemap := strings.TrimSpace(r.FormValue("sitemap"))
@@ -53,6 +60,14 @@ func SavePage(w http.ResponseWriter, r *http.Request) {
 		pagePath := make(map[string]string)
 		header := make(map[string]string)
 		errs := make(map[string]string)
+
+		if path != parent {
+			p := filepath.Join(parent, name+".json")
+
+			if _, err := os.Stat(getPagePath(p)); !errors.Is(err, fs.ErrNotExist) {
+				errs["parent"] = "a different page with this name exists already"
+			}
+		}
 
 		for k, v := range r.Form {
 			if k == "language[]" {
@@ -134,18 +149,22 @@ func SavePage(w http.ResponseWriter, r *http.Request) {
 		if len(errs) > 0 {
 			w.WriteHeader(http.StatusBadRequest)
 			tpl.Get().Execute(w, "pages-page-save-form.html", SavePageData{
-				Admin:     middleware.IsAdmin(r),
-				Lang:      tpl.GetUILanguage(r),
-				Name:      name,
-				PagePath:  pagePath,
-				Cache:     cache,
-				Sitemap:   sitemapFloat,
-				Handler:   handler,
-				Path:      path,
-				Header:    header,
-				Errors:    errs,
-				New:       true,
-				Languages: iso6391.Languages,
+				Admin:          middleware.IsAdmin(r),
+				Lang:           tpl.GetUILanguage(r),
+				Directories:    shared.ListDirectories(w, contentDir, true),
+				SelectionField: "parent",
+				SelectionID:    "page-save",
+				Name:           name,
+				PagePath:       pagePath,
+				Cache:          cache,
+				Sitemap:        sitemapFloat,
+				Handler:        handler,
+				Path:           path,
+				Selected:       getDirectory(filepath.Dir(path)),
+				Header:         header,
+				Errors:         errs,
+				New:            true,
+				Languages:      iso6391.Languages,
 			})
 			return
 		} else {
@@ -177,7 +196,8 @@ func SavePage(w http.ResponseWriter, r *http.Request) {
 					Header:  header,
 					Handler: handler,
 				}
-				path = filepath.Join(path, name+".json")
+				path = filepath.Join(parent, name+".json")
+				outPath = getPagePath(path)
 			}
 
 			if err := shared.SavePage(page, outPath); err != nil {
@@ -185,9 +205,9 @@ func SavePage(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 
-			// rename the file if name changed
-			if overwrite && getPageName(filepath.Base(outPath)) != name {
-				path = filepath.Join(filepath.Dir(path), name+".json")
+			// rename the file if name or parent directory changed
+			if overwrite && (getPageName(filepath.Base(outPath)) != name || path != parent) {
+				path = filepath.Join(parent, name+".json")
 
 				if err := os.Rename(outPath, getPagePath(path)); err != nil {
 					slog.Error("Error renaming page", "error", err)
@@ -212,17 +232,21 @@ func SavePage(w http.ResponseWriter, r *http.Request) {
 				Lang:       lang,
 			},
 			SavePageData: SavePageData{
-				Admin:     middleware.IsAdmin(r),
-				Lang:      lang,
-				Name:      name,
-				PagePath:  pagePath,
-				Cache:     cache,
-				Sitemap:   sitemapFloat,
-				Handler:   handler,
-				Path:      path,
-				Header:    header,
-				Saved:     true,
-				Languages: iso6391.Languages,
+				Admin:          middleware.IsAdmin(r),
+				Lang:           lang,
+				Directories:    shared.ListDirectories(w, contentDir, true),
+				SelectionField: "parent",
+				SelectionID:    "page-save",
+				Name:           name,
+				PagePath:       pagePath,
+				Cache:          cache,
+				Sitemap:        sitemapFloat,
+				Handler:        handler,
+				Selected:       getDirectory(filepath.Dir(path)),
+				Path:           path,
+				Header:         header,
+				Saved:          true,
+				Languages:      iso6391.Languages,
 			},
 			Entries: listEntries(w),
 		})
@@ -231,13 +255,17 @@ func SavePage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	tpl.Get().Execute(w, "pages-page-save-form.html", SavePageData{
-		Admin:     middleware.IsAdmin(r),
-		Lang:      tpl.GetUILanguage(r),
-		PagePath:  map[string]string{"de": "/"},
-		Path:      path,
-		Sitemap:   1,
-		New:       true,
-		Languages: iso6391.Languages,
+		Admin:          middleware.IsAdmin(r),
+		Lang:           tpl.GetUILanguage(r),
+		Directories:    shared.ListDirectories(w, contentDir, true),
+		SelectionField: "parent",
+		SelectionID:    "page-save",
+		PagePath:       map[string]string{"de": "/"},
+		Selected:       getDirectory(path),
+		Path:           path,
+		Sitemap:        1,
+		New:            true,
+		Languages:      iso6391.Languages,
 	})
 }
 

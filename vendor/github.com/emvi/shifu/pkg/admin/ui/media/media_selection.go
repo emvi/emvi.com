@@ -1,10 +1,12 @@
 package media
 
 import (
-	"github.com/emvi/shifu/pkg/admin/tpl"
-	"github.com/emvi/shifu/pkg/admin/ui"
 	"net/http"
 	"strings"
+
+	"github.com/emvi/shifu/pkg/admin/tpl"
+	"github.com/emvi/shifu/pkg/admin/ui"
+	"github.com/emvi/shifu/pkg/admin/ui/shared"
 )
 
 // SelectionField is the data for the media selection.
@@ -65,7 +67,7 @@ func Selection(w http.ResponseWriter, r *http.Request) {
 		WindowOptions   ui.WindowOptions
 		Lang            string
 		Path            string
-		Directories     []Directory
+		Directories     []shared.Directory
 		Files           []File
 		Interactive     bool
 		Selection       bool
@@ -81,7 +83,7 @@ func Selection(w http.ResponseWriter, r *http.Request) {
 			Lang:       lang,
 		},
 		Lang:            lang,
-		Directories:     listDirectories(w),
+		Directories:     shared.ListDirectories(w, mediaDir, false),
 		Selection:       true,
 		SelectionTarget: target,
 		SelectionField: SelectionField{

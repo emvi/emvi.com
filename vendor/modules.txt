@@ -19,7 +19,7 @@ github.com/emvi/iso-639-1
 # github.com/emvi/null v1.3.1
 ## explicit
 github.com/emvi/null
-# github.com/emvi/shifu v1.2.1
+# github.com/emvi/shifu v1.3.0
 ## explicit; go 1.25.0
 github.com/emvi/shifu/pkg
 github.com/emvi/shifu/pkg/admin/db
@@ -45,7 +45,7 @@ github.com/emvi/shifu/pkg/sitemap
 github.com/emvi/shifu/pkg/source
 github.com/emvi/shifu/pkg/static
 github.com/emvi/shifu/static
-# github.com/evanw/esbuild v0.25.9
+# github.com/evanw/esbuild v0.27.1
 ## explicit; go 1.13
 github.com/evanw/esbuild/internal/api_helpers
 github.com/evanw/esbuild/internal/ast
@@ -76,7 +76,7 @@ github.com/evanw/esbuild/pkg/api
 ## explicit; go 1.17
 github.com/fsnotify/fsnotify
 github.com/fsnotify/fsnotify/internal
-# github.com/go-chi/chi/v5 v5.2.2
+# github.com/go-chi/chi/v5 v5.2.3
 ## explicit; go 1.20
 github.com/go-chi/chi/v5
 # github.com/go-chi/cors v1.2.2
@@ -92,8 +92,8 @@ github.com/huandu/xstrings
 ## explicit; go 1.10
 github.com/jmoiron/sqlx
 github.com/jmoiron/sqlx/reflectx
-# github.com/klauspost/compress v1.18.0
-## explicit; go 1.22
+# github.com/klauspost/compress v1.18.2
+## explicit; go 1.23
 github.com/klauspost/compress
 github.com/klauspost/compress/flate
 github.com/klauspost/compress/fse
@@ -122,7 +122,7 @@ github.com/pirsch-analytics/pirsch-go-sdk/v2/pkg
 # github.com/shopspring/decimal v1.4.0
 ## explicit; go 1.10
 github.com/shopspring/decimal
-# github.com/spf13/cast v1.9.2
+# github.com/spf13/cast v1.10.0
 ## explicit; go 1.21.0
 github.com/spf13/cast
 github.com/spf13/cast/internal
@@ -137,13 +137,13 @@ github.com/yuin/goldmark/renderer
 github.com/yuin/goldmark/renderer/html
 github.com/yuin/goldmark/text
 github.com/yuin/goldmark/util
-# golang.org/x/crypto v0.41.0
-## explicit; go 1.23.0
+# golang.org/x/crypto v0.46.0
+## explicit; go 1.24.0
 golang.org/x/crypto/bcrypt
 golang.org/x/crypto/blowfish
 golang.org/x/crypto/pbkdf2
 golang.org/x/crypto/scrypt
-# golang.org/x/sys v0.35.0
-## explicit; go 1.23.0
+# golang.org/x/sys v0.39.0
+## explicit; go 1.24.0
 golang.org/x/sys/unix
 golang.org/x/sys/windows

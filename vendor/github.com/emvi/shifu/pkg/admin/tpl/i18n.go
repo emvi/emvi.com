@@ -1,8 +1,9 @@
 package tpl
 
 import (
-	"github.com/emvi/shifu/pkg/cms"
 	"net/http"
+
+	"github.com/emvi/shifu/pkg/cms"
 )
 
 var i18n = map[string]map[string]string{
@@ -75,6 +76,7 @@ var i18n = map[string]map[string]string{
 		"media_files_empty":                "The directory is empty.",
 		"media_files_no_directory":         "Please select a directory.",
 		"media_create_dir_window_title":    "Create Directory",
+		"media_create_directory_parent":    "Directory",
 		"media_create_dir_name":            "Name",
 		"media_create_dir_submit":          "Create Directory",
 		"media_delete_dir_window_title":    "Delete Directory",
@@ -113,6 +115,7 @@ var i18n = map[string]map[string]string{
 		"pages_tree_delete_page":              "Delete Page",
 		"pages_tree_open_page":                "Open Page",
 		"pages_create_directory_window_title": "Create Directory",
+		"pages_create_directory_parent":       "Directory",
 		"pages_create_directory_name":         "Name",
 		"pages_create_directory_submit":       "Create",
 		"pages_delete_directory_window_title": "Delete Directory",
@@ -126,6 +129,7 @@ var i18n = map[string]map[string]string{
 		"pages_delete_page_submit":            "Delete Page",
 		"pages_create_page_window_title":      "Create Page",
 		"pages_create_page_edit":              "Edit JSON",
+		"pages_create_page_parent":            "Directory",
 		"pages_create_page_name":              "Name",
 		"pages_create_page_language":          "Language",
 		"pages_create_page_path":              "Path",
@@ -174,6 +178,7 @@ var i18n = map[string]map[string]string{
 		"content_element_reference_content":           "Content",
 		"content_element_reference_data":              "Settings",
 		"content_element_reference_submit":            "Save",
+		"content_element_display_name":                "Display Name",
 		"content_reference_create_window_title":       "Create Reference",
 		"content_reference_create_name":               "Name",
 		"content_reference_create_submit":             "Create Reference",
@@ -183,6 +188,9 @@ var i18n = map[string]map[string]string{
 		"refs_delete_ref_window_title":                "Delete Reference",
 		"refs_delete_ref_confirm":                     "Are you sure you want to delete the reference \"%s\"?",
 		"refs_delete_ref_submit":                      "Delete",
+
+		// fs
+		"fs_tree_select_directory": "Select Directory",
 
 		// errors
 		"the reference does not exist":                            "The referenced element does not exist.",
@@ -213,6 +221,12 @@ var i18n = map[string]map[string]string{
 		"user not found":                                          "The user for the given email address and password was not found.",
 		"error creating session":                                  "Error creating session.",
 		"a template or reference with this name already exists":   "A template or reference with this name already exists.",
+		"error reading multipart request":                         "Error reading multipart request.",
+		"error reading multipart request part":                    "Error reading multipart request part.",
+		"error uploading file":                                    "Error during file upload.",
+		"file already exists":                                     "A file already exists.",
+		"a different page with this name exists already":          "A different page in the target directory with this name exists already.",
+		"a different directory with this name exists already":     "A different directory in the target directory with this name exists already.",
 	},
 	"de": {
 		// window
@@ -283,6 +297,7 @@ var i18n = map[string]map[string]string{
 		"media_files_empty":                "Der Ordner ist leer.",
 		"media_files_no_directory":         "Bitte wähle einen Ordner aus.",
 		"media_create_dir_window_title":    "Ordner erstellen",
+		"media_create_directory_parent":    "Ordner",
 		"media_create_dir_name":            "Name",
 		"media_create_dir_submit":          "Erstellen",
 		"media_delete_dir_window_title":    "Ordner löschen",
@@ -321,6 +336,7 @@ var i18n = map[string]map[string]string{
 		"pages_tree_delete_page":              "Seite löschen",
 		"pages_tree_open_page":                "Seite öffnen",
 		"pages_create_directory_window_title": "Ordner erstellen",
+		"pages_create_directory_parent":       "Ordner",
 		"pages_create_directory_name":         "Name",
 		"pages_create_directory_submit":       "Erstellen",
 		"pages_delete_directory_window_title": "Ordner löschen",
@@ -334,6 +350,7 @@ var i18n = map[string]map[string]string{
 		"pages_delete_page_submit":            "Seite löschen",
 		"pages_create_page_window_title":      "Seite anlegen",
 		"pages_create_page_edit":              "JSON bearbeiten",
+		"pages_create_page_parent":            "Ordner",
 		"pages_create_page_name":              "Name",
 		"pages_create_page_language":          "Sprache",
 		"pages_create_page_path":              "Pfad",
@@ -382,6 +399,7 @@ var i18n = map[string]map[string]string{
 		"content_element_reference_content":           "Inhalt",
 		"content_element_reference_data":              "Einstellungen",
 		"content_element_reference_submit":            "Speichern",
+		"content_element_display_name":                "Anzeigename",
 		"content_reference_create_window_title":       "Referenz erstellen",
 		"content_reference_create_name":               "Name",
 		"content_reference_create_submit":             "Referenz erstellen",
@@ -391,6 +409,9 @@ var i18n = map[string]map[string]string{
 		"refs_delete_ref_window_title":                "Referenz löschen",
 		"refs_delete_ref_confirm":                     "Bist du sicher, dass du die Referenz \"%s\" löschen möchtest?",
 		"refs_delete_ref_submit":                      "Löschen",
+
+		// fs
+		"fs_tree_select_directory": "Ordner auswählen",
 
 		// errors
 		"the reference does not exist":                            "Das referenzierte Element existiert nicht.",
@@ -421,6 +442,12 @@ var i18n = map[string]map[string]string{
 		"user not found":                                          "Der Benutzer für die angegebene E-Mail-Adresse und das Passwort wurde nicht gefunden.",
 		"error creating session":                                  "Fehler beim Erstellen der Sitzung.",
 		"a template or reference with this name already exists":   "Es existiert bereits ein Template oder eine Referenz mit diesem Namen.",
+		"error reading multipart request":                         "Fehler beim Lesen der Multipart-Anfrage.",
+		"error reading multipart request part":                    "Fehler beim Lesen eines Multipart-Teils.",
+		"error uploading file":                                    "Fehler während des Uploads.",
+		"file already exists":                                     "Eine Datei existiert bereits.",
+		"a different page with this name exists already":          "Eine andere Seite mit diesem Dateinamen existiert bereits im Zielordner.",
+		"a different directory with this name exists already":     "Ein anderer Ordner mit diesem Name existiert bereits im Zielordner.",
 	},
 }
 

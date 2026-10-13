@@ -1,0 +1,23 @@
+$font-text: "Inter", "Roboto", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-display: "Inter Display", $font-text;
+
+$max-width: 1200px;
+$gutter: clamp(16px, 4vw, 48px);
+$radius-sm: 10px;
+$radius: 18px;
+$radius-lg: 28px;
+
+$ease: cubic-bezier(.22, 1, .36, 1);
+
+$bp-lg: 1024px;
+$bp-md: 768px;
+$bp-sm: 512px;
+
+@mixin lg { @media only screen and (max-width: $bp-lg) { @content; } }
+@mixin md { @media only screen and (max-width: $bp-md) { @content; } }
+@mixin sm { @media only screen and (max-width: $bp-sm) { @content; } }
+
+@mixin container {
+    width: $max-width;
+    max-width: calc(100% - 2 * #{$gutter});
+}

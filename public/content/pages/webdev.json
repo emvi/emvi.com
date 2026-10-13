@@ -62,11 +62,11 @@
                 "copy": {
                     "de": {
                         "h1": "Zuverlässige, hochwertige und schnelle Webentwicklung mit Festpreis aus Westfalen.",
-                        "text": "\u003cp\u003eWenn du eine Website oder Webentwicklung ohne Überraschungen brauchst, bist du bei uns genau richtig. Wir entwickeln qualitativ hochwertige, leistungsstarke und zuverlässige Websites und Webanwendungen zum Festpreis von \u003cstrong\u003e4.600 € netto\u003c/strong\u003e oder individuell nach deinen Vorstellungen.\u003c/p\u003e"
+                        "text": "\u003cp\u003eWenn du eine Website oder Webentwicklung ohne Überraschungen brauchst, bist du bei uns genau richtig. Wir entwickeln qualitativ hochwertige, leistungsstarke und zuverlässige Websites und Webanwendungen zum Festpreis von \u003cstrong\u003e3.900 € netto\u003c/strong\u003e oder individuell nach deinen Vorstellungen.\u003c/p\u003e"
                     },
                     "en": {
                         "h1": "Reliable, high quality and fast web development as a fixed price package.",
-                        "text": "\u003cp\u003eIf you need a website or web development without surprises, you've come to the right place. We develop high-quality, high-performance and reliable websites and web applications at a fixed price of \u003cstrong\u003e$4,600 (VAT)\u003c/strong\u003e or individually according to your ideas.\u003c/p\u003e"
+                        "text": "\u003cp\u003eIf you need a website or web development without surprises, you've come to the right place. We develop high-quality, high-performance and reliable websites and web applications at a fixed price of \u003cstrong\u003e$3,900 (VAT)\u003c/strong\u003e or individually according to your ideas.\u003c/p\u003e"
                     }
                 }
             },
@@ -312,6 +312,26 @@
                             "tpl": "service",
                             "copy": {
                                 "de": {
+                                    "h3": "Agentic AI Website Building",
+                                    "text": "\u003cp\u003eWir setzen KI-Agenten gezielt in der Entwicklung ein: Sie erstellen Seiten, Elemente und Inhalte nach unseren Vorgaben, während wir jeden Schritt prüfen und verfeinern. So entsteht deine Website schneller und günstiger, ohne Abstriche bei Qualität, Sicherheit und Wartbarkeit. Auch nach dem Launch kannst du deine Website mit Hilfe von KI-Agenten unkompliziert erweitern.\u003c/p\u003e"
+                                },
+                                "en": {
+                                    "h3": "Agentic AI Website Building",
+                                    "text": "\u003cp\u003eWe use AI agents purposefully during development: they build pages, elements and content according to our specifications, while we review and refine every step. This makes your website faster and more affordable to build, without compromising on quality, security or maintainability. Even after launch, you can easily extend your website with the help of AI agents.\u003c/p\u003e"
+                                }
+                            }
+                        },
+                        {
+                            "sitemap": {},
+                            "analytics": {
+                                "experiment": {
+                                    "name": "",
+                                    "variant": ""
+                                }
+                            },
+                            "tpl": "service",
+                            "copy": {
+                                "de": {
                                     "h3": "SEO",
                                     "text": "\u003cp\u003eSuchmaschinenoptimierung (SEO) ist eine unserer Kernaufgaben, damit man dich bei Google und anderen Suchmaschinen findet. Wir verbessern die Sichtbarkeit deiner Website und erhöhen den organischen Traffic aus Suchanfragen.\u003c/p\u003e"
                                 },
@@ -518,15 +538,15 @@
                         "button": "Jetzt loslegen",
                         "button_link": "/de/kontakt",
                         "h2": "Komplettpaket zum unschlagbaren Festpreis",
-                        "h3": "Unser Website-Komplettpaket:\u003cbr /\u003e\u003cspan class='large'\u003e4.600 €* einmalig, 19 €* monatlich\u003c/span\u003e",
-                        "text": "\u003cp\u003eUnser Angebot ist einfach: einmalig 4.600 €* für die Entwicklung bezahlen und danach 19 €* monatlich für Hosting, Wartung und Support. Damit hast du die volle Transparenz — ohne versteckte Kosten!\u003c/p\u003e\u003cp\u003eIm Komplettpaket sind die folgenden Leistungen enthalten:\u003c/p\u003e\u003cul\u003e\u003cli\u003eindividuelles, einfaches Design\u003c/li\u003e\u003cli\u003eEntwicklung der Website\u003c/li\u003e\u003cli\u003ebis zu 10 Unterseiten (+100 €* für jede weitere Unterseite)\u003c/li\u003e\u003cli\u003eImpressum und Datenschutz inklusive\u003c/li\u003e\u003cli\u003ebis zu 15 Seitenelemente (+50 €* für jedes weitere Element)\u003c/li\u003e\u003cli\u003eSEO-optimierte Texte\u003c/li\u003e\u003cli\u003eMobile Optimierung\u003c/li\u003e\u003cli\u003einkl. Beratung und Schulung\u003c/li\u003e\u003cli\u003eeine Stunde E-Mail- und Telefonsupport pro Monat\u003c/li\u003e\u003c/ul\u003e\u003cp\u003e* zzgl. Umsatzsteuer\u003c/p\u003e"
+                        "h3": "Unser Website-Komplettpaket:\u003cbr /\u003e\u003cspan class='large'\u003e3.900 €* einmalig, 19 €* monatlich\u003c/span\u003e",
+                        "text": "\u003cp\u003eUnser Angebot ist einfach: einmalig 3.900 €* für die Entwicklung bezahlen und danach 19 €* monatlich für Hosting, Wartung und Support. Damit hast du die volle Transparenz — ohne versteckte Kosten!\u003c/p\u003e\u003cp\u003eIm Komplettpaket sind die folgenden Leistungen enthalten:\u003c/p\u003e\u003cul\u003e\u003cli\u003eindividuelles, einfaches Design\u003c/li\u003e\u003cli\u003eEntwicklung der Website\u003c/li\u003e\u003cli\u003eAgentic AI Website Building\u003c/li\u003e\u003cli\u003ebis zu 10 Unterseiten (+100 €* für jede weitere Unterseite)\u003c/li\u003e\u003cli\u003eImpressum und Datenschutz inklusive\u003c/li\u003e\u003cli\u003ebis zu 15 Seitenelemente (+50 €* für jedes weitere Element)\u003c/li\u003e\u003cli\u003eSEO-optimierte Texte\u003c/li\u003e\u003cli\u003eMobile Optimierung\u003c/li\u003e\u003cli\u003einkl. Beratung und Schulung\u003c/li\u003e\u003cli\u003eeine Stunde E-Mail- und Telefonsupport pro Monat\u003c/li\u003e\u003c/ul\u003e\u003cp\u003e* zzgl. Umsatzsteuer\u003c/p\u003e"
                     },
                     "en": {
                         "button": "Get started now",
                         "button_link": "/contact",
                         "h2": "Complete Package at an Unbeatable Fixed Price",
-                        "h3": "Our complete website package:\u003cbr /\u003e\u003cspan class='large'\u003e$4,600* once, $19* monthly\u003c/span\u003e",
-                        "text": "\u003cp\u003eOur offer is simple: pay $4,600* once for development and then $19* per month for hosting, maintenance and support. This gives you full transparency - with no hidden costs!\u003c/p\u003e\u003cp\u003eThe complete package includes the following services:\u003c/p\u003e\u003cul\u003e\u003cli\u003eIndividual and simple Design\u003c/li\u003e\u003cli\u003eWebsite development\u003c/li\u003e\u003cli\u003eUp to 10 pages (+$100* per additional page)\u003c/li\u003e\u003cli\u003eUp to 15 page elements (+$50* per additional element)\u003c/li\u003e\u003cli\u003eSEO optimized copy\u003c/li\u003e\u003cli\u003eMobile optimization\u003c/li\u003e\u003cli\u003eConsulting and training\u003c/li\u003e\u003cli\u003eOne hour of e-mail or telephone support per month\u003c/li\u003e\u003c/ul\u003e\u003cp\u003e* VAT\u003c/p\u003e"
+                        "h3": "Our complete website package:\u003cbr /\u003e\u003cspan class='large'\u003e$3,900* once, $19* monthly\u003c/span\u003e",
+                        "text": "\u003cp\u003eOur offer is simple: pay $3,900* once for development and then $19* per month for hosting, maintenance and support. This gives you full transparency - with no hidden costs!\u003c/p\u003e\u003cp\u003eThe complete package includes the following services:\u003c/p\u003e\u003cul\u003e\u003cli\u003eIndividual and simple Design\u003c/li\u003e\u003cli\u003eWebsite development\u003c/li\u003e\u003cli\u003eAgentic AI website building\u003c/li\u003e\u003cli\u003eUp to 10 pages (+$100* per additional page)\u003c/li\u003e\u003cli\u003eUp to 15 page elements (+$50* per additional element)\u003c/li\u003e\u003cli\u003eSEO optimized copy\u003c/li\u003e\u003cli\u003eMobile optimization\u003c/li\u003e\u003cli\u003eConsulting and training\u003c/li\u003e\u003cli\u003eOne hour of e-mail or telephone support per month\u003c/li\u003e\u003c/ul\u003e\u003cp\u003e* VAT\u003c/p\u003e"
                     }
                 }
             },

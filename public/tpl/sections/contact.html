@@ -13,11 +13,11 @@
                 {{ $e := get .Page "error" }}
 
                 {{ if eq $e "captcha" }}
-                    <p style="color: red;">
+                    <p class="form-error">
                         {{ copy .Page .Content "form_error_captcha" }}
                     </p>
                 {{ else if eq $e "form" }}
-                    <p style="color: red;">
+                    <p class="form-error">
                         {{ copy .Page .Content "form_error_input" }}
                     </p>
                 {{ end }}

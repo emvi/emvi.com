@@ -1,25 +1,6 @@
-{{/* Script tag needs to be on top! */}}
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const arrow = document.getElementsByClassName("arrow");
-
-        if (arrow && arrow.length) {
-            arrow[0].addEventListener("click", e => {
-                let start = e.target;
-
-                while (start.getAttribute("id") !== "start") {
-                    start = start.parentNode;
-                }
-
-                start.nextElementSibling.scrollIntoView();
-            });
-        }
-    });
-</script>
-
 {{ $bg := get .Content "bg" }}
 
-<section id="start" class="start" data-aos="fade-in" data-shifu-element="{{ .Content.Position }}">
+<section id="start" class="start" data-component="start" data-shifu-element="{{ .Content.Position }}">
     {{ if $bg }}
         <div class="start-bg {{ $bg }}"></div>
     {{ end }}

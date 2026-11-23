@@ -6,21 +6,25 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"hash/fnv"
 	"html/template"
 	"io/fs"
 	"log/slog"
+	"maps"
 	"math/rand"
 	"net/http"
 	"os"
 	"path/filepath"
 	"reflect"
 	"slices"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
 
 	"github.com/emvi/shifu/pkg/analytics"
 	"github.com/emvi/shifu/pkg/cfg"
+	"github.com/emvi/shifu/pkg/llms"
 	"github.com/emvi/shifu/pkg/sitemap"
 	"github.com/emvi/shifu/pkg/source"
 )
@@ -37,6 +41,7 @@ type CMS struct {
 	notFound        map[string]string
 	source          source.Provider
 	sitemap         *sitemap.Sitemap
+	llms            *llms.LLMs
 	tpl             *Cache
 	pages           []Route
 	refs            map[string]Content
@@ -55,6 +60,7 @@ type Options struct {
 	FuncMap   template.FuncMap
 	Source    source.Provider
 	Sitemap   *sitemap.Sitemap
+	LLMs      *llms.LLMs
 }
 
 // NewCMS sets up a new CMS instance for the given configuration.
@@ -63,25 +69,31 @@ func NewCMS(options Options) *CMS {
 		options.NotFound = map[string]string{"en": notFoundPath}
 	}
 
+	if options.LLMs == nil {
+		options.LLMs = llms.New()
+	}
+
 	cms := &CMS{
 		baseDir:         options.BaseDir,
 		hotReload:       options.HotReload,
 		notFound:        options.NotFound,
 		source:          options.Source,
 		sitemap:         options.Sitemap,
+		llms:            options.LLMs,
 		pages:           make([]Route, 0),
 		refs:            make(map[string]Content),
 		handler:         make(map[string]Handler),
 		pageExperiments: make(map[string][]string),
 		pageCache:       make(map[string][]byte),
 	}
+	cms.llms.SetRenderer(cms.renderMarkdown)
 	cms.tpl = NewCache(filepath.Join(options.BaseDir, "tpl"), options.FuncMap, options.HotReload)
 	cms.source.Watch(options.Ctx, func() {
-		slog.Info("Updating website templates, content, and sitemap...")
+		slog.Info("Updating website templates, content, sitemap, and llms.txt...")
 		cms.tpl.Clear()
 		cms.updateContent()
 		cms.sitemap.Update()
-		slog.Info("Done updating website templates, content, and sitemap")
+		slog.Info("Done updating website templates, content, sitemap, and llms.txt")
 	})
 	return cms
 }
@@ -95,6 +107,12 @@ func (cms *CMS) Serve(w http.ResponseWriter, r *http.Request) {
 
 	start := time.Now()
 	path := r.URL.Path
+
+	if cfg.Get().LLMs.Enabled && llms.IsMarkdownPath(path) {
+		cms.llms.ServeMarkdown(w, r)
+		return
+	}
+
 	page, args, ok := cms.getPage(path)
 
 	if !ok {
@@ -125,17 +143,29 @@ func (cms *CMS) Serve(w http.ResponseWriter, r *http.Request) {
 	slog.Debug("Served page", "time_ms", time.Now().Sub(start).Milliseconds())
 }
 
+// ServeLLMs serves the llms.txt listing all pages with a link to their Markdown version.
+func (cms *CMS) ServeLLMs(w http.ResponseWriter, r *http.Request) {
+	if cms.hotReload {
+		cms.updateContent()
+	}
+
+	cms.llms.ServeLLMsTxt(w, r)
+}
+
 // RenderPage renders the given page and returns it to the client.
 // If no content is present, a default head and body section are served.
 func (cms *CMS) RenderPage(w http.ResponseWriter, r *http.Request, path string, args map[string]string, page *Content) {
 	page.Request = r
 	cms.selectExperiments(w, r, page)
+	markdown := llms.IsMarkdownRequest(r)
 
-	if cms.redirectExperiment(w, r, page) {
+	if !markdown && cms.redirectExperiment(w, r, page) {
 		return
 	}
 
-	cms.pageView(r, page)
+	if !markdown {
+		cms.pageView(r, page)
+	}
 
 	for k, v := range page.Header {
 		w.Header().Add(k, v)
@@ -173,7 +203,7 @@ func (cms *CMS) RenderPage(w http.ResponseWriter, r *http.Request, path string, 
 
 		data = buffer.Bytes()
 	} else {
-		data = []byte(fmt.Sprintf(defaultPageContent, adminBody(page)))
+		data = fmt.Appendf(nil, defaultPageContent, adminBody(page))
 	}
 
 	if _, err := w.Write(data); err != nil {
@@ -228,25 +258,56 @@ func (cms *CMS) RenderElement(w http.ResponseWriter, r *http.Request, page *Cont
 // SetHandler sets the handler function for the given name.
 func (cms *CMS) SetHandler(name string, handler Handler) {
 	cms.m.Lock()
-	defer cms.m.Unlock()
 	cms.handler[name] = handler
+	cms.m.Unlock()
+
+	// pages using the handler are rendered differently now
+	if cfg.Get().LLMs.Enabled {
+		cms.llms.Refresh()
+	}
 }
 
 // Update updates the templates, content, and sitemap.
 func (cms *CMS) Update() {
 	slog.Info("Updating CMS")
 	cms.source.Update(func() {
-		slog.Info("Updating website templates, content, and sitemap...")
+		slog.Info("Updating website templates, content, sitemap, and llms.txt...")
 		cms.tpl.Clear()
 		cms.updateContent()
 		cms.sitemap.Update()
-		slog.Info("Done updating website templates, content, and sitemap")
+		slog.Info("Done updating website templates, content, sitemap, and llms.txt")
 	})
 }
 
 // LastUpdate returns the time the website data has last been updated.
 func (cms *CMS) LastUpdate() string {
 	return cms.source.LastUpdate().Format(time.RFC3339)
+}
+
+// GetReference returns the reference for given name.
+func (cms *CMS) GetReference(name string) *Content {
+	cms.m.RLock()
+	defer cms.m.RUnlock()
+	content, found := cms.refs[name]
+
+	if found {
+		c := content.Clone()
+		return &c
+	}
+
+	return nil
+}
+
+// SetReference updates the in-memory reference for given name.
+// This is used by the admin UI to render changes to a reference immediately, before the content has been reloaded.
+func (cms *CMS) SetReference(name string, ref *Content) {
+	if ref == nil {
+		return
+	}
+
+	cms.m.Lock()
+	defer cms.m.Unlock()
+	cms.refs[strings.ToLower(name)] = ref.Clone()
 }
 
 func (cms *CMS) renderContent(args map[string]string, page *Content, position string, content []Content) ([]byte, error) {
@@ -316,9 +377,7 @@ func (cms *CMS) renderElement(buffer *bytes.Buffer, args map[string]string, page
 			ref.Analytics.Tags = make(map[string]string)
 		}
 
-		for k, v := range c.Analytics.Tags {
-			ref.Analytics.Tags[k] = v
-		}
+		maps.Copy(ref.Analytics.Tags, c.Analytics.Tags)
 
 		if c.Analytics.Experiment.Name != "" {
 			ref.Analytics.Experiment.Name = c.Analytics.Experiment.Name
@@ -382,9 +441,9 @@ func (cms *CMS) selectExperiments(w http.ResponseWriter, r *http.Request, page *
 
 	if err == nil {
 		updateCookie = false
-		kv := strings.Split(cookie.Value, ",")
+		kv := strings.SplitSeq(cookie.Value, ",")
 
-		for _, v := range kv {
+		for v := range kv {
 			if v != "" {
 				left, right, ok := strings.Cut(v, ":")
 
@@ -473,10 +532,7 @@ func (cms *CMS) pageView(r *http.Request, page *Content) {
 		page.Analytics.Tags = make(map[string]string)
 	}
 
-	for k, v := range page.SelectedExperiments {
-		page.Analytics.Tags[k] = v
-	}
-
+	maps.Copy(page.Analytics.Tags, page.SelectedExperiments)
 	go analytics.PageView(r, page.Analytics.Tags)
 }
 
@@ -579,25 +635,13 @@ func (cms *CMS) updateContent() {
 		return 1
 	})
 
-	if len(pages) == 0 {
-		pages = append(pages, Route{
-			raw:    "/",
-			isRaw:  true,
-			length: 1,
-			content: Content{
-				Path: map[string]string{
-					"en": "/",
-				},
-			},
-		})
-	}
-
 	cms.m.Lock()
-	defer cms.m.Unlock()
 	cms.pages = pages
 	cms.refs = refs
 	cms.pageExperiments = pageExperiments
 	cms.pageCache = make(map[string][]byte)
+	cms.m.Unlock()
+	cms.updateLLMsTxt()
 }
 
 func (cms *CMS) getContent(path string) (*Content, error) {
@@ -726,4 +770,82 @@ func (cms *CMS) isZeroValue(v any) bool {
 func (cms *CMS) isLoggedIn(r *http.Request) bool {
 	session, err := r.Cookie("session")
 	return err == nil && session.Value != ""
+}
+
+func (cms *CMS) isNotFoundPath(path string) bool {
+	for _, p := range cms.notFound {
+		if p == path {
+			return true
+		}
+	}
+
+	return false
+}
+
+func (cms *CMS) renderMarkdown(w http.ResponseWriter, r *http.Request, path string) (bool, bool) {
+	page, args, ok := cms.getPage(path)
+
+	if !ok || page.LLMs.Exclude {
+		return false, false
+	}
+
+	if page.Handler != "" {
+		handler, found := cms.getHandler(page.Handler)
+
+		if !found {
+			slog.Warn("Page handler not found to render markdown", "path", path, "handler", page.Handler)
+			return false, false
+		}
+
+		handler(cms, page, args, w, r)
+	} else {
+		cms.RenderPage(w, r, path, args, &page)
+	}
+
+	return true, !page.DisableCache && !cms.isLoggedIn(r)
+}
+
+func (cms *CMS) updateLLMsTxt() {
+	if !cfg.Get().LLMs.Enabled {
+		return
+	}
+
+	cms.m.RLock()
+	pages := cms.pages
+	cms.m.RUnlock()
+	updatePages := make([]llms.Page, 0, len(pages))
+
+	for _, route := range pages {
+		if route.isRaw && !route.content.LLMs.Exclude && !cms.isNotFoundPath(route.raw) {
+			updatePages = append(updatePages, llms.Page{Language: route.content.Language, Path: route.raw})
+		}
+	}
+
+	cms.llms.Update(updatePages, cms.contentVersion())
+}
+
+func (cms *CMS) contentVersion() string {
+	hash := fnv.New64a()
+
+	for _, dir := range []string{"content", "tpl"} {
+		if err := filepath.WalkDir(filepath.Join(cms.baseDir, dir), func(path string, d fs.DirEntry, err error) error {
+			if err != nil || d.IsDir() {
+				return err
+			}
+
+			info, err := d.Info()
+
+			if err != nil {
+				return err
+			}
+
+			_, _ = fmt.Fprintf(hash, "%s:%d:%d\n", path, info.Size(), info.ModTime().UnixNano())
+			return nil
+		}); err != nil && !errors.Is(err, fs.ErrNotExist) {
+			slog.Error("Error reading content version", "error", err)
+			return ""
+		}
+	}
+
+	return strconv.FormatUint(hash.Sum64(), 16)
 }

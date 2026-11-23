@@ -1,17 +1,16 @@
 package content
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
 	"io/fs"
 	"log/slog"
-	"os"
 	"path/filepath"
 	"slices"
 	"strconv"
 	"strings"
 
+	"github.com/emvi/shifu/pkg/admin/ui/shared"
 	"github.com/emvi/shifu/pkg/cfg"
 	"github.com/emvi/shifu/pkg/cms"
 )
@@ -185,6 +184,17 @@ func deleteElement(content *cms.Content, path string) bool {
 	return false
 }
 
+func replaceElement(content *cms.Content, path string, element *cms.Content) bool {
+	parentElement, _, key, index := findParentElement(content, path)
+
+	if parentElement != nil {
+		parentElement.Content[key][index] = *element
+		return true
+	}
+
+	return false
+}
+
 func findParentElement(content *cms.Content, path string) (*cms.Content, string, string, int) {
 	if path == "" {
 		return nil, "", "", 0
@@ -264,36 +274,6 @@ func loadRef(name string) (*cms.Content, error) {
 		return nil, errors.New("file not found")
 	}
 
-	c, err := os.ReadFile(path)
-
-	if err != nil {
-		slog.Error("Error reading reference file", "error", err)
-		return nil, err
-	}
-
-	var element cms.Content
-
-	if err := json.Unmarshal(c, &element); err != nil {
-		slog.Error("Error parsing reference file", "error", err)
-		return nil, err
-	}
-
-	element.File = path
-	return &element, nil
-}
-
-func saveRef(element *cms.Content, path string) error {
-	elementJson, err := json.Marshal(element)
-
-	if err != nil {
-		slog.Error("Error marshalling reference data", "error", err)
-		return err
-	}
-
-	if err := os.WriteFile(path, elementJson, 0644); err != nil {
-		slog.Error("Error writing reference data", "error", err)
-		return err
-	}
-
-	return nil
+	// the language is set explicitly, so no request is required
+	return shared.LoadPage(nil, path, "en")
 }

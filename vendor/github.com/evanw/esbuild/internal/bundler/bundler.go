@@ -116,7 +116,8 @@ type globResolveResult struct {
 
 type tlaCheck struct {
 	parent            ast.Index32
-	depth             uint32
+	depth             ast.Index32
+	pass              uint32
 	importRecordIndex uint32
 }
 
@@ -203,7 +204,7 @@ func parseFile(args parseArgs) {
 			var errorText string
 			var errorRange js_lexer.KeyOrValue
 
-			// We only currently handle "type: json" and "type: bytes"
+			// We currently only handle a few standardized types:
 			if attr.Key != "type" {
 				errorText = fmt.Sprintf("Importing with the %q attribute is not supported", attr.Key)
 				errorRange = js_lexer.KeyRange
@@ -212,6 +213,9 @@ func parseFile(args parseArgs) {
 				continue
 			} else if attr.Value == "bytes" {
 				loader = config.LoaderBinary
+				continue
+			} else if attr.Value == "text" {
+				loader = config.LoaderText
 				continue
 			} else {
 				errorText = fmt.Sprintf("Importing with a type attribute of %q is not supported", attr.Value)
@@ -380,6 +384,10 @@ func parseFile(args parseArgs) {
 	case config.LoaderDataURL:
 		mimeType := guessMimeType(ext, source.Contents)
 		url := helpers.EncodeStringAsShortestDataURL(mimeType, source.Contents)
+		if strings.HasPrefix(source.KeyPath.IgnoredSuffix, "#") {
+			// Preserve URL fragments as they are meaningful in CSS
+			url += source.KeyPath.IgnoredSuffix
+		}
 		expr := js_ast.Expr{Data: &js_ast.EString{Value: helpers.StringToUTF16(url)}}
 		ast := js_parser.LazyExportAST(args.log, source, js_parser.OptionsFromConfig(&args.options), expr, nil)
 		ast.URLForCSS = url
@@ -2407,6 +2415,11 @@ func (s *scanner) processScannedFiles(entryPointMeta []graph.EntryPoint) []scann
 		}
 	}
 
+	// Automatically minify the metafile JSON if the bundle is really big
+	if len(s.results) > 256 {
+		s.options.MetafileFormat = config.MinifiedMetafile
+	}
+
 	// Now that all files have been scanned, process the final file import records
 	for sourceIndex, result := range s.results {
 		if !result.ok {
@@ -2419,7 +2432,9 @@ func (s *scanner) processScannedFiles(entryPointMeta []graph.EntryPoint) []scann
 		// Begin the metadata chunk
 		if s.options.NeedsMetafile {
 			sb.Write(helpers.QuoteForJSON(result.file.inputFile.Source.PrettyPaths.Select(s.options.MetafilePathStyle), s.options.ASCIIOnly))
-			sb.WriteString(fmt.Sprintf(": {\n      \"bytes\": %d,\n      \"imports\": [", len(result.file.inputFile.Source.Contents)))
+			sb.WriteString(fmt.Sprintf(
+				s.options.MetafileFormat.MaybeRemoveWhitespace(": {\n      \"bytes\": %d,\n      \"imports\": ["),
+				len(result.file.inputFile.Source.Contents)))
 		}
 
 		// Don't try to resolve paths if we're not bundling
@@ -2435,17 +2450,17 @@ func (s *scanner) processScannedFiles(entryPointMeta []graph.EntryPoint) []scann
 				if s.options.NeedsMetafile {
 					if with := record.AssertOrWith; with != nil && with.Keyword == ast.WithKeyword && len(with.Entries) > 0 {
 						data := strings.Builder{}
-						data.WriteString(",\n          \"with\": {")
+						data.WriteString(s.options.MetafileFormat.MaybeRemoveWhitespace(",\n          \"with\": {"))
 						for i, entry := range with.Entries {
 							if i > 0 {
 								data.WriteByte(',')
 							}
-							data.WriteString("\n            ")
+							data.WriteString(s.options.MetafileFormat.MaybeRemoveWhitespace("\n            "))
 							data.Write(helpers.QuoteForJSON(helpers.UTF16ToString(entry.Key), s.options.ASCIIOnly))
-							data.WriteString(": ")
+							data.WriteString(s.options.MetafileFormat.MaybeRemoveWhitespace(": "))
 							data.Write(helpers.QuoteForJSON(helpers.UTF16ToString(entry.Value), s.options.ASCIIOnly))
 						}
-						data.WriteString("\n          }")
+						data.WriteString(s.options.MetafileFormat.MaybeRemoveWhitespace("\n          }"))
 						metafileWith = data.String()
 					}
 				}
@@ -2456,11 +2471,12 @@ func (s *scanner) processScannedFiles(entryPointMeta []graph.EntryPoint) []scann
 					if s.options.NeedsMetafile {
 						if isFirstImport {
 							isFirstImport = false
-							sb.WriteString("\n        ")
+							sb.WriteString(s.options.MetafileFormat.MaybeRemoveWhitespace("\n        "))
 						} else {
-							sb.WriteString(",\n        ")
+							sb.WriteString(s.options.MetafileFormat.MaybeRemoveWhitespace(",\n        "))
 						}
-						sb.WriteString(fmt.Sprintf("{\n          \"path\": %s,\n          \"kind\": %s,\n          \"external\": true%s\n        }",
+						sb.WriteString(fmt.Sprintf(
+							s.options.MetafileFormat.MaybeRemoveWhitespace("{\n          \"path\": %s,\n          \"kind\": %s,\n          \"external\": true%s\n        }"),
 							helpers.QuoteForJSON(record.Path.Text, s.options.ASCIIOnly),
 							helpers.QuoteForJSON(record.Kind.StringForMetafile(), s.options.ASCIIOnly),
 							metafileWith))
@@ -2493,11 +2509,12 @@ func (s *scanner) processScannedFiles(entryPointMeta []graph.EntryPoint) []scann
 				if s.options.NeedsMetafile {
 					if isFirstImport {
 						isFirstImport = false
-						sb.WriteString("\n        ")
+						sb.WriteString(s.options.MetafileFormat.MaybeRemoveWhitespace("\n        "))
 					} else {
-						sb.WriteString(",\n        ")
+						sb.WriteString(s.options.MetafileFormat.MaybeRemoveWhitespace(",\n        "))
 					}
-					sb.WriteString(fmt.Sprintf("{\n          \"path\": %s,\n          \"kind\": %s,\n          \"original\": %s%s\n        }",
+					sb.WriteString(fmt.Sprintf(
+						s.options.MetafileFormat.MaybeRemoveWhitespace("{\n          \"path\": %s,\n          \"kind\": %s,\n          \"original\": %s%s\n        }"),
 						helpers.QuoteForJSON(otherFile.inputFile.Source.PrettyPaths.Select(s.options.MetafilePathStyle), s.options.ASCIIOnly),
 						helpers.QuoteForJSON(record.Kind.StringForMetafile(), s.options.ASCIIOnly),
 						helpers.QuoteForJSON(record.Path.Text, s.options.ASCIIOnly),
@@ -2669,7 +2686,7 @@ func (s *scanner) processScannedFiles(entryPointMeta []graph.EntryPoint) []scann
 		// End the metadata chunk
 		if s.options.NeedsMetafile {
 			if !isFirstImport {
-				sb.WriteString("\n      ")
+				sb.WriteString(s.options.MetafileFormat.MaybeRemoveWhitespace("\n      "))
 			}
 			if repr, ok := result.file.inputFile.Repr.(*graph.JSRepr); ok &&
 				(repr.AST.ExportsKind == js_ast.ExportsCommonJS || repr.AST.ExportsKind == js_ast.ExportsESM) {
@@ -2677,24 +2694,25 @@ func (s *scanner) processScannedFiles(entryPointMeta []graph.EntryPoint) []scann
 				if repr.AST.ExportsKind == js_ast.ExportsESM {
 					format = "esm"
 				}
-				sb.WriteString(fmt.Sprintf("],\n      \"format\": %q", format))
+				sb.WriteString(fmt.Sprintf(s.options.MetafileFormat.MaybeRemoveWhitespace("],\n      \"format\": %q"), format))
 			} else {
 				sb.WriteString("]")
 			}
 			if attrs := result.file.inputFile.Source.KeyPath.ImportAttributes.DecodeIntoArray(); len(attrs) > 0 {
-				sb.WriteString(",\n      \"with\": {")
+				sb.WriteString(s.options.MetafileFormat.MaybeRemoveWhitespace(",\n      \"with\": {"))
 				for i, attr := range attrs {
 					if i > 0 {
 						sb.WriteByte(',')
 					}
-					sb.WriteString(fmt.Sprintf("\n        %s: %s",
+					sb.WriteString(fmt.Sprintf(
+						s.options.MetafileFormat.MaybeRemoveWhitespace("\n        %s: %s"),
 						helpers.QuoteForJSON(attr.Key, s.options.ASCIIOnly),
 						helpers.QuoteForJSON(attr.Value, s.options.ASCIIOnly),
 					))
 				}
-				sb.WriteString("\n      }")
+				sb.WriteString(s.options.MetafileFormat.MaybeRemoveWhitespace("\n      }"))
 			}
-			sb.WriteString("\n    }")
+			sb.WriteString(s.options.MetafileFormat.MaybeRemoveWhitespace("\n    }"))
 		}
 
 		result.file.jsonMetadataChunk = sb.String()
@@ -2763,17 +2781,19 @@ func (s *scanner) processScannedFiles(entryPointMeta []graph.EntryPoint) []scann
 			// Optionally add metadata about the file
 			var jsonMetadataChunk string
 			if s.options.NeedsMetafile {
-				inputs := fmt.Sprintf("{\n        %s: {\n          \"bytesInOutput\": %d\n        }\n      }",
+				inputs := fmt.Sprintf(
+					s.options.MetafileFormat.MaybeRemoveWhitespace("{\n        %s: {\n          \"bytesInOutput\": %d\n        }\n      }"),
 					helpers.QuoteForJSON(result.file.inputFile.Source.PrettyPaths.Select(s.options.MetafilePathStyle), s.options.ASCIIOnly),
 					len(bytes),
 				)
 				entryPointJSON := ""
 				if isEntryPoint {
-					entryPointJSON = fmt.Sprintf("\"entryPoint\": %s,\n      ",
+					entryPointJSON = fmt.Sprintf(
+						s.options.MetafileFormat.MaybeRemoveWhitespace("\"entryPoint\": %s,\n      "),
 						helpers.QuoteForJSON(result.file.inputFile.Source.PrettyPaths.Select(s.options.MetafilePathStyle), s.options.ASCIIOnly))
 				}
 				jsonMetadataChunk = fmt.Sprintf(
-					"{\n      \"imports\": [],\n      \"exports\": [],\n      %s\"inputs\": %s,\n      \"bytes\": %d\n    }",
+					s.options.MetafileFormat.MaybeRemoveWhitespace("{\n      \"imports\": [],\n      \"exports\": [],\n      %s\"inputs\": %s,\n      \"bytes\": %d\n    }"),
 					entryPointJSON,
 					inputs,
 					len(bytes),
@@ -2791,13 +2811,17 @@ func (s *scanner) processScannedFiles(entryPointMeta []graph.EntryPoint) []scann
 		s.results[sourceIndex] = result
 	}
 
+	// Traverse the graph to check top-level await
+	if s.iterativelyValidateTLA() {
+		s.reportInvalidTLA()
+	}
+
 	// The linker operates on an array of files, so construct that now. This
 	// can't be constructed earlier because we generate new parse results for
 	// JavaScript stub files for CSS imports above.
 	files := make([]scannerFile, len(s.results))
 	for sourceIndex := range s.results {
 		if result := &s.results[sourceIndex]; result.ok {
-			s.validateTLA(uint32(sourceIndex))
 			files[sourceIndex] = result.file
 		}
 	}
@@ -2805,33 +2829,69 @@ func (s *scanner) processScannedFiles(entryPointMeta []graph.EntryPoint) []scann
 	return files
 }
 
-func (s *scanner) validateTLA(sourceIndex uint32) tlaCheck {
+func (s *scanner) iterativelyValidateTLA() bool {
+	pass := uint32(1)
+	hasTLA := false
+
+	// Iterate until a fixed point has been reached to handle graph cycles
+	for {
+		didChange := false
+		for sourceIndex := range s.results {
+			s.recursivelyValidateTLA(uint32(sourceIndex), pass, &didChange)
+		}
+		if !didChange {
+			return hasTLA
+		}
+		pass++
+		hasTLA = true
+	}
+}
+
+func (s *scanner) recursivelyValidateTLA(sourceIndex uint32, pass uint32, didChange *bool) tlaCheck {
 	result := &s.results[sourceIndex]
 
-	if result.ok && result.tlaCheck.depth == 0 {
+	// Use a "pass" integer instead of a separate "visited" set
+	if result.ok && result.tlaCheck.pass != pass {
+		result.tlaCheck.pass = pass
+
 		if repr, ok := result.file.inputFile.Repr.(*graph.JSRepr); ok {
-			result.tlaCheck.depth = 1
-			if repr.AST.LiveTopLevelAwaitKeyword.Len > 0 {
+			// If this module contains top-level await, set its parent to itself
+			if repr.AST.LiveTopLevelAwaitKeyword.Len > 0 && result.tlaCheck.parent.GetIndex() != sourceIndex {
 				result.tlaCheck.parent = ast.MakeIndex32(sourceIndex)
+				result.tlaCheck.depth = ast.MakeIndex32(1)
+				*didChange = true
 			}
 
+			// Check all import statements and require calls (only import statements are valid)
 			for importRecordIndex, record := range repr.AST.ImportRecords {
 				if record.SourceIndex.IsValid() && (record.Kind == ast.ImportRequire || record.Kind == ast.ImportStmt) {
-					parent := s.validateTLA(record.SourceIndex.GetIndex())
-					if !parent.parent.IsValid() {
-						continue
-					}
+					parent := s.recursivelyValidateTLA(record.SourceIndex.GetIndex(), pass, didChange)
 
-					// Follow any import chains
-					if record.Kind == ast.ImportStmt && (!result.tlaCheck.parent.IsValid() || parent.depth < result.tlaCheck.depth) {
-						result.tlaCheck.depth = parent.depth + 1
+					// Track the shallowest top-level await parent (used to report invalid import chains later on)
+					if record.Kind == ast.ImportStmt && parent.depth.GetIndex() < result.tlaCheck.depth.GetIndex()-1 {
 						result.tlaCheck.parent = record.SourceIndex
+						result.tlaCheck.depth = ast.MakeIndex32(parent.depth.GetIndex() + 1)
 						result.tlaCheck.importRecordIndex = uint32(importRecordIndex)
+						*didChange = true
 						continue
 					}
+				}
+			}
+		}
+	}
 
+	return result.tlaCheck
+}
+
+func (s *scanner) reportInvalidTLA() {
+	for sourceIndex := range s.results {
+		result := &s.results[sourceIndex]
+
+		if result.ok && result.tlaCheck.parent.IsValid() {
+			if repr, ok := result.file.inputFile.Repr.(*graph.JSRepr); ok {
+				for _, record := range repr.AST.ImportRecords {
 					// Require of a top-level await chain is forbidden
-					if record.Kind == ast.ImportRequire {
+					if record.Kind == ast.ImportRequire && record.SourceIndex.IsValid() && s.results[record.SourceIndex.GetIndex()].tlaCheck.parent.IsValid() {
 						var notes []logger.MsgData
 						var tlaPrettyPaths logger.PrettyPaths
 						otherSourceIndex := record.SourceIndex.GetIndex()
@@ -2880,18 +2940,14 @@ func (s *scanner) validateTLA(sourceIndex uint32) tlaCheck {
 						s.log.AddErrorWithNotes(&tracker, record.Range, text, notes)
 					}
 				}
-			}
 
-			// Make sure that if we wrap this module in a closure, the closure is also
-			// async. This happens when you call "import()" on this module and code
-			// splitting is off.
-			if result.tlaCheck.parent.IsValid() {
+				// Make sure that if we wrap this module in a closure, the closure is also
+				// async. This happens when you call "import()" on this module and code
+				// splitting is off.
 				repr.Meta.IsAsyncOrHasAsyncDependency = true
 			}
 		}
 	}
-
-	return result.tlaCheck
 }
 
 func DefaultExtensionToLoaderMap() map[string]config.Loader {
@@ -3069,7 +3125,7 @@ func (b *Bundle) Compile(log logger.Log, timer *helpers.Timer, mangleCache map[s
 	var metafileJSON string
 	if options.NeedsMetafile {
 		timer.Begin("Generate metadata JSON")
-		metafileJSON = b.generateMetadataJSON(outputFiles, allReachableFiles, options.ASCIIOnly)
+		metafileJSON = b.generateMetadataJSON(outputFiles, allReachableFiles, &options)
 		timer.End("Generate metadata JSON")
 	}
 
@@ -3257,9 +3313,9 @@ func (b *Bundle) computeDataForSourceMapsInParallel(options *config.Options, rea
 	}
 }
 
-func (b *Bundle) generateMetadataJSON(results []graph.OutputFile, allReachableFiles []uint32, asciiOnly bool) string {
+func (b *Bundle) generateMetadataJSON(results []graph.OutputFile, allReachableFiles []uint32, options *config.Options) string {
 	sb := strings.Builder{}
-	sb.WriteString("{\n  \"inputs\": {")
+	sb.WriteString(options.MetafileFormat.MaybeRemoveWhitespace("{\n  \"inputs\": {"))
 
 	// Write inputs
 	isFirst := true
@@ -3270,15 +3326,15 @@ func (b *Bundle) generateMetadataJSON(results []graph.OutputFile, allReachableFi
 		if file := &b.files[sourceIndex]; len(file.jsonMetadataChunk) > 0 {
 			if isFirst {
 				isFirst = false
-				sb.WriteString("\n    ")
+				sb.WriteString(options.MetafileFormat.MaybeRemoveWhitespace("\n    "))
 			} else {
-				sb.WriteString(",\n    ")
+				sb.WriteString(options.MetafileFormat.MaybeRemoveWhitespace(",\n    "))
 			}
 			sb.WriteString(file.jsonMetadataChunk)
 		}
 	}
 
-	sb.WriteString("\n  },\n  \"outputs\": {")
+	sb.WriteString(options.MetafileFormat.MaybeRemoveWhitespace("\n  },\n  \"outputs\": {"))
 
 	// Write outputs
 	isFirst = true
@@ -3293,17 +3349,18 @@ func (b *Bundle) generateMetadataJSON(results []graph.OutputFile, allReachableFi
 			}
 			if isFirst {
 				isFirst = false
-				sb.WriteString("\n    ")
+				sb.WriteString(options.MetafileFormat.MaybeRemoveWhitespace("\n    "))
 			} else {
-				sb.WriteString(",\n    ")
+				sb.WriteString(options.MetafileFormat.MaybeRemoveWhitespace(",\n    "))
 			}
 			pathMap[path] = struct{}{}
-			sb.WriteString(fmt.Sprintf("%s: ", helpers.QuoteForJSON(path, asciiOnly)))
+			sb.WriteString(fmt.Sprintf(options.MetafileFormat.MaybeRemoveWhitespace("%s: "), helpers.QuoteForJSON(path, options.ASCIIOnly)))
 			sb.WriteString(result.JSONMetadataChunk)
 		}
 	}
 
-	sb.WriteString("\n  }\n}\n")
+	sb.WriteString(options.MetafileFormat.MaybeRemoveWhitespace("\n  }\n}"))
+	sb.WriteByte('\n')
 	return sb.String()
 }
 

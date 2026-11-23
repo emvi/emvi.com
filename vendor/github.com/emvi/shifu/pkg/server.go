@@ -25,6 +25,7 @@ import (
 	"github.com/emvi/shifu/pkg/cfg"
 	"github.com/emvi/shifu/pkg/cms"
 	"github.com/emvi/shifu/pkg/js"
+	"github.com/emvi/shifu/pkg/llms"
 	"github.com/emvi/shifu/pkg/middleware"
 	"github.com/emvi/shifu/pkg/sass"
 	"github.com/emvi/shifu/pkg/sitemap"
@@ -51,6 +52,9 @@ type Server struct {
 
 	// Sitemap is the sitemap generated from the content.
 	Sitemap *sitemap.Sitemap
+
+	// LLMs serves the llms.txt and Markdown versions of the pages generated from the content.
+	LLMs *llms.LLMs
 
 	router  chi.Router
 	funcMap template.FuncMap
@@ -107,6 +111,7 @@ func NewServer(dir string, options ServerOptions) (*Server, error) {
 	}
 
 	sm := sitemap.New()
+	l := llms.New()
 	ctx, cancel := context.WithCancel(context.Background())
 	c := cms.NewCMS(cms.Options{
 		Ctx:       ctx,
@@ -116,10 +121,12 @@ func NewServer(dir string, options ServerOptions) (*Server, error) {
 		FuncMap:   options.FuncMap,
 		Source:    provider,
 		Sitemap:   sm,
+		LLMs:      l,
 	})
 	return &Server{
 		Content: c,
 		Sitemap: sm,
+		LLMs:    l,
 		router:  options.Router,
 		funcMap: options.FuncMap,
 		ctx:     ctx,
@@ -197,6 +204,7 @@ func (server *Server) setupRouter(dir string) {
 
 	server.Sitemap.Serve(router)
 	server.serveRobotsTxt(router)
+	server.serveLLMsTxt(router)
 	server.serveStaticDir(router, dir)
 	router.HandleFunc("/*", server.Content.Serve)
 	server.router = router
@@ -210,7 +218,6 @@ func (server *Server) serveAPI(router chi.Router) {
 	slog.Info("Serving API", "path", "/api/v1")
 	router.Route("/api/v1", func(r chi.Router) {
 		r.Use(middleware.APISecret)
-		r.Get("/health", func(http.ResponseWriter, *http.Request) {})
 		r.Get("/static", api.ListStaticFiles)
 		r.Put("/static", api.PutStaticFile)
 		r.Get("/cms", func(http.ResponseWriter, *http.Request) { server.Content.Update() })
@@ -218,6 +225,7 @@ func (server *Server) serveAPI(router chi.Router) {
 		r.Get("/content/file", api.GetContentFile)
 		r.Put("/content/file", api.PutContentFile)
 	})
+	router.Get("/api/v1/health", func(http.ResponseWriter, *http.Request) {})
 }
 
 func (server *Server) serveUI(router chi.Router) {
@@ -269,6 +277,8 @@ func (server *Server) serveUI(router chi.Router) {
 				r.Get("/", pages.Page)
 				r.Get("/save", pages.SavePage)
 				r.Post("/save", pages.SavePage)
+				r.Get("/copy", pages.CopyPage)
+				r.Post("/copy", pages.CopyPage)
 				r.Get("/delete", pages.DeletePage)
 				r.Delete("/delete", pages.DeletePage)
 				r.Get("/json", pages.SaveJSON)
@@ -291,6 +301,8 @@ func (server *Server) serveUI(router chi.Router) {
 			r.Route("/reference", func(r chi.Router) {
 				r.Get("/add", content.AddReference)
 				r.Post("/add", content.AddReference)
+				r.Get("/remove", content.RemoveReference)
+				r.Post("/remove", content.RemoveReference)
 			})
 			r.Get("/media", media.Selection)
 			r.Post("/media", media.Selection)
@@ -299,7 +311,6 @@ func (server *Server) serveUI(router chi.Router) {
 		r.Route("/refs", func(r chi.Router) {
 			r.Route("/ref", func(r chi.Router) {
 				r.Get("/", content.Reference)
-				r.Post("/", content.Reference)
 				r.Get("/delete", content.DeleteReference)
 				r.Delete("/delete", content.DeleteReference)
 			})
@@ -338,6 +349,12 @@ func (server *Server) serveRobotsTxt(router chi.Router) {
 			slog.Debug("Error serving robots.txt", "error", err)
 		}
 	}))
+}
+
+func (server *Server) serveLLMsTxt(router chi.Router) {
+	if cfg.Get().LLMs.Enabled {
+		router.Get("/llms.txt", server.Content.ServeLLMs)
+	}
 }
 
 func (server *Server) serveStaticDir(router chi.Router, dir string) {
@@ -395,5 +412,10 @@ func (server *Server) startServer(handler http.Handler, cancel context.CancelFun
 	}()
 
 	slog.Info("Server started!", "address", addr)
+
+	if config.LLMs.Enabled {
+		go server.LLMs.Generate()
+	}
+
 	return done
 }

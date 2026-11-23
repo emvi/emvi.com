@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"slices"
 	"strconv"
 	"strings"
 	"unicode"
@@ -31,6 +32,7 @@ type SavePageData struct {
 	Name           string
 	PagePath       map[string]string
 	Cache          bool
+	LLMsExclude    bool
 	Sitemap        float64
 	Handler        string
 	Path           string
@@ -45,12 +47,14 @@ type SavePageData struct {
 // SavePage creates or updates a page.
 func SavePage(w http.ResponseWriter, r *http.Request) {
 	path := strings.TrimSuffix(strings.TrimSpace(r.URL.Query().Get("path")), "/")
+	dir := filepath.Dir(path)
 
 	if r.Method == http.MethodPost {
 		overwrite := strings.HasSuffix(path, ".json")
 		parent := strings.TrimSpace(r.FormValue("parent"))
 		name := strings.TrimSpace(r.FormValue("name"))
 		cache := strings.ToLower(strings.TrimSpace(r.FormValue("cache"))) == "on"
+		llmsExclude := strings.ToLower(strings.TrimSpace(r.FormValue("llms_exclude"))) == "on"
 		sitemap := strings.TrimSpace(r.FormValue("sitemap"))
 		handler := strings.TrimSpace(r.FormValue("handler"))
 		languages := make([]string, 0)
@@ -61,7 +65,11 @@ func SavePage(w http.ResponseWriter, r *http.Request) {
 		header := make(map[string]string)
 		errs := make(map[string]string)
 
-		if path != parent {
+		if parent == "" {
+			parent = "/"
+		}
+
+		if dir != parent {
 			p := filepath.Join(parent, name+".json")
 
 			if _, err := os.Stat(getPagePath(p)); !errors.Is(err, fs.ErrNotExist) {
@@ -126,12 +134,8 @@ func SavePage(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
-		if name == "" {
-			errs["name"] = "the name is required"
-		} else if !isValidPageName(name) {
-			errs["name"] = "the name contains invalid characters"
-		} else if !overwrite && pageExists(name) {
-			errs["name"] = "the page already exists"
+		if err := validatePageName(name, overwrite); err != nil {
+			errs["name"] = err.Error()
 		}
 
 		sitemapFloat, err := strconv.ParseFloat(sitemap, 64)
@@ -157,6 +161,7 @@ func SavePage(w http.ResponseWriter, r *http.Request) {
 				Name:           name,
 				PagePath:       pagePath,
 				Cache:          cache,
+				LLMsExclude:    llmsExclude,
 				Sitemap:        sitemapFloat,
 				Handler:        handler,
 				Path:           path,
@@ -180,6 +185,7 @@ func SavePage(w http.ResponseWriter, r *http.Request) {
 				}
 
 				page.DisableCache = cache
+				page.LLMs.Exclude = llmsExclude
 				page.Path = pagePath
 				page.Sitemap = cms.Sitemap{
 					Priority: fmt.Sprintf("%f", sitemapFloat),
@@ -189,6 +195,7 @@ func SavePage(w http.ResponseWriter, r *http.Request) {
 			} else {
 				page = &cms.Content{
 					DisableCache: cache,
+					LLMs:         cms.LLMs{Exclude: llmsExclude},
 					Path:         pagePath,
 					Sitemap: cms.Sitemap{
 						Priority: fmt.Sprintf("%f", sitemapFloat),
@@ -231,24 +238,23 @@ func SavePage(w http.ResponseWriter, r *http.Request) {
 				MinWidth:   520,
 				Lang:       lang,
 			},
-			SavePageData: SavePageData{
-				Admin:          middleware.IsAdmin(r),
-				Lang:           lang,
-				Directories:    shared.ListDirectories(w, contentDir, true),
-				SelectionField: "parent",
-				SelectionID:    "page-save",
-				Name:           name,
-				PagePath:       pagePath,
-				Cache:          cache,
-				Sitemap:        sitemapFloat,
-				Handler:        handler,
-				Selected:       getDirectory(filepath.Dir(path)),
-				Path:           path,
-				Header:         header,
-				Saved:          true,
-				Languages:      iso6391.Languages,
-			},
-			Entries: listEntries(w),
+			Admin:          middleware.IsAdmin(r),
+			Lang:           lang,
+			Directories:    shared.ListDirectories(w, contentDir, true),
+			SelectionField: "parent",
+			SelectionID:    "page-save",
+			Name:           name,
+			PagePath:       pagePath,
+			Cache:          cache,
+			LLMsExclude:    llmsExclude,
+			Sitemap:        sitemapFloat,
+			Handler:        handler,
+			Selected:       getDirectory(filepath.Dir(path)),
+			Path:           path,
+			Header:         header,
+			Saved:          true,
+			Languages:      iso6391.Languages,
+			Entries:        listEntries(w),
 		})
 		go content.Update()
 		return
@@ -267,6 +273,18 @@ func SavePage(w http.ResponseWriter, r *http.Request) {
 		New:            true,
 		Languages:      iso6391.Languages,
 	})
+}
+
+func validatePageName(name string, overwrite bool) error {
+	if name == "" {
+		return errors.New("the name is required")
+	} else if !isValidPageName(name) {
+		return errors.New("the name contains invalid characters")
+	} else if !overwrite && pageExists(name) {
+		return errors.New("the page already exists")
+	}
+
+	return nil
 }
 
 func isValidPageName(name string) bool {
@@ -298,11 +316,5 @@ func pageExists(name string) bool {
 		return false
 	}
 
-	for _, file := range files {
-		if file == name {
-			return true
-		}
-	}
-
-	return false
+	return slices.Contains(files, name)
 }

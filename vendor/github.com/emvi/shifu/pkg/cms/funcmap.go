@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"html/template"
 	"log/slog"
+	mapUtils "maps"
 	"math/rand/v2"
 	"os"
 	"path/filepath"
@@ -16,6 +17,7 @@ import (
 	"github.com/emvi/shifu/pkg/admin/db"
 	"github.com/emvi/shifu/pkg/admin/model"
 	"github.com/emvi/shifu/pkg/cfg"
+	"github.com/emvi/shifu/pkg/llms"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
 	"github.com/yuin/goldmark/renderer/html"
@@ -46,6 +48,7 @@ var (
 		"loggedIn":      isLoggedIn,
 		"adminHead":     adminHead,
 		"adminBody":     adminBody,
+		"llms":          llmsLink,
 	}
 )
 
@@ -53,19 +56,12 @@ var (
 func Merge(maps ...template.FuncMap) template.FuncMap {
 	out := make(map[string]any)
 
-	for k, v := range sprig.FuncMap() {
-		out[k] = v
-	}
-
-	for k, v := range defaultFuncMap {
-		out[k] = v
-	}
+	mapUtils.Copy(out, sprig.FuncMap())
+	mapUtils.Copy(out, defaultFuncMap)
 
 	for _, m := range maps {
 		if m != nil {
-			for k, v := range m {
-				out[k] = v
-			}
+			mapUtils.Copy(out, m)
 		}
 	}
 
@@ -257,11 +253,7 @@ func formatInt(i int) string {
 	out := ""
 
 	for i := len(str); i > 0; i -= 3 {
-		start := i - 3
-
-		if start < 0 {
-			start = 0
-		}
+		start := max(i-3, 0)
 
 		out = str[start:i] + "," + out
 	}
@@ -317,4 +309,19 @@ func adminBody(page *Content) template.HTML {
 	}
 
 	return ""
+}
+
+func llmsLink(page *Content) template.HTML {
+	if !cfg.Get().LLMs.Enabled || page == nil || page.LLMs.Exclude {
+		return ""
+	}
+
+	path := page.Path[page.Language]
+
+	if page.Request != nil {
+		path = page.Request.URL.Path
+	}
+
+	href := template.HTMLEscapeString(cfg.Get().Server.Hostname + llms.MarkdownPath(path))
+	return template.HTML(fmt.Sprintf(`<link rel="alternate" type="text/markdown" href="%s" />`, href))
 }

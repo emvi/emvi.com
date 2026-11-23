@@ -1,5 +1,7 @@
 package cms
 
+import "maps"
+
 import "net/http"
 
 // Handler is a special handler invoked if specified in Content.
@@ -13,6 +15,12 @@ type Sitemap struct {
 	Priority string `json:"priority,omitempty"`
 }
 
+// LLMs is the AI/LLM configuration for the Content.
+type LLMs struct {
+	// Exclude removes the page from the llms.txt and disables its Markdown version.
+	Exclude bool `json:"exclude,omitempty"`
+}
+
 // Experiment is an A/B testing experiment.
 type Experiment struct {
 	Name    string `json:"name"`
@@ -22,7 +30,7 @@ type Experiment struct {
 // Analytics is the analytics metadata for the Content.
 type Analytics struct {
 	Tags       map[string]string `json:"tags,omitempty"`
-	Experiment Experiment        `json:"experiment,omitempty"`
+	Experiment Experiment        `json:"experiment"`
 }
 
 // Content is a page or element for the CMS.
@@ -31,6 +39,7 @@ type Content struct {
 	DisableCache bool                 `json:"disable_cache,omitempty"`
 	Path         map[string]string    `json:"path,omitempty"`
 	Sitemap      Sitemap              `json:"sitemap"`
+	LLMs         LLMs                 `json:"llms,omitzero"`
 	Header       map[string]string    `json:"header,omitempty"`
 	Handler      string               `json:"handler,omitempty"`
 	Analytics    Analytics            `json:"analytics"`
@@ -68,37 +77,19 @@ type Content struct {
 // Clone returns a copy of the Content.
 func (content *Content) Clone() Content {
 	path := make(map[string]string)
-
-	for k, v := range content.Path {
-		path[k] = v
-	}
-
+	maps.Copy(path, content.Path)
 	header := make(map[string]string)
-
-	for k, v := range content.Header {
-		header[k] = v
-	}
-
+	maps.Copy(header, content.Header)
 	tags := make(map[string]string)
-
-	for k, v := range content.Analytics.Tags {
-		tags[k] = v
-	}
-
+	maps.Copy(tags, content.Analytics.Tags)
 	data := make(map[string]any)
-
-	for k, v := range content.Data {
-		data[k] = v
-	}
-
+	maps.Copy(data, content.Data)
 	contentCopy := make(Copy)
 
 	for k, v := range content.Copy {
 		contentCopy[k] = make(map[string]any)
 
-		for i, j := range v {
-			contentCopy[k][i] = j
-		}
+		maps.Copy(contentCopy[k], v)
 	}
 
 	c := make(map[string][]Content)
@@ -122,10 +113,7 @@ func (content *Content) Clone() Content {
 	}
 
 	selectedExperiments := make(map[string]string)
-
-	for k, v := range content.SelectedExperiments {
-		selectedExperiments[k] = v
-	}
+	maps.Copy(selectedExperiments, content.SelectedExperiments)
 
 	return Content{
 		DisplayName:  content.DisplayName,
@@ -134,6 +122,7 @@ func (content *Content) Clone() Content {
 		Sitemap: Sitemap{
 			Priority: content.Sitemap.Priority,
 		},
+		LLMs:    content.LLMs,
 		Header:  header,
 		Handler: content.Handler,
 		Analytics: Analytics{

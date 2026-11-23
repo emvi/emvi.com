@@ -1,16 +1,30 @@
 # dario.cat/mergo v1.0.2
 ## explicit; go 1.13
 dario.cat/mergo
+# github.com/JohannesKaufmann/dom v0.3.1
+## explicit; go 1.25.0
+github.com/JohannesKaufmann/dom
+# github.com/JohannesKaufmann/html-to-markdown/v2 v2.5.2
+## explicit; go 1.25.0
+github.com/JohannesKaufmann/html-to-markdown/v2
+github.com/JohannesKaufmann/html-to-markdown/v2/collapse
+github.com/JohannesKaufmann/html-to-markdown/v2/converter
+github.com/JohannesKaufmann/html-to-markdown/v2/internal/domutils
+github.com/JohannesKaufmann/html-to-markdown/v2/internal/escape
+github.com/JohannesKaufmann/html-to-markdown/v2/internal/textutils
+github.com/JohannesKaufmann/html-to-markdown/v2/marker
+github.com/JohannesKaufmann/html-to-markdown/v2/plugin/base
+github.com/JohannesKaufmann/html-to-markdown/v2/plugin/commonmark
 # github.com/Masterminds/goutils v1.1.1
 ## explicit
 github.com/Masterminds/goutils
-# github.com/Masterminds/semver/v3 v3.4.0
+# github.com/Masterminds/semver/v3 v3.5.0
 ## explicit; go 1.21
 github.com/Masterminds/semver/v3
 # github.com/Masterminds/sprig/v3 v3.3.0
 ## explicit; go 1.21
 github.com/Masterminds/sprig/v3
-# github.com/altcha-org/altcha-lib-go v0.2.2
+# github.com/altcha-org/altcha-lib-go v1.0.0
 ## explicit; go 1.22.5
 github.com/altcha-org/altcha-lib-go
 # github.com/emvi/iso-639-1 v1.1.1
@@ -19,9 +33,10 @@ github.com/emvi/iso-639-1
 # github.com/emvi/null v1.3.1
 ## explicit
 github.com/emvi/null
-# github.com/emvi/shifu v1.3.0
-## explicit; go 1.25.0
+# github.com/emvi/shifu v1.7.2
+## explicit; go 1.27.0
 github.com/emvi/shifu/pkg
+github.com/emvi/shifu/pkg/admin
 github.com/emvi/shifu/pkg/admin/db
 github.com/emvi/shifu/pkg/admin/model
 github.com/emvi/shifu/pkg/admin/tpl
@@ -39,13 +54,14 @@ github.com/emvi/shifu/pkg/cfg
 github.com/emvi/shifu/pkg/cms
 github.com/emvi/shifu/pkg/content
 github.com/emvi/shifu/pkg/js
+github.com/emvi/shifu/pkg/llms
 github.com/emvi/shifu/pkg/middleware
 github.com/emvi/shifu/pkg/sass
 github.com/emvi/shifu/pkg/sitemap
 github.com/emvi/shifu/pkg/source
 github.com/emvi/shifu/pkg/static
 github.com/emvi/shifu/static
-# github.com/evanw/esbuild v0.27.1
+# github.com/evanw/esbuild v0.28.2
 ## explicit; go 1.13
 github.com/evanw/esbuild/internal/api_helpers
 github.com/evanw/esbuild/internal/ast
@@ -72,12 +88,12 @@ github.com/evanw/esbuild/internal/runtime
 github.com/evanw/esbuild/internal/sourcemap
 github.com/evanw/esbuild/internal/xxhash
 github.com/evanw/esbuild/pkg/api
-# github.com/fsnotify/fsnotify v1.9.0
-## explicit; go 1.17
+# github.com/fsnotify/fsnotify v1.10.1
+## explicit; go 1.23
 github.com/fsnotify/fsnotify
 github.com/fsnotify/fsnotify/internal
-# github.com/go-chi/chi/v5 v5.2.3
-## explicit; go 1.20
+# github.com/go-chi/chi/v5 v5.5.0
+## explicit; go 1.24
 github.com/go-chi/chi/v5
 # github.com/go-chi/cors v1.2.2
 ## explicit; go 1.14
@@ -85,30 +101,32 @@ github.com/go-chi/cors
 # github.com/google/uuid v1.6.0
 ## explicit
 github.com/google/uuid
-# github.com/huandu/xstrings v1.5.0
+# github.com/huandu/xstrings v1.6.4
 ## explicit; go 1.12
 github.com/huandu/xstrings
 # github.com/jmoiron/sqlx v1.4.0
 ## explicit; go 1.10
 github.com/jmoiron/sqlx
 github.com/jmoiron/sqlx/reflectx
-# github.com/klauspost/compress v1.18.2
-## explicit; go 1.23
+# github.com/klauspost/compress v1.20.5
+## explicit; go 1.25
 github.com/klauspost/compress
 github.com/klauspost/compress/flate
 github.com/klauspost/compress/fse
 github.com/klauspost/compress/gzhttp
 github.com/klauspost/compress/gzhttp/writer
 github.com/klauspost/compress/gzhttp/writer/gzkp
+github.com/klauspost/compress/gzhttp/writer/zstdkp
 github.com/klauspost/compress/gzip
 github.com/klauspost/compress/huff0
 github.com/klauspost/compress/internal/cpuinfo
 github.com/klauspost/compress/internal/le
+github.com/klauspost/compress/internal/regmask
 github.com/klauspost/compress/internal/snapref
 github.com/klauspost/compress/zstd
 github.com/klauspost/compress/zstd/internal/xxhash
-# github.com/mattn/go-sqlite3 v1.14.32
-## explicit; go 1.19
+# github.com/mattn/go-sqlite3 v1.14.53
+## explicit; go 1.21
 github.com/mattn/go-sqlite3
 # github.com/mitchellh/copystructure v1.2.0
 ## explicit; go 1.15
@@ -116,17 +134,17 @@ github.com/mitchellh/copystructure
 # github.com/mitchellh/reflectwalk v1.0.2
 ## explicit
 github.com/mitchellh/reflectwalk
-# github.com/pirsch-analytics/pirsch-go-sdk/v2 v2.4.0
+# github.com/pirsch-analytics/pirsch-go-sdk/v2 v2.6.1
 ## explicit; go 1.21
 github.com/pirsch-analytics/pirsch-go-sdk/v2/pkg
-# github.com/shopspring/decimal v1.4.0
+# github.com/shopspring/decimal v1.6.0
 ## explicit; go 1.10
 github.com/shopspring/decimal
 # github.com/spf13/cast v1.10.0
 ## explicit; go 1.21.0
 github.com/spf13/cast
 github.com/spf13/cast/internal
-# github.com/yuin/goldmark v1.7.13
+# github.com/yuin/goldmark v1.8.7
 ## explicit; go 1.22
 github.com/yuin/goldmark
 github.com/yuin/goldmark/ast
@@ -137,13 +155,17 @@ github.com/yuin/goldmark/renderer
 github.com/yuin/goldmark/renderer/html
 github.com/yuin/goldmark/text
 github.com/yuin/goldmark/util
-# golang.org/x/crypto v0.46.0
-## explicit; go 1.24.0
+# golang.org/x/crypto v0.59.0
+## explicit; go 1.26.0
 golang.org/x/crypto/bcrypt
 golang.org/x/crypto/blowfish
 golang.org/x/crypto/pbkdf2
 golang.org/x/crypto/scrypt
-# golang.org/x/sys v0.39.0
-## explicit; go 1.24.0
+# golang.org/x/net v0.63.0
+## explicit; go 1.26.0
+golang.org/x/net/html
+golang.org/x/net/html/atom
+# golang.org/x/sys v0.50.0
+## explicit; go 1.26.0
 golang.org/x/sys/unix
 golang.org/x/sys/windows

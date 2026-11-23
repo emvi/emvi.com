@@ -382,7 +382,7 @@ func (p *parser) lowerFunction(
 
 		// Forward the arguments to the wrapper function
 		usesArgumentsRef := !isArrow && p.fnOnlyDataVisit.argumentsRef != nil &&
-			p.symbolUses[*p.fnOnlyDataVisit.argumentsRef].CountEstimate > 0
+			p.currentPart.SymbolUses[*p.fnOnlyDataVisit.argumentsRef].CountEstimate > 0
 		var forwardedArgs js_ast.Expr
 		if !couldThrowErrors && !usesArgumentsRef {
 			// Simple case: the arguments can stay on the outer function. It's
@@ -849,6 +849,26 @@ func (p *parser) lowerAssignmentOperator(value js_ast.Expr, callback func(js_ast
 		}
 
 	case *js_ast.EIdentifier:
+		// Make sure we record this usage in the usage count so that duplicating
+		// a single-use reference means it's no longer considered a single-use
+		// reference. Otherwise the single-use reference inlining code may
+		// incorrectly inline the initializer into the first reference, leaving
+		// the second reference without a definition. For example:
+		//
+		//   let x;
+		//   x ||= {};
+		//
+		// We're changing that to this:
+		//
+		//   let x;
+		//   x || (x = {});
+		//
+		// And we don't want to believe that "x" still has a single reference, as
+		// then we may incorrectly inline the undefined value like this:
+		//
+		//   void 0 || (x = {});
+		//
+		p.recordUsage(left.Ref)
 		return callback(
 			js_ast.Expr{Loc: value.Loc, Data: &js_ast.EIdentifier{Ref: left.Ref}},
 			value,
@@ -1096,6 +1116,11 @@ func (p *parser) lowerForAwaitLoop(loc logger.Loc, loop *js_ast.SForOf, stmts []
 	moreRef := p.generateTempRef(tempRefNoDeclare, "more")
 	tempRef := p.generateTempRef(tempRefNoDeclare, "temp")
 	errorRef := p.generateTempRef(tempRefNoDeclare, "error")
+
+	p.recordUsage(iterRef)
+	p.recordUsage(moreRef)
+	p.recordUsage(tempRef)
+	p.recordUsage(errorRef)
 
 	switch init := loop.Init.Data.(type) {
 	case *js_ast.SLocal:
@@ -2006,7 +2031,7 @@ func (ctx *lowerUsingDeclarationContext) finalize(p *parser, stmts []js_ast.Stmt
 	}
 	isTopLevel := scope == p.moduleScope
 	scope.Generated = append(scope.Generated, ctx.stackRef, caughtRef, errorRef, hasErrorRef)
-	p.declaredSymbols = append(p.declaredSymbols,
+	p.currentPart.DeclaredSymbols = append(p.currentPart.DeclaredSymbols,
 		js_ast.DeclaredSymbol{IsTopLevel: isTopLevel, Ref: ctx.stackRef},
 		js_ast.DeclaredSymbol{IsTopLevel: isTopLevel, Ref: caughtRef},
 		js_ast.DeclaredSymbol{IsTopLevel: isTopLevel, Ref: errorRef},
@@ -2029,7 +2054,7 @@ func (ctx *lowerUsingDeclarationContext) finalize(p *parser, stmts []js_ast.Stmt
 	if ctx.hasAwaitUsing {
 		promiseRef := p.generateTempRef(tempRefNoDeclare, "_promise")
 		scope.Generated = append(scope.Generated, promiseRef)
-		p.declaredSymbols = append(p.declaredSymbols, js_ast.DeclaredSymbol{IsTopLevel: isTopLevel, Ref: promiseRef})
+		p.currentPart.DeclaredSymbols = append(p.currentPart.DeclaredSymbols, js_ast.DeclaredSymbol{IsTopLevel: isTopLevel, Ref: promiseRef})
 
 		// "await" expressions turn into "yield" expressions when lowering
 		p.recordUsage(promiseRef)
@@ -2124,26 +2149,4 @@ func (p *parser) lowerUsingDeclarationInForOf(loc logger.Loc, init *js_ast.SLoca
 	block.Stmts = ctx.finalize(p, blockStmts, p.willWrapModuleInTryCatchForUsing && p.currentScope.Parent == nil)
 	init.Kind = js_ast.LocalVar
 	id.Ref = tempRef
-}
-
-// If this returns "nil", then no lowering needed to be done
-func (p *parser) maybeLowerUsingDeclarationsInSwitch(loc logger.Loc, s *js_ast.SSwitch) []js_ast.Stmt {
-	// Check for a "using" declaration in any case
-	shouldLower := false
-	for _, c := range s.Cases {
-		if p.shouldLowerUsingDeclarations(c.Body) {
-			shouldLower = true
-			break
-		}
-	}
-	if !shouldLower {
-		return nil
-	}
-
-	// If we find one, lower all cases together
-	ctx := p.lowerUsingDeclarationContext()
-	for _, c := range s.Cases {
-		ctx.scanStmts(p, c.Body)
-	}
-	return ctx.finalize(p, []js_ast.Stmt{{Loc: loc, Data: s}}, false)
 }

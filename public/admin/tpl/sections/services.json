@@ -3,7 +3,9 @@
     "content": {
         "content": {
             "label": "Services",
-            "tpl_filter": ["service"]
+            "tpl_filter": [
+                "service"
+            ]
         }
     },
     "copy": {
@@ -15,6 +17,9 @@
         "bg": {
             "label": "Hintergrund",
             "type": "boolean"
+        },
+        "anchor": {
+            "label": "Anker-ID (Standard: services)"
         }
     }
 }

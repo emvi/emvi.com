@@ -18,6 +18,23 @@ export function initHeader(el) {
         });
     });
 
+    // mobile menu
+    const toggle = el.querySelector(".toggle");
+
+    if (toggle) {
+        toggle.addEventListener("click", () => {
+            const open = el.classList.toggle("header--open");
+            toggle.setAttribute("aria-expanded", String(open));
+        });
+
+        el.querySelectorAll(".nav-item").forEach(a => {
+            a.addEventListener("click", () => {
+                el.classList.remove("header--open");
+                toggle.setAttribute("aria-expanded", "false");
+            });
+        });
+    }
+
     // compact header with shadow once the page is scrolled
     // dark header switches to light once the dark hero has been scrolled past
     const dark = !el.classList.contains("header--light");

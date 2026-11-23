@@ -1,6 +1,6 @@
 {{ $bg := get .Content "bg" }}
 
-<section id="services" class="services {{ if $bg }}services-bg{{ end }}" data-aos="fade-in" data-shifu-element="{{ .Content.Position }}">
+<section id="{{ with get .Content "anchor" }}{{ . }}{{ else }}services{{ end }}" class="services {{ if $bg }}services-bg{{ end }}" data-aos="fade-in" data-shifu-element="{{ .Content.Position }}">
     <div class="content">
         <h2>{{ copy .Page .Content "h2" }}</h2>
         <ul class="grid">

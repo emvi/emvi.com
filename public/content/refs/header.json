@@ -12,5 +12,65 @@
             "contact_link": "/de/kontakt",
             "contact": "Kontakt aufnehmen"
         }
+    },
+    "content": {
+        "nav": [
+            {
+                "tpl": "nav_item",
+                "copy": {
+                    "de": {
+                        "label": "Individuelle Software",
+                        "href": "/de/software-entwicklung"
+                    },
+                    "en": {
+                        "label": "Individual Software",
+                        "href": "/software-development"
+                    }
+                },
+                "content": {}
+            },
+            {
+                "tpl": "nav_item",
+                "copy": {
+                    "de": {
+                        "label": "Cloud Infrastruktur",
+                        "href": "/de/cloud-infrastruktur"
+                    },
+                    "en": {
+                        "label": "Cloud Infrastructure",
+                        "href": "/cloud-infrastructure"
+                    }
+                },
+                "content": {}
+            },
+            {
+                "tpl": "nav_item",
+                "copy": {
+                    "de": {
+                        "label": "UI/UX-Design",
+                        "href": "/de/kontakt"
+                    },
+                    "en": {
+                        "label": "UI/UX-Design",
+                        "href": "/contact"
+                    }
+                },
+                "content": {}
+            },
+            {
+                "tpl": "nav_item",
+                "copy": {
+                    "de": {
+                        "label": "Websites",
+                        "href": "/de/website-entwicklung"
+                    },
+                    "en": {
+                        "label": "Websites",
+                        "href": "/website-development"
+                    }
+                },
+                "content": {}
+            }
+        ]
     }
 }

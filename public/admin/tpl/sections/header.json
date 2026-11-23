@@ -1,5 +1,13 @@
 {
     "label": "Header",
+    "content": {
+        "nav": {
+            "label": "Navigation",
+            "tpl_filter": [
+                "nav_item"
+            ]
+        }
+    },
     "copy": {
         "contact_link": {
             "label": "Kontakt Link"

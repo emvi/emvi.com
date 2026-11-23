@@ -14,5 +14,47 @@
         "button_link": {
             "label": "Button Link"
         }
+    },
+    "data": {
+        "icon": {
+            "label": "Icon",
+            "type": "select",
+            "options": {
+                "": "Kein Icon",
+                "code": "Code",
+                "cloud": "Cloud",
+                "pen": "Stift / Design",
+                "globe": "Globus",
+                "building": "Gebäude",
+                "rocket": "Rakete",
+                "layers": "Ebenen",
+                "map-pin": "Standort",
+                "message": "Nachricht",
+                "box": "Paket",
+                "eye": "Auge",
+                "shield": "Schild",
+                "shield-check": "Schild mit Haken",
+                "wrench": "Werkzeug",
+                "server": "Server",
+                "database": "Datenbank",
+                "plug": "Stecker / API",
+                "trending-up": "Wachstum",
+                "zap": "Blitz",
+                "award": "Auszeichnung",
+                "key": "Schlüssel",
+                "coins": "Münzen",
+                "link": "Verbindung",
+                "life-buoy": "Support",
+                "sparkles": "KI / Funkeln",
+                "search": "Suche",
+                "layout": "Layout / CMS",
+                "gauge": "Tacho",
+                "chart": "Diagramm",
+                "graduation": "Schulung",
+                "refresh": "Aktualisieren",
+                "unlock": "Schloss offen",
+                "users": "Personen"
+            }
+        }
     }
 }

@@ -1,0 +1,2 @@
+{{- $href := copy .Page .Content "href" -}}
+<a href="{{ $href }}" class="nav-item{{ if and $href (eq $href (index .Page.Path .Page.Language)) }} active{{ end }}" data-shifu-element="{{ .Content.Position }}">{{ copy .Page .Content "label" }}</a>

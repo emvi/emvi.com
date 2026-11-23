@@ -1,4 +1,5 @@
 <li data-shifu-element="{{ .Content.Position }}">
+    {{ template "icon.html" (get .Content "icon") }}
     <h3>{{ copy .Page .Content "h3" }}</h3>
     {{ html (copy .Page .Content "text") }}
 

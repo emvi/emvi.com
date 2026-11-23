@@ -15,9 +15,10 @@ html {
     --cream: #fdfcf9;
     --line: rgba(22, 22, 22, .1);
     --white: #fff;
-    --blue: #4a5cff;
-    --blue-soft: #e8eaff;
-    --blue-strong: #3a4bef;
+    --green: #6ece9d;
+    --green-soft: #e4f6ec;
+    --green-strong: #55bd88;
+    --green-text: #1f7a4d;
     --dark: #111111;
     --dark-2: #1c1c1c;
     --dark-line: rgba(255, 255, 255, .12);
@@ -44,8 +45,8 @@ html {
 }
 
 ::selection {
-    background: var(--blue);
-    color: var(--white);
+    background: var(--green);
+    color: var(--ink);
 }
 
 body {
@@ -123,7 +124,7 @@ p {
     text-wrap: pretty;
 
     a {
-        color: var(--blue-strong);
+        color: var(--green-text);
         text-decoration: underline;
         text-decoration-thickness: 1px;
         text-underline-offset: 3px;
@@ -148,7 +149,7 @@ a {
 }
 
 :focus-visible {
-    outline: 2px solid var(--blue-strong);
+    outline: 2px solid var(--green-text);
     outline-offset: 3px;
     border-radius: 4px;
 }
@@ -182,10 +183,10 @@ input[type~="submit"] {
     gap: 10px;
     padding: 13px 20px;
     overflow: hidden;
-    border: 1px solid var(--blue);
+    border: 1px solid var(--green);
     border-radius: $radius-sm;
-    background: var(--blue);
-    color: var(--white);
+    background: var(--green);
+    color: var(--ink);
     font-weight: 500;
     font-size: 15px;
     line-height: 1.2;
@@ -204,8 +205,8 @@ input[type~="submit"] {
     &:hover,
     &:focus-visible {
         opacity: 1;
-        background: var(--blue-strong);
-        border-color: var(--blue-strong);
+        background: var(--green-strong);
+        border-color: var(--green-strong);
 
         &::after {
             transform: translateX(4px);
@@ -280,6 +281,96 @@ header {
             align-items: center;
             gap: 10px;
 
+            .nav {
+                display: flex;
+                align-items: center;
+                gap: 0;
+                margin-right: 6px;
+
+                .nav-item {
+                    padding: 8px;
+                    border-radius: $radius-sm;
+                    color: inherit;
+                    font-weight: 500;
+                    font-size: 14px;
+                    white-space: nowrap;
+                    text-decoration: none;
+                    opacity: .7;
+                    transition: opacity .2s ease, background .2s ease;
+
+                    &:hover,
+                    &.active {
+                        opacity: 1;
+                        background: rgba(255, 255, 255, .1);
+                    }
+                }
+
+                @include lg {
+                    position: absolute;
+                    top: calc(100% + 8px);
+                    left: 0;
+                    right: 0;
+                    display: none;
+                    flex-direction: column;
+                    align-items: stretch;
+                    gap: 2px;
+                    margin: 0;
+                    padding: 8px;
+                    border: 1px solid var(--dark-line);
+                    border-radius: $radius;
+                    background-color: rgba(22, 22, 22, .92);
+                    -webkit-backdrop-filter: saturate(160%) blur(16px);
+                    backdrop-filter: saturate(160%) blur(16px);
+                    box-shadow: 0 12px 32px -16px rgba(0, 0, 0, .5);
+
+                    .nav-item {
+                        padding: 14px 16px;
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            .toggle {
+                display: none;
+                place-items: center;
+                width: 40px;
+                height: 40px;
+                padding: 0;
+                border: 1px solid var(--dark-line);
+                border-radius: $radius-sm;
+                background: transparent;
+                color: inherit;
+                cursor: pointer;
+
+                span,
+                span::before,
+                span::after {
+                    display: block;
+                    width: 16px;
+                    height: 1.5px;
+                    background: currentColor;
+                    transition: transform .3s $ease, background .2s ease;
+                }
+
+                span {
+                    position: relative;
+
+                    &::before,
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                    }
+
+                    &::before { top: -5px; }
+                    &::after { top: 5px; }
+                }
+
+                @include lg {
+                    display: grid;
+                }
+            }
+
             .lang {
                 display: flex;
                 align-items: center;
@@ -320,6 +411,25 @@ header {
         }
     }
 
+    @include lg {
+        .content {
+            position: relative;
+        }
+
+        &.header--open .content .menu {
+            .nav {
+                display: flex;
+            }
+
+            .toggle span {
+                background: transparent;
+
+                &::before { transform: translateY(5px) rotate(45deg); }
+                &::after { transform: translateY(-5px) rotate(-45deg); }
+            }
+        }
+    }
+
     &.is-scrolled .content {
         box-shadow: 0 12px 32px -16px rgba(0, 0, 0, .5);
     }
@@ -334,6 +444,23 @@ header {
 
             a.active {
                 background: var(--light-grey);
+            }
+        }
+
+        .nav .nav-item:hover,
+        .nav .nav-item.active {
+            background: var(--light-grey);
+        }
+
+        .toggle {
+            border-color: var(--line);
+        }
+
+        @include lg {
+            .nav {
+                border-color: var(--line);
+                background-color: rgba(253, 252, 249, .96);
+                box-shadow: 0 12px 32px -18px rgba(0, 0, 0, .2);
             }
         }
     }
@@ -402,7 +529,7 @@ section {
                         width: 22px;
                         height: 22px;
                         border-radius: $radius-sm;
-                        background: var(--blue-soft) url("/static/icons/check.svg") center / 14px no-repeat;
+                        background: var(--green-soft) url("/static/icons/check.svg") center / 14px no-repeat;
                     }
                 }
             }
@@ -569,7 +696,7 @@ section {
         }
 
         &__button {
-            fill: var(--blue);
+            fill: var(--green);
             stroke: none;
             animation: website-fill 11s ease 2.1s infinite both;
         }
@@ -665,6 +792,30 @@ section {
     }
 }
 
+.icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 8px;
+    border-radius: $radius;
+    background: var(--green-soft);
+    color: var(--green-text);
+    transition: background .3s ease, color .3s ease, transform .5s $ease;
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.services .content .grid > li:hover .icon {
+    background: var(--green);
+    color: var(--ink);
+    transform: translateY(-2px);
+}
+
 /* ---------------------------------------------------------------------------
    Technologies
 --------------------------------------------------------------------------- */
@@ -716,44 +867,44 @@ section {
 
 .projects {
     overflow: hidden;
-    background: var(--blue);
+    background: var(--green);
 
     .content {
         h2 {
-            color: var(--white);
+            color: var(--ink);
         }
 
         h3 {
-            color: var(--white);
+            color: var(--ink);
         }
 
         p {
-            color: rgba(255, 255, 255, .8);
+            color: rgba(22, 22, 22, .75);
 
             a {
-                color: var(--white);
+                color: var(--ink);
             }
         }
     }
 
     .button {
-        border-color: var(--white);
-        background: var(--white);
-        color: var(--blue);
+        border-color: var(--ink);
+        background: var(--ink);
+        color: var(--white);
 
         &:hover {
-            border-color: var(--white);
-            background: rgba(255, 255, 255, .9);
+            border-color: var(--ink);
+            background: var(--dark-2);
         }
 
         &.white {
-            border-color: rgba(255, 255, 255, .4);
+            border-color: rgba(22, 22, 22, .3);
             background: transparent;
-            color: var(--white);
+            color: var(--ink);
 
             &:hover {
-                border-color: var(--white);
-                background: rgba(255, 255, 255, .08);
+                border-color: var(--ink);
+                background: rgba(22, 22, 22, .06);
             }
         }
     }
@@ -789,8 +940,8 @@ section {
                 margin: 0;
                 padding: 0;
                 border-radius: $radius-sm;
-                background: rgba(255, 255, 255, .08);
-                box-shadow: 0 0 0 1px rgba(255, 255, 255, .3) inset;
+                background: rgba(22, 22, 22, .06);
+                box-shadow: 0 0 0 1px rgba(22, 22, 22, .3) inset;
                 cursor: pointer;
                 transition: background .2s ease;
 
@@ -799,15 +950,15 @@ section {
                     height: auto;
 
                     path {
-                        fill: var(--white);
+                        fill: var(--ink);
                     }
                 }
 
                 &:hover {
-                    background: var(--white);
+                    background: var(--ink);
 
                     svg path {
-                        fill: var(--blue);
+                        fill: var(--white);
                     }
                 }
             }
@@ -830,7 +981,7 @@ section {
         height: auto;
         padding: clamp(24px, 4vw, 56px);
         border-radius: $radius-lg;
-        background: rgba(255, 255, 255, .12);
+        background: rgba(255, 255, 255, .25);
 
         & > * {
             grid-column: 1;
@@ -841,7 +992,7 @@ section {
             grid-row: 1 / 6;
             align-self: center;
             border-radius: $radius;
-            box-shadow: 0 40px 80px -24px rgba(10, 16, 90, .55);
+            box-shadow: 0 40px 80px -24px rgba(10, 60, 35, .45);
             transform: scale(.96);
             transition: transform 1s $ease;
         }
@@ -950,7 +1101,7 @@ section {
         }
 
         &:hover::after {
-            background-color: var(--blue-soft);
+            background-color: var(--green-soft);
         }
     }
 
@@ -959,7 +1110,7 @@ section {
 
         & > summary::after {
             transform: rotate(180deg);
-            background-color: var(--blue-soft);
+            background-color: var(--green-soft);
         }
     }
 
@@ -1046,7 +1197,7 @@ section {
         }
 
         &:focus-within label {
-            color: var(--blue-strong);
+            color: var(--green-text);
         }
     }
 
@@ -1079,8 +1230,8 @@ section {
         }
 
         &:focus {
-            border-color: var(--blue-strong);
-            box-shadow: 0 0 0 3px rgba(74, 92, 255, .18);
+            border-color: var(--green-text);
+            box-shadow: 0 0 0 3px rgba(110, 206, 157, .3);
             outline: none;
         }
     }
@@ -1196,7 +1347,7 @@ section {
         }
 
         a {
-            color: var(--blue-strong);
+            color: var(--green-text);
         }
     }
 }
@@ -1215,7 +1366,7 @@ section {
             font-size: clamp(120px, 24vw, 280px);
             line-height: 1;
             letter-spacing: -.06em;
-            background: linear-gradient(100deg, #b7c4f5 0%, var(--blue) 45%, #a77be0 70%, #f25f5c 100%);
+            background: linear-gradient(100deg, #c3ecd6 0%, var(--green) 45%, #3fa977 75%, #1f7a4d 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -1342,7 +1493,7 @@ footer {
         padding: 8px 8px 8px 18px;
 
         .menu {
-            gap: 12px;
+            gap: 8px;
 
             .button {
                 padding: 10px 16px;
@@ -1389,8 +1540,18 @@ footer {
         width: 100%;
     }
 
-    header .content .menu .button {
-        width: auto;
+    header .content .menu {
+        gap: 6px;
+
+        .button {
+            width: auto;
+            padding: 0 12px;
+            font-size: 13px;
+        }
+
+        .lang a {
+            padding: 6px 7px;
+        }
     }
 
     .technologies .content .grid li {

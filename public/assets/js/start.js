@@ -1,6 +1,6 @@
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const glyphs = "emvigo{}<>/=;:.".split("");
-const glows = ["rgba(74, 92, 255, .55)", "rgba(80, 220, 160, .35)", "rgba(242, 95, 92, .35)"];
+const glows = ["rgba(110, 206, 157, .55)", "rgba(80, 220, 160, .35)", "rgba(242, 95, 92, .35)"];
 
 export function initStart(el) {
     const arrow = el.querySelector(".arrow");

@@ -1,14 +1,36 @@
 {
     "label": "Footer",
+    "layout": false,
+    "content": {
+        "services": {
+            "label": "Leistungen",
+            "tpl_filter": [
+                "nav_item"
+            ]
+        },
+        "company": {
+            "label": "Unternehmen",
+            "tpl_filter": [
+                "nav_item"
+            ]
+        }
+    },
     "copy": {
+        "text": {
+            "label": "Kurzbeschreibung"
+        },
+        "address": {
+            "label": "Adresse & Kontakt",
+            "type": "html"
+        },
+        "services_title": {
+            "label": "Überschrift Spalte 1"
+        },
+        "company_title": {
+            "label": "Überschrift Spalte 2"
+        },
         "copyright": {
             "label": "Copyright"
-        },
-        "contact_link": {
-            "label": "Kontakt Link"
-        },
-        "contact": {
-            "label": "Kontakt Button"
         },
         "legal_link": {
             "label": "Legal Link"

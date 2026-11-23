@@ -1396,18 +1396,94 @@ footer {
     background: var(--dark-2);
     color: var(--white);
 
-    .content {
+    & > .content {
+        display: flex;
+        flex-direction: column;
+        @include container;
+        padding-top: clamp(56px, 7vw, 96px);
+    }
+
+    a {
+        position: relative;
+        color: rgba(255, 255, 255, .65);
+        font-size: 15px;
+        line-height: 1.5;
+        text-decoration: none;
+
+        &:hover {
+            opacity: 1;
+            color: var(--white);
+        }
+    }
+
+    .footer-main {
+        display: grid;
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+        gap: clamp(32px, 5vw, 80px);
+        padding-bottom: clamp(48px, 6vw, 80px);
+    }
+
+    .footer-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        max-width: 380px;
+
+        .logo {
+            display: block;
+            height: 26px;
+            color: var(--white);
+
+            svg {
+                width: auto;
+                height: 100%;
+                fill: currentColor;
+            }
+        }
+
+        p {
+            color: rgba(255, 255, 255, .65);
+            font-size: 15px;
+        }
+
+        address {
+            color: rgba(255, 255, 255, .45);
+            font-size: 14px;
+            font-style: normal;
+            line-height: 1.7;
+
+            a {
+                font-size: 14px;
+                color: var(--green);
+            }
+        }
+    }
+
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+
+        h4 {
+            margin-bottom: 4px;
+            color: rgba(255, 255, 255, .45);
+            font-family: $font-mono;
+            font-weight: 400;
+            font-size: 12px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+    }
+
+    .footer-bottom {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        @include container;
-        min-height: 88px;
         gap: 24px;
-
-        small,
-        a {
-            white-space: nowrap;
-        }
+        min-height: 72px;
+        border-top: 1px solid var(--dark-line);
 
         small {
             color: rgba(255, 255, 255, .45);
@@ -1419,33 +1495,24 @@ footer {
         }
 
         a {
-            position: relative;
-            color: rgba(255, 255, 255, .65);
             font-size: 14px;
-            line-height: 1.5;
+        }
+    }
 
-            &::after {
-                content: "";
-                position: absolute;
-                left: 0;
-                bottom: -2px;
-                width: 100%;
-                height: 1px;
-                background: currentColor;
-                transform: scaleX(0);
-                transform-origin: right;
-                transition: transform .35s $ease;
+    @include md {
+        .footer-main {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            .footer-brand {
+                grid-column: 1 / -1;
             }
+        }
 
-            &:hover {
-                opacity: 1;
-                color: var(--white);
-
-                &::after {
-                    transform: scaleX(1);
-                    transform-origin: left;
-                }
-            }
+        .footer-bottom {
+            flex-direction: column;
+            justify-content: center;
+            gap: 8px;
+            padding: 24px 0;
         }
     }
 }
@@ -1527,12 +1594,6 @@ footer {
         }
     }
 
-    footer .content {
-        flex-direction: column;
-        justify-content: center;
-        gap: 8px;
-        padding: 24px 0;
-    }
 }
 
 @include sm {

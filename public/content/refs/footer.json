@@ -2,18 +2,126 @@
     "tpl": "footer",
     "copy": {
         "en": {
-            "copyright": "© 2025 Emvi Software GmbH. All rights reserved.",
-            "contact_link": "/contact",
-            "contact": "Contact",
+            "text": "Software development, cloud infrastructure, UI/UX design and websites from Rheda-Wiedenbrück, Germany.",
+            "address": "<div>Emvi Software GmbH<br>Nickelstraße 1b<br>33378 Rheda-Wiedenbrück<br><a href=\"mailto:contact@emvi.com\">contact@emvi.com</a></div>",
+            "services_title": "Services",
+            "company_title": "Company",
+            "copyright": "Emvi Software GmbH. All rights reserved.",
             "legal_link": "/legal",
             "legal": "Legal Notice"
         },
         "de": {
-            "copyright": "© 2025 Emvi Software GmbH. Alle Rechte vorbehalten.",
-            "contact_link": "/de/kontakt",
-            "contact": "Kontakt",
+            "text": "Softwareentwicklung, Cloud-Infrastruktur, UI/UX-Design und Websites aus Rheda-Wiedenbrück.",
+            "address": "<div>Emvi Software GmbH<br>Nickelstraße 1b<br>33378 Rheda-Wiedenbrück<br><a href=\"mailto:contact@emvi.com\">contact@emvi.com</a></div>",
+            "services_title": "Leistungen",
+            "company_title": "Unternehmen",
+            "copyright": "Emvi Software GmbH. Alle Rechte vorbehalten.",
             "legal_link": "/de/legal",
             "legal": "Impressum"
         }
+    },
+    "content": {
+        "services": [
+            {
+                "tpl": "nav_item",
+                "copy": {
+                    "de": {
+                        "label": "Individuelle Software",
+                        "href": "/de/software-entwicklung"
+                    },
+                    "en": {
+                        "label": "Individual Software",
+                        "href": "/software-development"
+                    }
+                },
+                "content": {}
+            },
+            {
+                "tpl": "nav_item",
+                "copy": {
+                    "de": {
+                        "label": "Cloud Infrastruktur",
+                        "href": "/de/cloud-infrastruktur"
+                    },
+                    "en": {
+                        "label": "Cloud Infrastructure",
+                        "href": "/cloud-infrastructure"
+                    }
+                },
+                "content": {}
+            },
+            {
+                "tpl": "nav_item",
+                "copy": {
+                    "de": {
+                        "label": "UI/UX-Design",
+                        "href": "/de/kontakt"
+                    },
+                    "en": {
+                        "label": "UI/UX-Design",
+                        "href": "/contact"
+                    }
+                },
+                "content": {}
+            },
+            {
+                "tpl": "nav_item",
+                "copy": {
+                    "de": {
+                        "label": "Websites",
+                        "href": "/de/website-entwicklung"
+                    },
+                    "en": {
+                        "label": "Websites",
+                        "href": "/website-development"
+                    }
+                },
+                "content": {}
+            }
+        ],
+        "company": [
+            {
+                "tpl": "nav_item",
+                "copy": {
+                    "de": {
+                        "label": "Startseite",
+                        "href": "/de"
+                    },
+                    "en": {
+                        "label": "Home",
+                        "href": "/"
+                    }
+                },
+                "content": {}
+            },
+            {
+                "tpl": "nav_item",
+                "copy": {
+                    "de": {
+                        "label": "Blog",
+                        "href": "/blog"
+                    },
+                    "en": {
+                        "label": "Blog",
+                        "href": "/blog"
+                    }
+                },
+                "content": {}
+            },
+            {
+                "tpl": "nav_item",
+                "copy": {
+                    "de": {
+                        "label": "Kontakt",
+                        "href": "/de/kontakt"
+                    },
+                    "en": {
+                        "label": "Contact",
+                        "href": "/contact"
+                    }
+                },
+                "content": {}
+            }
+        ]
     }
 }

@@ -5,7 +5,11 @@
         <div class="start-bg {{ $bg }}"></div>
     {{ end }}
 
-    <canvas class="start-canvas" aria-hidden="true" data-animation="{{ default (get .Content "animation") "" }}" data-labels="{{ default (copy .Page .Content "labels") "GO, VUE, K8S, POSTGRES, CLOUD" }}"></canvas>
+    {{ if eq (default (get .Content "animation") "") "website" }}
+        {{ template "hero_website.html" }}
+    {{ else }}
+        <canvas class="start-canvas" aria-hidden="true" data-labels="{{ default (copy .Page .Content "labels") "GO, VUE, K8S, POSTGRES, CLOUD" }}"></canvas>
+    {{ end }}
 
     <div class="content">
         <h1>{{ copy .Page .Content "h1" }}</h1>

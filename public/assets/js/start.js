@@ -1,5 +1,3 @@
-import { initBuild } from "./build.js";
-
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const glyphs = "emvigo{}<>/=;:.".split("");
 const glows = ["rgba(74, 92, 255, .55)", "rgba(80, 220, 160, .35)", "rgba(242, 95, 92, .35)"];
@@ -19,9 +17,7 @@ export function initStart(el) {
 
     const canvas = el.querySelector(".start-canvas");
 
-    if (canvas && canvas.dataset.animation === "website") {
-        initBuild(el, canvas, reducedMotion);
-    } else if (canvas) {
+    if (canvas) {
         initField(el, canvas);
     }
 }

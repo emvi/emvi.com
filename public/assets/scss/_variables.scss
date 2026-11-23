@@ -1,11 +1,13 @@
 $font-text: "Inter", "Roboto", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $font-display: "Inter Display", $font-text;
+$font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
 
 $max-width: 1200px;
 $gutter: clamp(16px, 4vw, 48px);
-$radius-sm: 10px;
-$radius: 18px;
-$radius-lg: 28px;
+$radius-xs: 3px;
+$radius-sm: 4px;
+$radius: 8px;
+$radius-lg: 16px;
 
 $ease: cubic-bezier(.22, 1, .36, 1);
 

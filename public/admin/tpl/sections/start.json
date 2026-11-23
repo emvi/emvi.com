@@ -7,9 +7,20 @@
         "text": {
             "label": "Text",
             "type": "html"
+        },
+        "labels": {
+            "label": "Animation Labels (kommagetrennt)"
         }
     },
     "data": {
+        "animation": {
+            "label": "Animation",
+            "type": "select",
+            "options": {
+                "": "Code",
+                "website": "Website"
+            }
+        },
         "bg": {
             "label": "Hintergrund (CSS Klasse)",
             "type": "select",

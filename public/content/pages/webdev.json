@@ -57,7 +57,8 @@
                 },
                 "tpl": "start",
                 "data": {
-                    "bg": "website-bg"
+                    "bg": "",
+                    "animation": "website"
                 },
                 "copy": {
                     "de": {

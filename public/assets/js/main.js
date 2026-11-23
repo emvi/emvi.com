@@ -1,7 +1,7 @@
 import { initHeader } from "./header.js";
 import { initStart } from "./start.js";
 import { initProjects } from "./projects.js";
-import { initReveal, initGlow } from "./effects.js";
+import { initReveal } from "./effects.js";
 
 const components = {
     header: initHeader,
@@ -23,7 +23,6 @@ function init(root = document) {
     });
 
     initProjects(root);
-    initGlow(root);
     initReveal(root);
 }
 

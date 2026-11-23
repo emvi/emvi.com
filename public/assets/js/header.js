@@ -19,9 +19,19 @@ export function initHeader(el) {
     });
 
     // compact header with shadow once the page is scrolled
+    // dark header switches to light once the dark hero has been scrolled past
+    const dark = !el.classList.contains("header--light");
+    const bar = el.querySelector(".content");
+
     const update = () => {
         if (el.isConnected) {
             el.classList.toggle("is-scrolled", window.scrollY > 8);
+
+            if (dark) {
+                const hero = document.querySelector(".start");
+                const middle = bar ? bar.getBoundingClientRect().top + bar.offsetHeight / 2 : 40;
+                el.classList.toggle("header--light", !hero || hero.getBoundingClientRect().bottom < middle);
+            }
         } else {
             window.removeEventListener("scroll", update);
         }

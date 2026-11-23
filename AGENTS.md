@@ -87,6 +87,9 @@ Use this layout for new sites (it matches `shifu init` and the admin UI's own pa
     └── partials/             # non-editable helpers used via {{ template }}
 ```
 
+If the project is a **custom Go server** (a `go.mod` and `cmd/server/main.go`
+exist in the root), this layout lives in `public/` and §10 applies.
+
 If you are editing an **existing** site, keep its structure, naming and file
 locations (check `config.json` for the real `sass`/`js` dirs, entrypoints and output
 paths) instead of migrating it to this layout.
@@ -102,37 +105,59 @@ Minimal configuration for local development:
 
 ```json
 {
-    "dev": true,
+    "dev": ${DEV},
     "log_level": "info",
     "server": {
-        "host": "localhost",
-        "port": 8080,
-        "hostname": "http://localhost:8080"
+        "host": "${HOST}",
+        "port": ${PORT},
+        "secure_cookies": true,
+        "hostname": "${HOSTNAME}"
+    },
+    "api": {
+        "secret": "${API_SECRET}"
+    },
+    "remote": {
+        "url": "https://sika.emvi.com",
+        "secret": "${API_SECRET}"
+    },
+    "git": {
+        "update_seconds": 600,
+        "repository": "${GITHUB_REPO}"
     },
     "content": {
-        "provider": "fs",
+        "provider": "git",
         "not_found": {
-            "en": "/not-found",
-            "de": "/de/nicht-gefunden"
+            "en": "/not-found"
         }
     },
     "sass": {
         "dir": "assets/scss",
         "entrypoint": "main.scss",
-        "out": "static/main.css",
-        "out_source_map": "static/main.css.map",
-        "watch": true
+        "out": "static/bundle.css",
+        "out_source_map": "static/bundle.css.map",
+        "watch": true,
+        "compiler": "sass"
     },
     "js": {
         "dir": "assets/js",
         "entrypoint": "main.js",
-        "out": "static/main.js",
+        "out": "static/bundle.js",
         "source_map": true,
         "watch": true
     },
     "ui": {
         "path": "/admin",
         "admin_password": "${ADMIN_PASSWORD}"
+    },
+    "llms": {
+        "enabled": false,
+        "title": "",
+        "description": "",
+        "selector": "main"
+    },
+    "_analytics": {
+        "provider": "pirsch",
+        "client_secret": "${PIRSCH_CLIENT_SECRET}"
     }
 }
 ```
@@ -140,7 +165,14 @@ Minimal configuration for local development:
 `.secrets.env` (one `KEY=value` per line, referenced as `${KEY}` in `config.json`):
 
 ```env
-ADMIN_PASSWORD=change-me
+DEV=true
+HOST=localhost
+PORT=8080
+HOSTNAME=localost:8080
+API_SECRET=
+GITHUB_REPO=
+ADMIN_PASSWORD=admin
+PIRSCH_CLIENT_SECRET=
 ```
 
 Notes:
@@ -151,7 +183,15 @@ Notes:
   `secure_cookies: true`.
 * Keys starting with `_` are treated as comments by convention (they are ignored).
 * Optional sections (`api`, `remote`, `git`, `analytics`, `cors`) are documented in
-  the Shifu README — only add them when asked.
+  the Shifu README — only modify them when asked.
+* `llms` (off by default; enabled in projects created by `shifu init`. On existing
+  sites only enable it when asked): serves `/llms.txt` and a Markdown
+  version of each page (`/about.md`, `/index.md` for `/`). The Markdown is
+  converted from the rendered `<main>` element (`selector`), title and
+  description come from `<title>` and `<meta name="description">`. Navigation,
+  scripts, forms and buttons are dropped. Without `<main>`, the `<body>` minus its
+  top-level `<header>`/`<footer>` is used. Exclude a page with
+  `"llms": { "exclude": true }` in its JSON (the generated 404 page does).
 * Run with `shifu run .` (requires the `sass` CLI: `npm i -g sass`). JS needs no
   Node.js, esbuild is built in.
 
@@ -186,6 +226,7 @@ Go `html/template` syntax plus Shifu functions and all
 | `markdown "static/x.md" .`, `markdownBlock "static/x.md" "block" .` | Render a Markdown file (path relative to project root). |
 | `hostname`, `config` | `server.hostname`, full config. |
 | `adminHead .Page`, `adminBody .Page`, `loggedIn .Page` | Admin UI hooks (see §4.4). |
+| `llms .Page` | `<link>` to the page's Markdown version (only if `llms.enabled`, see §3). |
 
 ### 4.3 Element template contract (REQUIRED for admin editing)
 
@@ -201,6 +242,7 @@ Every editable element template must:
    ```
    The `<area>` string must be identical in all three places (position suffix,
    `index` key, slot name) and in the admin config's `content` keys.
+   Only render `<slot>` if the visitor is signed in.
 3. Read every editable value through `copy` (translatable text) or `get` (data), and
    handle missing values — new elements added in the admin start **empty**.
 
@@ -228,7 +270,10 @@ Container with child elements — `tpl/sections/cards.html`:
     {{ with $headline }}<h2 class="cards__headline">{{ . }}</h2>{{ end }}
     <div class="cards__grid">
         {{ .CMS.Render .Args .Page (fmt "%s.items" .Content.Position) (index .Content.Content "items") }}
-        <slot name="{{ .Content.Position }}/items"></slot>
+
+        {{ if loggedIn .Page }}
+            <slot name="{{ .Content.Position }}/items"></slot>
+        {{ end }}
     </div>
 </section>
 ```
@@ -255,11 +300,17 @@ Multiple content areas (e.g. two columns) — `tpl/sections/columns.html`:
 <section class="columns" data-shifu-element="{{ .Content.Position }}">
     <div class="columns__col">
         {{ .CMS.Render .Args .Page (fmt "%s.left" .Content.Position) (index .Content.Content "left") }}
-        <slot name="{{ .Content.Position }}/left"></slot>
+
+        {{ if loggedIn .Page }}
+            <slot name="{{ .Content.Position }}/left"></slot>
+        {{ end }}
     </div>
     <div class="columns__col">
         {{ .CMS.Render .Args .Page (fmt "%s.right" .Content.Position) (index .Content.Content "right") }}
-        <slot name="{{ .Content.Position }}/right"></slot>
+
+        {{ if loggedIn .Page }}
+            <slot name="{{ .Content.Position }}/right"></slot>
+        {{ end }}
     </div>
 </section>
 ```
@@ -303,6 +354,7 @@ regular visitors.
     {{- end }}
     <link rel="stylesheet" href="/static/main.css?v={{ .CMS.LastUpdate }}" />
     <script defer src="/static/main.js?v={{ .CMS.LastUpdate }}"></script>
+    {{ llms .Page }}
     {{ adminHead .Page }}
 </head>
 <body>
@@ -744,7 +796,154 @@ header ref if the page should be linked.
 
 ---
 
-## 10. Verification checklist
+## 10. Custom server (Shifu as a library)
+
+Shifu can be embedded in a Go application instead of running the `shifu` binary.
+Use this when the site needs things templates and content JSON can't do: custom
+template functions, extra HTTP routes/APIs, or page handlers that load data
+before rendering (blog articles from a database, forms, …). Everything in §1–§9
+still applies, but to the website inside `public/`.
+
+### 10.1 Create a project
+
+```sh
+shifu init <path> --server [--module example.com/site]
+cd <path>
+make deps   # resolves and vendors the dependencies (creates go.sum and vendor/)
+make run
+```
+
+`--module` sets the Go module path (default: the directory name). The command
+refuses to run in a directory that already contains a `go.mod`.
+
+### 10.2 Project structure
+
+```
+.
+├── go.mod / go.sum
+├── Makefile
+├── .gitignore            # binaries (server, server.exe), .vscode/, .idea/, secrets
+├── vendor/               # vendored dependencies — commit it, never edit by hand
+├── cmd/
+│   └── server/
+│       └── main.go       # sets up and starts Shifu, nothing else
+├── pkg/
+│   ├── handler/          # ALL route and page handlers (one file per feature)
+│   │   └── handler.go    # Register(): attaches routes + page handlers
+│   ├── funcmap/          # custom template functions (when needed)
+│   └── <feature>/        # any other logic (db, mail, blog, …)
+└── public/               # the Shifu website — the layout from §2
+    ├── config.json
+    ├── .secrets.env
+    ├── admin/ assets/ content/ static/ tpl/
+    └── shifu.db          # created at runtime
+```
+
+Rules:
+
+* `cmd/server/main.go` only wires things together. No business logic there.
+* Handlers go in `pkg/handler`. Other Go code goes in `pkg/<name>`. Don't
+  create `internal/`, `src/` or top-level Go packages.
+* The server reads the website from `public/` (relative to the working
+  directory). Run it from the project root (`make run`). When deploying, ship the
+  binary next to the `public/` directory.
+* Dependencies are vendored. After adding or changing an import, run `make deps`
+  (`go get -u -t ./...`, `go mod tidy`, `go mod vendor`). Builds then use
+  `vendor/` automatically.
+* Paths in `public/config.json` (`sass.dir`, `js.out`, …) stay relative to
+  `public/`, as in a standalone site.
+
+### 10.3 main.go
+
+```go
+package main
+
+import (
+	"html/template"
+	"log/slog"
+
+	"example.com/site/pkg/handler"
+	shifu "github.com/emvi/shifu/pkg"
+	"github.com/go-chi/chi/v5"
+)
+
+func main() {
+	router := chi.NewRouter() // custom routes are merged with Shifu's router
+
+	s, err := shifu.NewServer("public", shifu.ServerOptions{
+		Router:  router,
+		FuncMap: template.FuncMap{}, // merged with Shifu's template functions
+	})
+
+	if err != nil {
+		slog.Error("Error setting up server", "error", err)
+		return
+	}
+
+	handler.Register(s, router)
+
+	if err := s.Start(nil); err != nil {
+		slog.Error("Error starting server", "error", err)
+	}
+}
+```
+
+### 10.4 Extension points
+
+| Need | How |
+|---|---|
+| Custom template function | Add it to `ServerOptions.FuncMap` (define the functions in `pkg/funcmap`). Use it in `tpl/` like any built-in. Don't shadow Shifu or Sprig function names. |
+| Extra HTTP route / API | `router.Get("/api/…", handler.X)` in `handler.Register`. Don't use paths that pages, `/static/*` or the admin UI path already use. |
+| Load data before rendering a page | Page handler: `s.Content.SetHandler("blog", handler.Blog)`, then set `"handler": "blog"` in the page JSON. |
+
+Page handler signature and pattern (`pkg/handler/blog.go`):
+
+```go
+func Blog(c *cms.CMS, page cms.Content, args map[string]string, w http.ResponseWriter, r *http.Request) {
+	article, err := blog.Find(args["slug"]) // logic lives in pkg/blog
+
+	if err != nil {
+		c.Render404(w, r, r.URL.Path)
+		return
+	}
+
+	// pass data to templates via the page, e.g. page.Data / custom FuncMap lookups
+	_ = article
+	c.RenderPage(w, r, strings.ToLower(r.URL.Path), args, &page)
+}
+```
+
+* The handler name in the page JSON must match `SetHandler` exactly. A page
+  with an unregistered handler returns HTTP 500 ("Page handler not found" in the log).
+* Always end a page handler with `c.RenderPage(…)`, `c.Render404(…)` or your own
+  response. Otherwise, the client gets an empty page.
+* Keep content editable: data from Go code should *add* to pages. Text
+  editors should change stays in `copy`/`data` and admin configs (§5).
+
+### 10.5 Makefile
+
+Generated by `shifu init --server`. Keep these targets:
+
+| Target | Does |
+|---|---|
+| `make run` | `go run cmd/server/main.go` |
+| `make deps` | `go get -u -t ./...`, `go mod tidy`, `go mod vendor` |
+| `make test` | `go test -cover ./...` |
+| `make build` | Build for the current platform |
+| `make build_linux_amd64` / `build_linux_arm64` | Linux binaries (`server`) |
+| `make build_mac_amd64` / `build_mac_arm64` | macOS binaries (`server`) |
+| `make build_windows_amd64` / `build_windows_arm64` | Windows binaries (`server.exe`) |
+
+Builds use `-ldflags "-s -w"`. **Keep cgo enabled** (never set `CGO_ENABLED=0`):
+the admin UI stores users and sessions in SQLite (`go-sqlite3`), which needs cgo.
+Cross-compiling therefore needs a C cross-compiler for the target (e.g.
+`CC=aarch64-linux-gnu-gcc make build_linux_arm64`), or build on the target
+platform. The target machine also needs the `sass` CLI if Sass compilation is
+enabled in `config.json`.
+
+---
+
+## 11. Verification checklist
 
 Before finishing, confirm:
 
@@ -754,12 +953,13 @@ Before finishing, confirm:
 - [ ] Every `copy`/`data` key read in a template is declared in the admin config with the right `type`.
 - [ ] No arrays/objects in `data`; all `copy`/`data` values are strings.
 - [ ] `html` values are wrapped in `{{ with }}`; no `<nil>` can appear.
+- [ ] If `llms` is enabled: `head.html` contains `{{ llms .Page }}`, page content uses semantic HTML (headings, lists, `<nav>` for menus) inside `<main>` or between a top-level `<header>`/`<footer>`, `/llms.txt` lists every page and each `<path>.md` reads well.
 - [ ] `head.html` contains `{{ adminHead .Page }}`, `end.html` contains `{{ adminBody .Page }}`, and the CSS/JS URLs match `sass.out`/`js.out`.
 - [ ] Pages: root area named `content`, start with `head`, end with `end`, `copy` for all languages in `path`, paths unique and starting with `/`.
 - [ ] Refs live in `content/refs/`, names don't collide with any other file name in `content/`.
 - [ ] No hand-written files in `static/` for CSS/JS output; no extra build tooling.
 - [ ] Every Sass partial is `@use`d by the entrypoint; every JS module is imported by the entrypoint.
 - [ ] JSON files are valid (e.g. `python3 -m json.tool file.json`).
-- [ ] `shifu run .` starts without "Error compiling sass", "Error compiling js", "Error rendering template" or "Error parsing website content file" in the log; no page shows `Reference "…" not found!` or `<nil>`.
+- [ ] Custom server only: `go vet ./...` passes, `make deps` was run after import changes (`vendor/` up to date), handlers are in `pkg/handler`, and every `"handler"` used in `public/content/` is registered via `SetHandler`.
+- [ ] `shifu run .` (custom server: `make run`) starts without "Error compiling sass", "Error compiling js", "Error rendering template" or "Error parsing website content file" in the log; no page shows `Reference "…" not found!` or `<nil>`.
 - [ ] Logged in at `/admin`, each element can be selected, edited, and new children can be added to every content area.
-

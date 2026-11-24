@@ -773,34 +773,23 @@ section {
 
     // cards share their borders, only a single line between them
     .content .grid {
-        position: relative;
+        // the grid draws the rounded outer border, the cards only draw
+        // their left and top line, the outer ones are clipped away
         gap: 0;
-        padding: 0 1px 1px 0;
+        border: 1px solid var(--line);
         border-radius: $radius;
         overflow: hidden;
 
-        // outer border, drawn on top so the rounded corners keep their line
-        &::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: 2;
-            border: 1px solid var(--line);
-            border-radius: inherit;
-            pointer-events: none;
-        }
-
         & > li {
             @extend %card;
-            margin: 0 -1px -1px 0;
-            border: 1px solid var(--line);
+            margin: -1px 0 0 -1px;
+            border: solid var(--line);
+            border-width: 1px 0 0 1px;
             border-radius: 0;
             box-shadow: none;
 
             &:hover {
-                z-index: 1;
-                border-color: rgba(22, 22, 22, .25);
-                box-shadow: none;
+                box-shadow: 0 0 0 1px rgba(22, 22, 22, .25) inset;
             }
         }
     }
